@@ -1,10 +1,11 @@
 package it.unibs.ing;
 
+import com.google.gson.*;
+
+
+
 public class test {
 
-	public static void main(String[] args) {
-		int a = 0;
-
-	}
+	
 
 }
