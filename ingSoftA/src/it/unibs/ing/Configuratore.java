@@ -6,8 +6,8 @@ package it.unibs.ing;
 import java.io.Serializable;
 
 public class Configuratore implements Serializable {
-    private String username;
-    private String password;
+    private static String username;
+    private static String password;
     
     private static final String USERNAME_PREDEFINITO = "user";
     private static final String PASSWORD_PREDEFINITO = "password";
@@ -22,6 +22,14 @@ public class Configuratore implements Serializable {
     public static Boolean verificaPrimoAccesso(String user, String pass) {
     	
     	if (user.equals(USERNAME_PREDEFINITO) && pass.equals(PASSWORD_PREDEFINITO)) {    	
+    	return true;
+    	}
+    	else return false;
+    }
+    
+    public static Boolean login(String user, String pass) {
+   
+    	if (user.equals(username) && pass.equals(password)) {    	
     	return true;
     	}
     	else return false;

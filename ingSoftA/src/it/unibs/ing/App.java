@@ -158,7 +158,8 @@ public class App {
 		String username = scanner.nextLine();
 		System.out.print("Inserisci password: ");
 		String password = scanner.nextLine();
-		// Autentica configuratore (da implementare)
+		Configuratore configuratore = new Configuratore(username, password);
+		Boolean logged = configuratore.login(username, password);
 	}
 
 	private void creaComprensorio() {
