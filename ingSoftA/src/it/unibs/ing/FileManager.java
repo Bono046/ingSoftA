@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
-public class Persistenza {
+public class FileManager {
  private static final String FILE_DATI = "dati.json";
 
  public static void salvaDati(Dati dati) throws IOException {
