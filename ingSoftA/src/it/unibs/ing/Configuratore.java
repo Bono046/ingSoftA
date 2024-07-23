@@ -1,18 +1,16 @@
 package it.unibs.ing;
-
-// File: Configuratore.java
-
-
 import java.io.Serializable;
 
 public class Configuratore implements Serializable {
-    private static String username;
-    private static String password;
+    
+	private static final long serialVersionUID = 1L;
+	private String username;
+    private String password;
     
     private static final String USERNAME_PREDEFINITO = "user";
     private static final String PASSWORD_PREDEFINITO = "password";
 
-    // Costruttore
+
     public Configuratore(String username, String password) {
         this.username = username;
         this.password = password;
@@ -22,22 +20,11 @@ public class Configuratore implements Serializable {
     public static Boolean verificaPrimoAccesso(String user, String pass) {
     	
     	if (user.equals(USERNAME_PREDEFINITO) && pass.equals(PASSWORD_PREDEFINITO)) {    	
-    	return true;
+    		return true;
+    	} else {
+    		return false;
     	}
-    	else return false;
     }
-    
-    public static Boolean login(String user, String pass) {
-   
-    	if (user.equals(username) && pass.equals(password)) {    	
-    	return true;
-    	}
-    	else return false;
-    }
-
-
-
-
 
 
     public String getUsername() {

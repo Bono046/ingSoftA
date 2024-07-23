@@ -5,34 +5,39 @@ import java.io.IOException;
 import java.util.*;
 
 public class App {
-	private Dati dati;
-	private Scanner scanner = new Scanner(System.in);
+    private Dati dati;
+    private Scanner scanner = new Scanner(System.in);
+    private Boolean logged = false;
 
-	public App() {
-		try {
-			dati = FileManager.caricaDati();
-		} catch (IOException e) {
-			System.out.println("Errore nel caricamento dei dati: " + e.getMessage());
-			dati = new Dati();
-		}
-		inizializzaListeVuote();
-	}
+    public App() {
+        try {
+            dati = FileManager.caricaDati();
+        } catch (IOException e) {
+            System.out.println("Errore nel caricamento dei dati: " + e.getMessage());
+            dati = new Dati();
+        }
+        inizializzaListeVuote();
+    }
 
-
-	// metodo di inizializzazione e di controllo in caso di file json esistente ma vuoto o parziale
-	private void inizializzaListeVuote() {
-		if (dati.getConfiguratori() == null) {dati.setConfiguratori(new ArrayList<>());
-		}
-		if (dati.getComprensori() == null) {dati.setComprensori(new ArrayList<>());
-		}
-		if (dati.getGerarchie() == null) {dati.setGerarchie(new ArrayList<>());
-		}
-		if (dati.getFattoriDiConversione() == null) {dati.setFattoriDiConversione(new ArrayList<>());
-		}
+    private void inizializzaListeVuote() {
+        if (dati.getConfiguratori() == null) {
+            dati.setConfiguratori(new ArrayList<>());
+        }
+        if (dati.getComprensori() == null) {
+            dati.setComprensori(new ArrayList<>());
+        }
+        if (dati.getGerarchie() == null) {
+            dati.setGerarchie(new ArrayList<>());
+        }
+        if (dati.getFattoriDiConversione() == null) {
+            dati.setFattoriDiConversione(new ArrayList<>());
+        }
+    
 	}
 
 	public void start() {
-		mostraMenuAutenticazione();
+		while (!logged)
+			mostraMenuAutenticazione();
 		mostraMenuPrincipale();
 		
 	}
@@ -131,37 +136,59 @@ public class App {
 	
 	
 	private void registraConfiguratore() {
-		Boolean check = false;
-		while(!check) {
-			System.out.print("Inserisci username predefinito: ");
-			String usernamePredefinito = scanner.nextLine();
-			System.out.print("Inserisci password predefinita: ");
-			String passwordPredefinita = scanner.nextLine();
-			
-			// Verifica credenziali predefinite (da implementare)
-			check = Configuratore.verificaPrimoAccesso(usernamePredefinito, passwordPredefinita);
-			if(!check) { System.out.println("errore, riprova");
-			}
-		}
-		System.out.print("Inserisci nuovo username: ");
-		String username = scanner.nextLine();
-		System.out.print("Inserisci nuova password: ");
-		String password = scanner.nextLine();
-		// logica per verificare unicità username
-		// ..
-		Configuratore configuratore = new Configuratore(username, password);
-		dati.getConfiguratori().add(configuratore);
+	    Boolean check = false;
+	    while (!check) {
+	        System.out.println("Inserisci username predefinito: ");
+	        String usernamePredefinito = scanner.nextLine();
+	        System.out.println("Inserisci password predefinita: ");
+	        String passwordPredefinita = scanner.nextLine();
+	        check = Configuratore.verificaPrimoAccesso(usernamePredefinito, passwordPredefinita);
+	        if (!check) {
+	            System.out.println("Errore, riprova.");
+	        }
+	    }
+
+	    Boolean userValido = false;
+	    while (!userValido) {
+	        System.out.println("Inserisci nuovo username: ");
+	        String username = scanner.nextLine();
+	        System.out.println("Inserisci nuova password: ");
+	        String password = scanner.nextLine();
+	        userValido = dati.userValido(username);
+	        if (!userValido) {
+	            System.out.println("Username già esistente. Riprova con un altro.");
+	        } else {
+	            Configuratore configuratore = new Configuratore(username, password);
+	            dati.getConfiguratori().add(configuratore);
+	            System.out.println("Configuratore registrato con successo.");
+	        }
+	    }
 	}
+
+
 
 	private void autenticaConfiguratore() {
-		System.out.print("Inserisci username: ");
+		System.out.println("Inserisci username: ");
 		String username = scanner.nextLine();
-		System.out.print("Inserisci password: ");
+		System.out.println("Inserisci password: ");
 		String password = scanner.nextLine();
-		Configuratore configuratore = new Configuratore(username, password);
-		Boolean logged = configuratore.login(username, password);
+		logged = loginConfiguratore(username, password);
+		if(logged)
+			System.out.println("Autenticazione avvenuta con successo. Procedi con il seguente menu:");
+		else 
+			System.out.println("Credenziali non valide. Riprova");
 	}
 
+	
+	private boolean loginConfiguratore(String username, String password) {
+	    for (Configuratore configuratore : dati.getConfiguratori()) {
+	        if (configuratore.getUsername().equals(username) && configuratore.getPassword().equals(password)) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+	
 	private void creaComprensorio() {
 		System.out.print("Inserisci nome comprensorio: ");
 		String nome = scanner.nextLine();
