@@ -192,12 +192,28 @@ public class App {
 	private void creaComprensorio() {
 		System.out.print("Inserisci nome comprensorio: ");
 		String nome = scanner.nextLine();
-		System.out.print("Inserisci descrizione comprensorio: ");
-		String descrizione = scanner.nextLine();
-		ComprensorioGeografico comprensorio = new ComprensorioGeografico(nome, descrizione);
-		dati.getComprensori().add(comprensorio);
+		ComprensorioGeografico comprensorio = new ComprensorioGeografico(nome);
+		String comune;
+		do {
+			System.out.print("Inserisci nome del comune da aggiungere. Premi 0 per uscire: ");
+			comune = scanner.nextLine();
+			if(!comune.equals("0"))
+				comprensorio.aggiungiComune(comune);
+		}	while(!comune.equals("0"));
+		dati.addComprensorio(comprensorio);
 	}
 
+	
+	private void visualizzaComprensori() {
+		if(dati.getComprensori().isEmpty())
+			System.out.println("Non esiste alcun comprensorio da visualizzare");
+		else
+			for (ComprensorioGeografico comprensorio : dati.getComprensori()) {
+				System.out.println(comprensorio.toString());
+			}
+	}
+	
+	
 	private void creaGerarchia() {
 		System.out.print("Inserisci nome radice gerarchia: ");
 		String nomeRadice = scanner.nextLine();
@@ -274,11 +290,7 @@ public class App {
 		return null;
 	}
 
-	private void visualizzaComprensori() {
-		for (ComprensorioGeografico comprensorio : dati.getComprensori()) {
-			System.out.println("Nome: " + comprensorio.getNome() + ", Descrizione: " + comprensorio.getDescrizione());
-		}
-	}
+	
 
 	private void visualizzaGerarchie() {
 		for (Categoria gerarchia : dati.getGerarchie()) {

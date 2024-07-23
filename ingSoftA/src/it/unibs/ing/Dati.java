@@ -36,6 +36,11 @@ public class Dati implements Serializable {
     public void setComprensori(List<ComprensorioGeografico> comprensori) {
         this.comprensori = comprensori;
     }
+    
+    public void addComprensorio(ComprensorioGeografico comprensorio) {
+        this.comprensori.add(comprensorio);
+    }
+    
 
     public List<Categoria> getGerarchie() {
         return gerarchie;
