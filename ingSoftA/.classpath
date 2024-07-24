@@ -7,6 +7,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/json-lib"/>
-	<classpathentry kind="lib" path="C:/Users/Nicola/Downloads/gson-2.6.2.zip"/>
+	<classpathentry kind="lib" path="C:/Users/Andrea/Desktop/Uni/INFO/INGE SOFT/gson-2.6.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

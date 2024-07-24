@@ -5,64 +5,86 @@ import java.io.IOException;
 import java.util.*;
 
 public class App {
+	
     private Dati dati;
     private Scanner scanner = new Scanner(System.in);
+    // da verificare se usata in un solo metodo o in piu metodi
     private Boolean logged = false;
+    
+    //inizializzazione liste
+    // invece di chiamare la classe dati, passeremo le liste al metodo corrispondente
+    // nella classe di riferimento, che applicherà la logica necessaria.
+    // nel salvataggio finale utilizziamo ancora un oggetto dati, settato con queste liste modificate
+    // lungo l'applicazione
+    private ArrayList<Categoria> listaCategorie = new ArrayList<>();
+    private ArrayList<ComprensorioGeografico> listaComprensori = new ArrayList<>();
+    private ArrayList<Configuratore> listaConfiguratore = new ArrayList<>();
+    private ArrayList<FattoreDiConversione> listaFattori  = new ArrayList<>();
+    
+    
 
     public App() {
-        try {
+        
+    	try {
             dati = FileManager.caricaDati();
+           
         } catch (IOException e) {
             System.out.println("Errore nel caricamento dei dati: " + e.getMessage());
             dati = new Dati();
         }
-        inizializzaListeVuote();
+          	
+     	listaCategorie = dati.getGerarchie();
+    	listaComprensori = dati.getComprensori();
+    	listaConfiguratore = dati.getConfiguratori();
+    	listaFattori = dati.getFattoriDiConversione();
+    	
+    	
+    	
+    	//inizializzaListeVuote();
     }
 
-    private void inizializzaListeVuote() {
-        if (dati.getConfiguratori() == null) {
-            dati.setConfiguratori(new ArrayList<>());
-        }
-        if (dati.getComprensori() == null) {
-            dati.setComprensori(new ArrayList<>());
-        }
-        if (dati.getGerarchie() == null) {
-            dati.setGerarchie(new ArrayList<>());
-        }
-        if (dati.getFattoriDiConversione() == null) {
-            dati.setFattoriDiConversione(new ArrayList<>());
-        }
+//	metodo probabilmente non piu utile - eliminare dopo test resistenza caricamento dati    
+//    private void inizializzaListeVuote() {
+//        if (dati.getConfiguratori() == null) {dati.setConfiguratori(new ArrayList<>());
+//        }
+//        if (dati.getComprensori() == null) {dati.setComprensori(new ArrayList<>());
+//        }
+//        if (dati.getGerarchie() == null) {dati.setGerarchie(new ArrayList<>());
+//        }
+//        if (dati.getFattoriDiConversione() == null) {dati.setFattoriDiConversione(new ArrayList<>());
+//        }}
     
-	}
+	
 
 	public void start() {
-		while (!logged)
+		//while (!logged)  VERICARE UTILITA' CICLO
 			mostraMenuAutenticazione();
-		mostraMenuPrincipale();
-		
+			mostraMenuPrincipale();
 	}
+	
+	
 
 	private void mostraMenuAutenticazione() {
-		while (true) {
+		
+		while (!logged) {
 			System.out.println("Menu Principale:");
 			System.out.println("1. Primo accesso Configuratore");
 			System.out.println("2. Autenticazione Configuratore");
-		
+			
 			int scelta = -1;
 			scelta = getInput(scelta);
+			
 			switch (scelta) {
 			case 1:
 				registraConfiguratore();
 				break;
 			case 2:
-				autenticaConfiguratore();
+				logged = autenticaConfiguratore();
 				break;
 			default:
-				System.out.println("Opzione non valida. Riprova.");
+				System.out.println("Opzione non valida. Riprova" + "\n");
 			}
-			// condizione di uscita
-			break;
-			}
+		}
 	}
 	
 	
@@ -114,7 +136,7 @@ public class App {
 				System.out.println("Arrivederci!");
 				return;
 			default:
-				System.out.println("Opzione non valida. Riprova.");
+				System.out.println("Opzione non valida. Riprova" + "\n");
 			}
 		}
 	}
@@ -124,12 +146,8 @@ public class App {
 
 		try {
 			scelta = scanner.nextInt();
-
-		} catch(Exception e) {
-			System.out.println("riprova");
-		}
-
-		// Consuma il newline
+		} catch(Exception e) {}
+		
 		scanner.nextLine();
 		return scelta;
 	}
@@ -142,10 +160,10 @@ public class App {
 	        String usernamePredefinito = scanner.nextLine();
 	        System.out.println("Inserisci password predefinita: ");
 	        String passwordPredefinita = scanner.nextLine();
+	        
 	        check = Configuratore.verificaPrimoAccesso(usernamePredefinito, passwordPredefinita);
-	        if (!check) {
-	            System.out.println("Errore, riprova.");
-	        }
+	        if (!check) 
+	            System.out.println("Credenziali predefinite errate. Riprova" + "\n");
 	    }
 
 	    Boolean userValido = false;
@@ -154,44 +172,41 @@ public class App {
 	        String username = scanner.nextLine();
 	        System.out.println("Inserisci nuova password: ");
 	        String password = scanner.nextLine();
-	        userValido = dati.userValido(username);
+	        
+	        userValido = Configuratore.userValido(username, listaConfiguratore);
 	        if (!userValido) {
-	            System.out.println("Username già esistente. Riprova con un altro.");
+	            System.out.println("Username già esistente. Riprova con un altro." + "\n");
 	        } else {
 	            Configuratore configuratore = new Configuratore(username, password);
-	            dati.getConfiguratori().add(configuratore);
-	            System.out.println("Configuratore registrato con successo.");
+	            listaConfiguratore.add(configuratore);
+	            System.out.println("Configuratore registrato con successo." + "\n");
 	        }
 	    }
 	}
 
 
 
-	private void autenticaConfiguratore() {
+	private Boolean autenticaConfiguratore() {
 		System.out.println("Inserisci username: ");
 		String username = scanner.nextLine();
 		System.out.println("Inserisci password: ");
 		String password = scanner.nextLine();
-		logged = loginConfiguratore(username, password);
-		if(logged)
+		
+		Boolean check = Configuratore.loginConfiguratore(username, password, listaConfiguratore);
+		if(check)
 			System.out.println("Autenticazione avvenuta con successo. Procedi con il seguente menu:");
 		else 
-			System.out.println("Credenziali non valide. Riprova");
+			System.out.println("Credenziali non valide. Riprova" + "\n");
+		return check;
 	}
 
 	
-	private boolean loginConfiguratore(String username, String password) {
-	    for (Configuratore configuratore : dati.getConfiguratori()) {
-	        if (configuratore.getUsername().equals(username) && configuratore.getPassword().equals(password)) {
-	            return true;
-	        }
-	    }
-	    return false;
-	}
+
 	
 	private void creaComprensorio() {
 		System.out.print("Inserisci nome comprensorio: ");
 		String nome = scanner.nextLine();
+		
 		ComprensorioGeografico comprensorio = new ComprensorioGeografico(nome);
 		String comune;
 		do {
@@ -200,19 +215,26 @@ public class App {
 			if(!comune.equals("0"))
 				comprensorio.aggiungiComune(comune);
 		}	while(!comune.equals("0"));
-		dati.addComprensorio(comprensorio);
+		listaComprensori.add(comprensorio);
 	}
 
 	
 	private void visualizzaComprensori() {
-		if(dati.getComprensori().isEmpty())
+		if(listaComprensori.isEmpty())
 			System.out.println("Non esiste alcun comprensorio da visualizzare");
 		else
-			for (ComprensorioGeografico comprensorio : dati.getComprensori()) {
+			for (ComprensorioGeografico comprensorio : listaComprensori) {
 				System.out.println(comprensorio.toString());
 			}
 	}
 	
+	
+	
+/*	
+*	
+		GPT DA IMPLEMENTARE
+*	
+*/	
 	
 	private void creaGerarchia() {
 		System.out.print("Inserisci nome radice gerarchia: ");
@@ -323,7 +345,24 @@ public class App {
 		}
 	}
 
+	
+/*	
+*	
+		*
+*	
+*/	
+	
+	
 	private void salvaDati() {
+
+		
+		dati.setConfiguratori(listaConfiguratore);
+		dati.setComprensori(listaComprensori);
+//		dati.setFattoriDiConversione(listaFattori);
+//		dati.setGerarchie(listaCategorie);
+		
+		
+		
 		try {
 			FileManager.salvaDati(dati);
 		} catch (IOException e) {

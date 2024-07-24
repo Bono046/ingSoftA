@@ -1,1 +1,1 @@
-{"configuratori":[{"username":"a","password":"a"}],"comprensori":[{"nome":"bs","comuni":["mazzano","orzi"]}],"gerarchie":[],"fattoriDiConversione":[]}
+{"configuratori":[{"username":"a","password":"a"},{"username":"b","password":"b"}],"comprensori":[{"nome":"bs","comuni":["orzi","moli"]},{"nome":"bg","comuni":["albino","orio"]}],"gerarchie":[],"fattoriDiConversione":[]}

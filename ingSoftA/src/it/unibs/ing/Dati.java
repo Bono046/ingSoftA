@@ -9,10 +9,10 @@ public class Dati implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 4498646267228832155L;
-	private List<Configuratore> configuratori;
-    private List<ComprensorioGeografico> comprensori;
-    private List<Categoria> gerarchie;
-    private List<FattoreDiConversione> fattoriDiConversione;
+	private ArrayList<Configuratore> configuratori;
+    private ArrayList<ComprensorioGeografico> comprensori;
+    private ArrayList<Categoria> gerarchie;
+    private ArrayList<FattoreDiConversione> fattoriDiConversione;
 
     public Dati() {
         configuratori = new ArrayList<>();
@@ -21,19 +21,19 @@ public class Dati implements Serializable {
         fattoriDiConversione = new ArrayList<>();
     }
 
-    public List<Configuratore> getConfiguratori() {
+    public ArrayList<Configuratore> getConfiguratori() {
         return configuratori;
     }
 
-    public void setConfiguratori(List<Configuratore> configuratori) {
+    public void setConfiguratori(ArrayList<Configuratore> configuratori) {
         this.configuratori = configuratori;
     }
 
-    public List<ComprensorioGeografico> getComprensori() {
+    public ArrayList<ComprensorioGeografico> getComprensori() {
         return comprensori;
     }
 
-    public void setComprensori(List<ComprensorioGeografico> comprensori) {
+    public void setComprensori(ArrayList<ComprensorioGeografico> comprensori) {
         this.comprensori = comprensori;
     }
     
@@ -42,28 +42,27 @@ public class Dati implements Serializable {
     }
     
 
-    public List<Categoria> getGerarchie() {
+    public ArrayList<Categoria> getGerarchie() {
         return gerarchie;
     }
 
-    public void setGerarchie(List<Categoria> gerarchie) {
+    public void setGerarchie(ArrayList<Categoria> gerarchie) {
         this.gerarchie = gerarchie;
     }
 
-    public List<FattoreDiConversione> getFattoriDiConversione() {
+    public ArrayList<FattoreDiConversione> getFattoriDiConversione() {
         return fattoriDiConversione;
     }
 
-    public void setFattoriDiConversione(List<FattoreDiConversione> fattoriDiConversione) {
+    public void setFattoriDiConversione(ArrayList<FattoreDiConversione> fattoriDiConversione) {
         this.fattoriDiConversione = fattoriDiConversione;
     }
 
-    public boolean userValido(String user) {
-        for (Configuratore conf : configuratori) {
-            if (conf.getUsername().equals(user)) {
-                return false;
-            }
-        }
-        return true;
-    }
+
+
+	@Override
+	public String toString() {
+		return "Dati [configuratori=" + configuratori + ", comprensori=" + comprensori + ", gerarchie=" + gerarchie
+				+ ", fattoriDiConversione=" + fattoriDiConversione + "]";
+	}
 }
