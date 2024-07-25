@@ -114,22 +114,22 @@ public class App {
 				creaComprensorio();
 				break;
 			case 4:
-				creaGerarchia();
+	//			creaGerarchia();
 				break;
 			case 5:
-				aggiungiCategoriaNonFoglia();
+	//			aggiungiCategoriaNonFoglia();
 				break;
 			case 6:
-				stabilisciFattoreConversione();
+	//			stabilisciFattoreConversione();
 				break;
 			case 7:
 				visualizzaComprensori();
 				break;
 			case 8:
-				visualizzaGerarchie();
+	//			visualizzaGerarchie();
 				break;
 			case 9:
-				visualizzaFattoriDiConversione();
+	//			visualizzaFattoriDiConversione();
 				break;
 			case 0:
 				salvaDati();
@@ -236,121 +236,7 @@ public class App {
 *	
 */	
 	
-	private void creaGerarchia() {
-		System.out.print("Inserisci nome radice gerarchia: ");
-		String nomeRadice = scanner.nextLine();
-		Categoria radice = new Categoria(nomeRadice, false, null, null, null);
-		dati.getGerarchie().add(radice);
-	}
-
-	private void aggiungiCategoriaNonFoglia() {
-		System.out.print("Inserisci nome della categoria non foglia: ");
-		String nome = scanner.nextLine();
-		System.out.print("Inserisci campo caratteristico: ");
-		String campo = scanner.nextLine();
-		System.out.print("Inserisci dominio (valori separati da virgola): ");
-		String[] dominioArray = scanner.nextLine().split(",");
-		List<String> dominio = new ArrayList<>(Arrays.asList(dominioArray));
-		Map<String, String> descrizioni = new HashMap<>();
-		for (String valore : dominio) {
-			System.out.print("Inserisci descrizione per " + valore + ": ");
-			descrizioni.put(valore, scanner.nextLine());
-		}
-		System.out.print("Inserisci nome della gerarchia a cui aggiungere la categoria: ");
-		String nomeGerarchia = scanner.nextLine();
-		for (Categoria gerarchia : dati.getGerarchie()) {
-			if (gerarchia.getNome().equals(nomeGerarchia)) {
-				Categoria categoria = new Categoria(nome, false, campo, dominio, descrizioni);
-				gerarchia.getSottocategorie().add(categoria);
-				break;
-			}
-		}
-	}
-
-	private void stabilisciFattoreConversione() {
-		System.out.print("Inserisci nome della prima categoria foglia: ");
-		String nomeFoglia1 = scanner.nextLine();
-		Categoria foglia1 = trovaCategoriaFoglia(nomeFoglia1);
-		if (foglia1 == null) {
-			System.out.println("Categoria foglia non trovata.");
-			return;
-		}
-		System.out.print("Inserisci nome della seconda categoria foglia: ");
-		String nomeFoglia2 = scanner.nextLine();
-		Categoria foglia2 = trovaCategoriaFoglia(nomeFoglia2);
-		if (foglia2 == null) {
-			System.out.println("Categoria foglia non trovata.");
-			return;
-		}
-		System.out.print("Inserisci valore del fattore di conversione: ");
-		double valore = scanner.nextDouble();
-		scanner.nextLine(); // Consuma il newline
-		FattoreDiConversione fattore = new FattoreDiConversione(foglia1, foglia2, valore);
-		dati.getFattoriDiConversione().add(fattore);
-	}
-
-	private Categoria trovaCategoriaFoglia(String nome) {
-		for (Categoria gerarchia : dati.getGerarchie()) {
-			Categoria foglia = trovaCategoriaFogliaInSottocategorie(gerarchia, nome);
-			if (foglia != null) {
-				return foglia;
-			}
-		}
-		return null;
-	}
-
-	private Categoria trovaCategoriaFogliaInSottocategorie(Categoria categoria, String nome) {
-		if (categoria.isFoglia() && categoria.getNome().equals(nome)) {
-			return categoria;
-		}
-		for (Categoria sottocategoria : categoria.getSottocategorie()) {
-			Categoria foglia = trovaCategoriaFogliaInSottocategorie(sottocategoria, nome);
-			if (foglia != null) {
-				return foglia;
-			}
-		}
-		return null;
-	}
-
 	
-
-	private void visualizzaGerarchie() {
-		for (Categoria gerarchia : dati.getGerarchie()) {
-			System.out.println("Gerarchia: " + gerarchia.getNome());
-			visualizzaCategorie(gerarchia, "  ");
-		}
-	}
-
-	private void visualizzaCategorie(Categoria categoria, String indent) {
-		System.out.println(indent + "Categoria: " + categoria.getNome());
-		if (!categoria.isFoglia()) {
-			for (Categoria sottocategoria : categoria.getSottocategorie()) {
-				visualizzaCategorie(sottocategoria, indent + "  ");
-			}
-		}
-	}
-
-	private void visualizzaFattoriDiConversione() {
-		System.out.print("Inserisci nome della categoria foglia: ");
-		String nomeFoglia = scanner.nextLine();
-		Categoria foglia = trovaCategoriaFoglia(nomeFoglia);
-		if (foglia == null) {
-			System.out.println("Categoria foglia non trovata.");
-			return;
-		}
-		for (FattoreDiConversione fattore : dati.getFattoriDiConversione()) {
-			if (fattore.getFoglia1().equals(foglia)) {
-				System.out.println("Da " + fattore.getFoglia1().getNome() + " a " + fattore.getFoglia2().getNome() + ": " + fattore.getValore());
-			}
-		}
-	}
-
-	
-/*	
-*	
-		*
-*	
-*/	
 	
 	
 	private void salvaDati() {

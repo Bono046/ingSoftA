@@ -4,71 +4,63 @@ package it.unibs.ing;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-public class Categoria implements Serializable {
- private String nome;
- private boolean isFoglia;
- private String campoCaratteristico;
- private List<String> dominio;
- private Map<String, String> descrizioni;
- private List<Categoria> sottocategorie;
+import java.util.HashMap;
 
- // Costruttore
- public Categoria(String nome, boolean isFoglia, String campoCaratteristico, List<String> dominio, Map<String, String> descrizioni) {
-     this.nome = nome;
-     this.isFoglia = isFoglia;
-     this.campoCaratteristico = campoCaratteristico;
-     this.dominio = dominio;
-     this.descrizioni = descrizioni;
-     this.sottocategorie = new ArrayList<>();
- }
 
- public String getNome() {
-     return nome;
- }
+class Categoria {
+    private String nome;		// nome categoria
+    private String campo;		// nome campo
+    private HashMap<String, String> dominio; 	//dominio-descrizione
+    private HashMap<String, Categoria> sottocategorie;		//dominio - categoria
 
- public void setNome(String nome) {
-     this.nome = nome;
- }
+    public Categoria(String nome, String campo, HashMap<String, String> dominio) {
+        this.nome = nome;
+        this.campo = campo;
+        this.dominio = dominio;
+        this.sottocategorie = new HashMap<>();
+    }
 
- public boolean isFoglia() {
-     return isFoglia;
- }
+    public String getNome() {
+        return nome;
+    }
 
- public void setFoglia(boolean isFoglia) {
-     this.isFoglia = isFoglia;
- }
+    public String getCampo() {
+        return campo;
+    }
 
- public String getCampoCaratteristico() {
-     return campoCaratteristico;
- }
+    public HashMap<String, String> getDominio() {
+        return dominio;
+    }
 
- public void setCampoCaratteristico(String campoCaratteristico) {
-     this.campoCaratteristico = campoCaratteristico;
- }
+    public void aggiungiSottocategoria(String valore, Categoria sottocategoria) {
+        if (dominio.containsKey(valore)) {
+            sottocategorie.put(valore, sottocategoria);
+        } else {
+            throw new IllegalArgumentException("Valore non presente nel dominio.");
+        }
+    }
 
- public List<String> getDominio() {
-     return dominio;
- }
+    public Categoria getSottocategoria(String valore) {
+        return sottocategorie.get(valore);
+    }
 
- public void setDominio(List<String> dominio) {
-     this.dominio = dominio;
- }
+    public boolean isFoglia() {
+        return false;
+    }
+}
 
- public Map<String, String> getDescrizioni() {
-     return descrizioni;
- }
+class CategoriaFoglia extends Categoria {
+    public CategoriaFoglia(String nome) {
+        super(nome, null, null);
+    }
 
- public void setDescrizioni(Map<String, String> descrizioni) {
-     this.descrizioni = descrizioni;
- }
+    @Override
+    public boolean isFoglia() {
+        return true;
+    }
 
- public List<Categoria> getSottocategorie() {
-     return sottocategorie;
- }
 
- public void setSottocategorie(List<Categoria> sottocategorie) {
-     this.sottocategorie = sottocategorie;
- }
+
+
 }
