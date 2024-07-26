@@ -16,7 +16,7 @@ public class App {
     // nella classe di riferimento, che applicherà la logica necessaria.
     // nel salvataggio finale utilizziamo ancora un oggetto dati, settato con queste liste modificate
     // lungo l'applicazione
-    private ArrayList<Categoria> listaCategorie = new ArrayList<>();
+    private ArrayList<Categoria> listaGerarchie = new ArrayList<>();
     private ArrayList<ComprensorioGeografico> listaComprensori = new ArrayList<>();
     private ArrayList<Configuratore> listaConfiguratore = new ArrayList<>();
     private ArrayList<FattoreDiConversione> listaFattori  = new ArrayList<>();
@@ -33,7 +33,7 @@ public class App {
             dati = new Dati();
         }
           	
-     	listaCategorie = dati.getGerarchie();
+     	listaGerarchie = dati.getGerarchie();
     	listaComprensori = dati.getComprensori();
     	listaConfiguratore = dati.getConfiguratori();
     	listaFattori = dati.getFattoriDiConversione();
@@ -106,19 +106,32 @@ public class App {
 			// try catch per gestire input non numerici
 			int scelta = -1;
 			scelta = getInput(scelta);
-			
 
 			switch (scelta) {
 			
 			case 3:
 				creaComprensorio();
 				break;
+		// crea gerarchia
 			case 4:
-	//			creaGerarchia();
+				Categoria c = creaCategoria();
+	//			aggiungiCat(c);
+				listaGerarchie.add(c);
 				break;
+		// aggiungi sottocategoria		
 			case 5:
-	//			aggiungiCategoriaNonFoglia();
-				break;
+				//verifica ci siano gerarchie
+				if(!listaGerarchie.isEmpty()) {
+					Categoria cat = sceltaGerarchia();
+					aggiungiCat(cat);
+				}
+				else {System.out.println("non sono presenti Gerarchie - prima di proseguire definiscine una");
+					break;
+				}
+				//scegli gerarchia
+				
+				
+				
 			case 6:
 	//			stabilisciFattoreConversione();
 				break;
@@ -142,6 +155,8 @@ public class App {
 	}
 
 	
+
+
 	private int getInput(int scelta) {
 
 		try {
@@ -232,12 +247,81 @@ public class App {
 	
 /*	
 *	
-		GPT DA IMPLEMENTARE
+		 DA IMPLEMENTARE
 *	
 */	
 	
 	
+	private Categoria creaCategoria() {
+		System.out.print("Inserisci nome categoria: ");
+		String nomeRadice = scanner.nextLine();
+		System.out.print("Inserisci nome del campo per la categoria: ");
+		String campo = scanner.nextLine();
+
+		HashMap<String, String> dominio = new HashMap<>();
+		String dom;
+		Boolean stop = false;
+		do {
+			System.out.print("Inserisci un valore del dominio per il campo '" + campo + "':\t(Premi 0 per uscire) ");
+			dom = scanner.nextLine();
+			if(dom.equals("0"))
+				stop = true;
+				else { System.out.print("Inserisci la descrizione:" +"\t (Premi 0 per non aggiungere descrizione)");
+						String descrizione = scanner.nextLine();
+						dominio.put(dom, descrizione);
+				}
+		} while(!stop);
+		
+		Categoria radice = new Categoria(nomeRadice, campo, dominio);
+		return radice;
+	}
 	
+	
+	
+	
+	private void aggiungiCat(Categoria radice) {
+		
+		ArrayList<String> listaDominio = new ArrayList<>(radice.getDominio().keySet());
+		
+		do {
+
+			System.out.print("Inserisci valore del dominio a cui associare la sottocategoria: ");
+			System.out.println("Valori disponibili: " + listaDominio.toString());
+			String dom = scanner.nextLine();
+			
+			Categoria sottocat = creaCategoria();
+			
+			radice.aggiungiSottocategoria(dom, sottocat);
+			System.out.println(radice.toString());
+			
+			;
+			listaDominio.remove(listaDominio.indexOf(dom));
+		} while(!listaDominio.isEmpty());
+	}
+	
+	
+	
+	private Categoria sceltaGerarchia() {
+		System.out.println("scegli gerarchia tra quelle disponibili" + listaGerarchie.toString());
+		
+		String gerarchia = scanner.nextLine();
+		
+		for(Categoria c: listaGerarchie) {
+			if (c.getNome().equals(gerarchia))
+				return c;
+			else System.out.println("non ci sono gerarchie associate a questo nome. riprova ");
+		}
+		
+				
+		return null;
+	}
+	
+	
+	/*	
+	*	
+			*
+	*	
+	*/
 	
 	private void salvaDati() {
 

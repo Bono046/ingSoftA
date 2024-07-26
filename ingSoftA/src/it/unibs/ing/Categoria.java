@@ -33,7 +33,7 @@ class Categoria {
         return dominio;
     }
 
-    public void aggiungiSottocategoria(String valore, Categoria sottocategoria) {
+    public  void aggiungiSottocategoria(String valore, Categoria sottocategoria) {
         if (dominio.containsKey(valore)) {
             sottocategorie.put(valore, sottocategoria);
         } else {
@@ -41,7 +41,13 @@ class Categoria {
         }
     }
 
-    public Categoria getSottocategoria(String valore) {
+    @Override
+	public String toString() {
+		return "Categoria [nome=" + nome + ", campo=" + campo + ", dominio=" + dominio + ", sottocategorie="
+				+ sottocategorie + "]";
+	}
+
+	public Categoria getSottocategoria(String valore) {
         return sottocategorie.get(valore);
     }
 
