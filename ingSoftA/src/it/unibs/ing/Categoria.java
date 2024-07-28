@@ -32,10 +32,10 @@ class Categoria implements Serializable {
         return dominio;
     }
 
-    public void aggiungiSottocategoria(String valore, Categoria sottocategoria) {
-        if (dominio.containsKey(valore)) {
+    public void aggiungiSottocategoria(String valore_dominio, Categoria sottocategoria) {
+        if (dominio.containsKey(valore_dominio)) {
             if (nomiSottocategorie.add(sottocategoria.getNome())) {
-                sottocategorie.put(valore, sottocategoria);
+                sottocategorie.put(valore_dominio, sottocategoria);
             } else {
                 throw new IllegalArgumentException("Il nome della sottocategoria deve essere unico all'interno della gerarchia.");
             }
@@ -61,6 +61,11 @@ class Categoria implements Serializable {
             }
         }
     }
+    
+    
+  
+    
+    
 
     @Override
     public String toString() {

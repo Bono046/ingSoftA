@@ -100,6 +100,7 @@ public class App {
                     visualizzaGerarchie();
                     break;
                 case 9:
+              
                     break;
                 case 0:
                     salvaDati();
@@ -185,9 +186,13 @@ public class App {
         String campo = scanner.nextLine();
         HashMap<String, String> dominio = new HashMap<>();
         System.out.print("Quanti valori di dominio vuoi inserire? ");
-        int numValori = scanner.nextInt();
-        scanner.nextLine(); // Consumare la newline
-
+        int numValori = 0;
+        //ciclo per non accettare valori diversi da numeri interi - possibile miglioramento ocn minimo e massimo
+        while(numValori == 0) {
+        	numValori = getInput(numValori);
+        	if(numValori == 0)
+        		System.out.println("scelta non valida. Riprovare");
+        }	
         for (int i = 0; i < numValori; i++) {
             System.out.print("Inserisci valore del dominio: ");
             String valore = scanner.nextLine();
@@ -251,6 +256,11 @@ public class App {
             }
         }
     }
+    
+    
+    
+    
+    
 
     private void salvaDati() {
         dati.setGerarchie(listaGerarchie);
