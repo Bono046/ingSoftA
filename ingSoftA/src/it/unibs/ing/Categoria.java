@@ -1,24 +1,23 @@
 package it.unibs.ing;
 
-//File: Categoria.java
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
-
-class Categoria {
-    private String nome;		// nome categoria
-    private String campo;		// nome campo
-    private HashMap<String, String> dominio; 	//dominio-descrizione
-    private HashMap<String, Categoria> sottocategorie;		//dominio - categoria
+class Categoria implements Serializable {
+    private String nome;
+    private String campo;
+    private HashMap<String, String> dominio;
+    private HashMap<String, Categoria> sottocategorie;
+    private Set<String> nomiSottocategorie;
 
     public Categoria(String nome, String campo, HashMap<String, String> dominio) {
         this.nome = nome;
         this.campo = campo;
         this.dominio = dominio;
         this.sottocategorie = new HashMap<>();
+        this.nomiSottocategorie = new HashSet<>();
     }
 
     public String getNome() {
@@ -33,26 +32,40 @@ class Categoria {
         return dominio;
     }
 
-    public  void aggiungiSottocategoria(String valore, Categoria sottocategoria) {
+    public void aggiungiSottocategoria(String valore, Categoria sottocategoria) {
         if (dominio.containsKey(valore)) {
-            sottocategorie.put(valore, sottocategoria);
+            if (nomiSottocategorie.add(sottocategoria.getNome())) {
+                sottocategorie.put(valore, sottocategoria);
+            } else {
+                throw new IllegalArgumentException("Il nome della sottocategoria deve essere unico all'interno della gerarchia.");
+            }
         } else {
             throw new IllegalArgumentException("Valore non presente nel dominio.");
         }
     }
 
-    @Override
-	public String toString() {
-		return "Categoria [nome=" + nome + ", campo=" + campo + ", dominio=" + dominio + ", sottocategorie="
-				+ sottocategorie + "]";
-	}
-
-	public Categoria getSottocategoria(String valore) {
+    public Categoria getSottocategoria(String valore) {
         return sottocategorie.get(valore);
     }
 
     public boolean isFoglia() {
         return false;
+    }
+
+    public void visualizzaGerarchia(String indent) {
+        System.out.println(indent + "Categoria: " + nome);
+        for (String valore : dominio.keySet()) {
+            System.out.println(indent + "  Valore del dominio: " + valore + " (" + dominio.get(valore) + ")");
+            if (sottocategorie.containsKey(valore)) {
+                sottocategorie.get(valore).visualizzaGerarchia(indent + "    ");
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Categoria [nome=" + nome + ", campo=" + campo + ", dominio=" + dominio + ", sottocategorie="
+                + sottocategorie + "]";
     }
 }
 
@@ -65,8 +78,4 @@ class CategoriaFoglia extends Categoria {
     public boolean isFoglia() {
         return true;
     }
-
-
-
-
 }
