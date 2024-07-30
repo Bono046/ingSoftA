@@ -10,14 +10,14 @@ class Categoria implements Serializable {
     private String campo;
     private HashMap<String, String> dominio;
     private HashMap<String, Categoria> sottocategorie;
-    private Set<String> nomiSottocategorie;
+
 
     public Categoria(String nome, String campo, HashMap<String, String> dominio) {
         this.nome = nome;
         this.campo = campo;
         this.dominio = dominio;
         this.sottocategorie = new HashMap<>();
-        this.nomiSottocategorie = new HashSet<>();
+        
     }
 
     public String getNome() {
@@ -34,18 +34,16 @@ class Categoria implements Serializable {
 
     public void aggiungiSottocategoria(String valore_dominio, Categoria sottocategoria) {
         if (dominio.containsKey(valore_dominio)) {
-            if (nomiSottocategorie.add(sottocategoria.getNome())) {
+             
                 sottocategorie.put(valore_dominio, sottocategoria);
             } else {
                 throw new IllegalArgumentException("Il nome della sottocategoria deve essere unico all'interno della gerarchia.");
             }
-        } else {
-            throw new IllegalArgumentException("Valore non presente nel dominio.");
-        }
+        
     }
 
-    public Categoria getSottocategoria(String valore) {
-        return sottocategorie.get(valore);
+    public HashMap<String, Categoria> getSottocategoria() {
+        return sottocategorie;
     }
 
     public boolean isFoglia() {
