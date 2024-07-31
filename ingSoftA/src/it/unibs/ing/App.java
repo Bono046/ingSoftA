@@ -1,3 +1,4 @@
+
 package it.unibs.ing;
 
 import java.io.IOException;
@@ -12,7 +13,7 @@ public class App {
     private ArrayList<ComprensorioGeografico> listaComprensori = new ArrayList<>();
     private ArrayList<Configuratore> listaConfiguratore = new ArrayList<>();
     private ArrayList<FattoreDiConversione> listaFattori = new ArrayList<>();
-    private Set<String> nomiCategorieRadice = new HashSet<>();
+   
 
     public App() {
         try {
@@ -27,9 +28,7 @@ public class App {
         listaConfiguratore = dati.getConfiguratori();
         listaFattori = dati.getFattoriDiConversione();
         
-        for (Categoria c : listaGerarchie) {
-            nomiCategorieRadice.add(c.getNome());
-        }
+        
     }
 
     public void start() {
@@ -44,7 +43,7 @@ public class App {
             System.out.println("2. Autenticazione Configuratore");
 
             int scelta = -1;
-            scelta = getInput(scelta);
+            scelta = getInteger(scelta);
 
             switch (scelta) {
                 case 1:
@@ -63,7 +62,7 @@ public class App {
         while (true) {
             System.out.println("3. Crea Comprensorio Geografico");
             System.out.println("4. Crea Gerarchia di Categorie");
-            System.out.println("5. Aggiungi Categoria Non Foglia");
+            //System.out.println("5. Aggiungi Categoria Non Foglia");
             System.out.println("6. Stabilisci Fattore di Conversione");
             System.out.println("7. Visualizza Comprensori");
             System.out.println("8. Visualizza Gerarchie");
@@ -72,21 +71,23 @@ public class App {
             System.out.print("Seleziona un'opzione: ");
 
             int scelta = -1;
-            scelta = getInput(scelta);
+            scelta = getInteger(scelta);
 
             switch (scelta) {
                 case 3:
                     creaComprensorio();
                     break;
                 case 4:
-                    Categoria c = creaCategoria();
-                    listaGerarchie.add(c);
-                    nomiCategorieRadice.add(c.getNome());
-                    break;
+                    Categoria root = creaCategoria();
+                    listaGerarchie.add(root);
+                    creaGerarchia(root);
+                    break;             
                 case 5:
                     if (!listaGerarchie.isEmpty()) {
-                        Categoria cat = sceltaGerarchia();
-                        aggiungiCat(cat);
+                        Categoria roo = sceltaRadice();
+                        aggiungiCategoria(roo);
+                        
+                   
                     } else {
                         System.out.println("Non sono presenti Gerarchie - prima di proseguire definiscine una");
                         break;
@@ -112,7 +113,11 @@ public class App {
         }
     }
 
-    private int getInput(int scelta) {
+    
+    
+    
+  
+    private int getInteger(int scelta) {
         try {
             scelta = scanner.nextInt();
         } catch (Exception e) {}
@@ -169,18 +174,52 @@ public class App {
         System.out.print("Inserisci nome comprensorio: ");
         String nome = scanner.nextLine();
         ComprensorioGeografico comprensorio = new ComprensorioGeografico(nome);
+        String comune;
+		do {
+			System.out.print("Inserisci nome del comune da aggiungere. Premi 0 per uscire: ");
+			comune = scanner.nextLine();
+			if(!comune.equals("0"))
+				comprensorio.aggiungiComune(comune);
+		} while(!comune.equals("0"));
         listaComprensori.add(comprensorio);
         System.out.println("Comprensorio creato con successo." + "\n");
+        
+    }
+    
+    private void visualizzaComprensori() {
+        if (listaComprensori.isEmpty()) {
+            System.out.println("Non ci sono comprensori da visualizzare.");
+        } else {
+            for (ComprensorioGeografico comprensorio : listaComprensori) {
+                System.out.println("Comprensorio: " + comprensorio.toString());
+            }
+        }
     }
 
+    
+    
+    private void creaGerarchia(Categoria padre) {
+    	System.out.println("categoria selezionata: " + padre.getNome());
+    	System.out.println(" 1 - aggiungi sottocategoria, 2 - aggiungi categoria foglia");
+    	String choice1 = scanner.nextLine();
+    	
+    	if(choice1.equals("1")) {
+    		aggiungiCategoria(padre);
+    		HashMap<String, Categoria> sottocategorie = padre.getSottocategoria();
+      
+    		for(String s : sottocategorie.keySet()) {
+    			creaGerarchia(sottocategorie.get(s));
+    		}
+    	} else if (choice1.equals("2")) {
+    		aggiungiCategoriaFoglia(padre);
+    	}
+   }
+    
+    
+    
     private Categoria creaCategoria() {
-        System.out.print("Inserisci nome categoria radice: ");
+        System.out.print("Inserisci nome categoria: ");
         String nome = scanner.nextLine();
-
-        if (nomiCategorieRadice.contains(nome)) {
-            System.out.println("Nome della categoria radice già esistente. Riprova.");
-            return creaCategoria();
-        }
 
         System.out.print("Inserisci nome del campo: ");
         String campo = scanner.nextLine();
@@ -189,7 +228,7 @@ public class App {
         int numValori = 0;
         //ciclo per non accettare valori diversi da numeri interi - possibile miglioramento ocn minimo e massimo
         while(numValori == 0) {
-        	numValori = getInput(numValori);
+        	numValori = getInteger(numValori);
         	if(numValori == 0)
         		System.out.println("scelta non valida. Riprovare");
         }	
@@ -205,8 +244,45 @@ public class App {
         System.out.println("Categoria creata con successo." + "\n");
         return categoria;
     }
+    
+    private CategoriaFoglia creaCategoriaFoglia() {
+        System.out.print("Inserisci nome categoria: ");
+        String nome = scanner.nextLine();
 
-    private Categoria sceltaGerarchia() {
+       CategoriaFoglia categoria = new CategoriaFoglia(nome);
+        System.out.println("Categoria foglia creata con successo." + "\n");
+        return categoria;
+    }
+    
+    
+    private void aggiungiCategoria(Categoria padre) {
+        ArrayList<String> listaDominio = new ArrayList<>(padre.getDominio().keySet());
+        for (String dom : listaDominio) {
+            System.out.println("Creazione sottocategoria per il dominio: " + dom);
+
+            Categoria sottocat = creaCategoria();
+            padre.aggiungiSottocategoria(dom, sottocat);
+            System.out.println(padre.toString());
+        }
+
+        System.out.println("Livello completato!");
+    }
+    
+    private void aggiungiCategoriaFoglia(Categoria padre) {
+    	ArrayList<String> listaDominio = new ArrayList<>(padre.getDominio().keySet());
+        for (String dom : listaDominio) {
+            System.out.println("Creazione sottocategoria foglia per il dominio: " + dom);
+
+            CategoriaFoglia sottocat = creaCategoriaFoglia();
+            padre.aggiungiSottocategoria(dom, sottocat);
+            System.out.println(padre.toString());
+        }
+
+        System.out.println("Livello completato!");
+    }
+
+    
+    private Categoria sceltaRadice() {
         System.out.println("Seleziona la gerarchia:");
         for (int i = 0; i < listaGerarchie.size(); i++) {
             System.out.println((i + 1) + ". " + listaGerarchie.get(i).getNome());
@@ -216,43 +292,31 @@ public class App {
         return listaGerarchie.get(scelta - 1);
     }
 
-    private void aggiungiCat(Categoria radice) {
-		
-		ArrayList<String> listaDominio = new ArrayList<>(radice.getDominio().keySet());
-		
-		do {
+    
+    
+    private void sceltaCategoria(Categoria padre) {
+    	
+    	for(String dominio: padre.getDominio().keySet()) {
+   // 		Categoria c = padre.getSottocategoria(dominio);
+   // 		System.out.println(c.toString());
+    		}
+    	
+    	
+    	
+    	
+    }
+    
 
-			System.out.print("Inserisci valore del dominio a cui associare la sottocategoria: ");
-			System.out.println("Valori disponibili: " + listaDominio.toString());
-			String dom = scanner.nextLine();
-			
-			Categoria sottocat = creaCategoria();
-			
-			radice.aggiungiSottocategoria(dom, sottocat);
-			System.out.println(radice.toString());
-			
-			;
-			listaDominio.remove(listaDominio.indexOf(dom));
-		} while(!listaDominio.isEmpty());
-	}
 	
 
-    private void visualizzaComprensori() {
-        if (listaComprensori.isEmpty()) {
-            System.out.println("Non ci sono comprensori da visualizzare.");
-        } else {
-            for (ComprensorioGeografico comprensorio : listaComprensori) {
-                System.out.println("Comprensorio: " + comprensorio.getNome());
-            }
-        }
-    }
+
 
     private void visualizzaGerarchie() {
         if (listaGerarchie.isEmpty()) {
             System.out.println("Non esiste alcuna gerarchia da visualizzare.");
         } else {
             for (Categoria gerarchia : listaGerarchie) {
-                gerarchia.visualizzaGerarchia("");
+                System.out.println(gerarchia.toString());
             }
         }
     }
