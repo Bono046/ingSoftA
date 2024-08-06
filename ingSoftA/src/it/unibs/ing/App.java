@@ -89,8 +89,7 @@ public class App {
                 	stampaCategorieFoglia(sceltaRadice());
                 	break;
                 case 6:               	
-                    Categoria gerarchiaSel = sceltaRadice();
-                    setFattoriConversioneGerarchia(gerarchiaSel);
+                    setFattoriConversioneGerarchia(sceltaRadice());
                     break;
                 case 7:
                     visualizzaComprensori();
@@ -347,14 +346,15 @@ public class App {
         }
     }
     
-    private Set<CategoriaFoglia> getCategorieFoglia(Categoria root) {
+    private Set<CategoriaFoglia> getCategorieFoglia(Categoria root) {   // E RICORSIVO MA C'E UN PROBLEMA: IL METODO SI ASPETTA UNA CATEGORIA EPPURE PRIMA O POI DOVRA RICEVERE UNA CATEGORIAFOGLIA PER FUNZIONARE
         Set<CategoriaFoglia> foglie = new HashSet<>();
-        HashMap<String, Categoria> sottocategorie = root.getSottocategorie();
+        HashMap<String, Categoria> sottocategorie = root.getSottocategorie();  
+        
         if (root.isFoglia()) {
             foglie.add((CategoriaFoglia) root);
         } else {   
         	for(String s : sottocategorie.keySet()) {
-        		getCategorieFoglia(sottocategorie.get(s));
+        			getCategorieFoglia(sottocategorie.get(s)); 
         	}
             
         }
@@ -364,10 +364,10 @@ public class App {
     private void stampaCategorieFoglia(Categoria root) {
         Set<CategoriaFoglia> foglie = getCategorieFoglia(root);
         if(foglie.isEmpty())
-        	System.out.println("non sono presenti categorie foglia nella gerarchia selezionata");
+        	System.out.println("non sono presenti categorie foglia nella gerarchia: " +root.getNome());
         else 
-        	for (Categoria foglia : foglie) {
-        		System.out.println(foglia);
+        	for (CategoriaFoglia foglia : foglie) {
+        		System.out.println(foglia.toString());
         	}
     }
     
