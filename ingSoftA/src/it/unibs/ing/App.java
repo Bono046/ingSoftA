@@ -4,6 +4,8 @@ package it.unibs.ing;
 import java.io.IOException;
 import java.util.*;
 
+import javax.swing.plaf.synth.SynthSpinnerUI;
+
 public class App {
     private Dati dati;
     private Scanner scanner = new Scanner(System.in);
@@ -12,7 +14,7 @@ public class App {
     private ArrayList<Categoria> listaGerarchie = new ArrayList<>();
     private ArrayList<ComprensorioGeografico> listaComprensori = new ArrayList<>();
     private ArrayList<Configuratore> listaConfiguratore = new ArrayList<>();
-    private ArrayList<FattoreDiConversione> listaFattori = new ArrayList<>();
+    private ArrayList<FattoriManager> listaFattori = new ArrayList<>();
    
 
     public App() {
@@ -62,7 +64,7 @@ public class App {
         while (true) {
             System.out.println("3. Crea Comprensorio Geografico");
             System.out.println("4. Crea Gerarchia di Categorie");
-            //System.out.println("5. Aggiungi Categoria Non Foglia");
+            System.out.println("5. Visualizza categorie foglia");
             System.out.println("6. Stabilisci Fattore di Conversione");
             System.out.println("7. Visualizza Comprensori");
             System.out.println("8. Visualizza Gerarchie");
@@ -77,22 +79,18 @@ public class App {
                 case 3:
                     creaComprensorio();
                     break;
+                    
                 case 4:
                     Categoria root = creaCategoria();
                     listaGerarchie.add(root);
                     creaGerarchia(root);
                     break;             
-                case 5:
-                    if (!listaGerarchie.isEmpty()) {
-                        Categoria roo = sceltaRadice();
-                        aggiungiCategoria(roo);
-                        
-                   
-                    } else {
-                        System.out.println("Non sono presenti Gerarchie - prima di proseguire definiscine una");
-                        break;
-                    }
-                case 6:
+                case 5 : 
+                	stampaCategorieFoglia(sceltaRadice());
+                	break;
+                case 6:               	
+                    Categoria gerarchiaSel = sceltaRadice();
+                    setFattoriConversioneGerarchia(gerarchiaSel);
                     break;
                 case 7:
                     visualizzaComprensori();
@@ -205,7 +203,7 @@ public class App {
     	
     	if(choice1.equals("1")) {
     		aggiungiCategoria(padre);
-    		HashMap<String, Categoria> sottocategorie = padre.getSottocategoria();
+    		HashMap<String, Categoria> sottocategorie = padre.getSottocategorie();
       
     		for(String s : sottocategorie.keySet()) {
     			creaGerarchia(sottocategorie.get(s));
@@ -226,7 +224,7 @@ public class App {
         HashMap<String, String> dominio = new HashMap<>();
         System.out.print("Quanti valori di dominio vuoi inserire? ");
         int numValori = 0;
-        //ciclo per non accettare valori diversi da numeri interi - possibile miglioramento ocn minimo e massimo
+        // ciclo per non accettare valori diversi da numeri interi - possibile miglioramento ocn minimo e massimo
         while(numValori == 0) {
         	numValori = getInteger(numValori);
         	if(numValori == 0)
@@ -235,7 +233,7 @@ public class App {
         for (int i = 0; i < numValori; i++) {
             System.out.print("Inserisci valore del dominio: ");
             String valore = scanner.nextLine();
-            System.out.print("Inserisci descrizione del valore: ");
+            System.out.print("Inserisci descrizione del valore: "); //RENDERLA NON OBBLIGATORIA
             String descrizione = scanner.nextLine();
             dominio.put(valore, descrizione);
         }
@@ -284,32 +282,44 @@ public class App {
     
     private Categoria sceltaRadice() {
         System.out.println("Seleziona la gerarchia:");
+
+        if (listaGerarchie.isEmpty()) {
+            System.out.println("Nessuna gerarchia disponibile.");
+            return null; 
+        }
+
+       
         for (int i = 0; i < listaGerarchie.size(); i++) {
             System.out.println((i + 1) + ". " + listaGerarchie.get(i).getNome());
         }
-        int scelta = scanner.nextInt();
-        scanner.nextLine(); // Consumare la newline
+
+        int scelta = -1;
+        boolean sceltaValida = false;
+
+       
+        while (!sceltaValida) {
+            try {
+                System.out.print("Inserisci il numero della scelta: ");
+                scelta = scanner.nextInt();
+                scanner.nextLine(); 
+
+                
+                if (scelta > 0 && scelta <= listaGerarchie.size()) {
+                    sceltaValida = true;
+                } else {
+                    System.out.println("Scelta non valida. Per favore, inserisci un numero tra 1 e " + listaGerarchie.size() + ".");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Input non valido. Per favore, inserisci un numero.");
+                scanner.nextLine();
+            }
+        }
+
         return listaGerarchie.get(scelta - 1);
     }
 
     
     
-    private void sceltaCategoria(Categoria padre) {
-    	
-    	for(String dominio: padre.getDominio().keySet()) {
-   // 		Categoria c = padre.getSottocategoria(dominio);
-   // 		System.out.println(c.toString());
-    		}
-    	
-    	
-    	
-    	
-    }
-    
-
-	
-
-
 
     private void visualizzaGerarchie() {
         if (listaGerarchie.isEmpty()) {
@@ -321,8 +331,47 @@ public class App {
         }
     }
     
+    private void setFattoriConversioneGerarchia(Categoria gerarchia) {
+    	FattoriManager conversionManager = new FattoriManager();
+        Set<CategoriaFoglia> foglie = gerarchia.getCategorieFoglia();
+        
+        for (CategoriaFoglia c1 : foglie) {
+            for (CategoriaFoglia c2 : foglie) {
+                if (!c1.equals(c2)) {
+                    System.out.println("Inserire il fattore di conversione da " + c1.getNome() + " a " + c2.getNome() + ":");
+                    double factor = scanner.nextDouble();
+                    scanner.nextLine(); 
+                    conversionManager.setFattoreConversione(c1, c2, factor);
+                }
+            }
+        }
+    }
     
+    private Set<CategoriaFoglia> getCategorieFoglia(Categoria root) {
+        Set<CategoriaFoglia> foglie = new HashSet<>();
+        HashMap<String, Categoria> sottocategorie = root.getSottocategorie();
+        if (root.isFoglia()) {
+            foglie.add((CategoriaFoglia) root);
+        } else {   
+        	for(String s : sottocategorie.keySet()) {
+        		getCategorieFoglia(sottocategorie.get(s));
+        	}
+            
+        }
+        return foglie;
+    }
     
+    private void stampaCategorieFoglia(Categoria root) {
+        Set<CategoriaFoglia> foglie = getCategorieFoglia(root);
+        if(foglie.isEmpty())
+        	System.out.println("non sono presenti categorie foglia nella gerarchia selezionata");
+        else 
+        	for (Categoria foglia : foglie) {
+        		System.out.println(foglia);
+        	}
+    }
+    
+	
     
     
 

@@ -30,6 +30,7 @@ class Categoria implements Serializable {
     public HashMap<String, String> getDominio() {
         return dominio;
     }
+  
 
     public void aggiungiSottocategoria(String valore_dominio, Categoria sottocategoria) {
         if (dominio.containsKey(valore_dominio)) {
@@ -39,7 +40,7 @@ class Categoria implements Serializable {
             }
     }
 
-    public HashMap<String, Categoria> getSottocategoria() {
+    public HashMap<String, Categoria> getSottocategorie() {
         return sottocategorie;
     }
 
@@ -47,16 +48,20 @@ class Categoria implements Serializable {
         return false;
     }
 
-    public void visualizzaGerarchia() {
-        System.out.println("Categoria: " + nome);
-        for (String valore : dominio.keySet()) {
-            System.out.println("  Valore del dominio: " + valore + " (" + dominio.get(valore) + ")");
-            if (sottocategorie.containsKey(valore)) {
-                sottocategorie.get(valore).visualizzaGerarchia();
+
+    
+    public Set<CategoriaFoglia> getCategorieFoglia() {
+        Set<CategoriaFoglia> foglie = new HashSet<>();
+        if (this.isFoglia()) {
+            foglie.add((CategoriaFoglia) this);
+        } else {   // NON FUNZIONA. deve diventare un metodo ricorsivo con input radice
+        	
+            for (Categoria sottocategoria : sottocategorie.values()) {
+                foglie.addAll(sottocategoria.getCategorieFoglia());
             }
         }
+        return foglie;
     }
-    
     
 
     @Override

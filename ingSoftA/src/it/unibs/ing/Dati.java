@@ -12,7 +12,7 @@ public class Dati implements Serializable {
 	private ArrayList<Configuratore> configuratori;
     private ArrayList<ComprensorioGeografico> comprensori;
     private ArrayList<Categoria> gerarchie;
-    private ArrayList<FattoreDiConversione> fattoriDiConversione;
+    private ArrayList<FattoriManager> fattoriDiConversione;
 
     public Dati() {
         configuratori = new ArrayList<>();
@@ -50,11 +50,11 @@ public class Dati implements Serializable {
         this.gerarchie = gerarchie;
     }
 
-    public ArrayList<FattoreDiConversione> getFattoriDiConversione() {
+    public ArrayList<FattoriManager> getFattoriDiConversione() {
         return fattoriDiConversione;
     }
 
-    public void setFattoriDiConversione(ArrayList<FattoreDiConversione> fattoriDiConversione) {
+    public void setFattoriDiConversione(ArrayList<FattoriManager> fattoriDiConversione) {
         this.fattoriDiConversione = fattoriDiConversione;
     }
 
