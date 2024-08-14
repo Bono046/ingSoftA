@@ -6,10 +6,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 class Categoria implements Serializable {
-    private String nome;
+    protected String nome;
     private String campo;
     private HashMap<String, String> dominio;
-    private HashMap<String, Categoria> sottocategorie;
+    protected HashMap<String, Categoria> sottocategorie;
 
 
     public Categoria(String nome, String campo, HashMap<String, String> dominio) {
@@ -17,7 +17,6 @@ class Categoria implements Serializable {
         this.campo = campo;
         this.dominio = dominio;
         this.sottocategorie = new HashMap<>();
-        
     }
 
     public String getNome() {
@@ -31,18 +30,17 @@ class Categoria implements Serializable {
     public HashMap<String, String> getDominio() {
         return dominio;
     }
+  
 
     public void aggiungiSottocategoria(String valore_dominio, Categoria sottocategoria) {
         if (dominio.containsKey(valore_dominio)) {
-             
                 sottocategorie.put(valore_dominio, sottocategoria);
             } else {
                 throw new IllegalArgumentException("Il nome della sottocategoria deve essere unico all'interno della gerarchia.");
             }
-        
     }
 
-    public HashMap<String, Categoria> getSottocategoria() {
+    public HashMap<String, Categoria> getSottocategorie() {
         return sottocategorie;
     }
 
@@ -50,35 +48,79 @@ class Categoria implements Serializable {
         return false;
     }
 
-    public void visualizzaGerarchia(String indent) {
-        System.out.println(indent + "Categoria: " + nome);
-        for (String valore : dominio.keySet()) {
-            System.out.println(indent + "  Valore del dominio: " + valore + " (" + dominio.get(valore) + ")");
-            if (sottocategorie.containsKey(valore)) {
-                sottocategorie.get(valore).visualizzaGerarchia(indent + "    ");
+
+    
+    // METODO CHE STAMPA OUTPUT FUORI DALLA CLASSE APP - DA RIVEDERE
+    public void attraversaAlbero(String indentazione) {
+	       
+    	try {
+    	   System.out.println(indentazione + "- " + nome + "\t(dominio: " + dominio.keySet() + ")");
+       } catch (NullPointerException e) {
+    	   System.out.println(indentazione + "- " + nome + "\t(foglia)");
+       }
+
+        // Se ci sono sottocategorie, le visitiamo ricorsivamente
+        if (sottocategorie != null) {
+            for (Categoria sottocategoria : sottocategorie.values()) {
+                sottocategoria.attraversaAlbero(indentazione + "  ");
             }
         }
     }
     
     
-  
-    
-    
 
     @Override
     public String toString() {
-        return "Categoria [nome=" + nome + ", campo=" + campo + ", dominio=" + dominio + ", sottocategorie="
+        return nome + "[campo=" + campo + ", dominio=" + dominio + ", sottocategorie="
                 + sottocategorie + "]";
-    }
-}
+    	}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 
 class CategoriaFoglia extends Categoria {
     public CategoriaFoglia(String nome) {
         super(nome, null, null);
+        this.sottocategorie = null;
     }
 
+    
+	@Override
+	public boolean isFoglia() {
+	    return true;
+	}
+	
+	
+	// Override del metodo per evitare l'aggiunta di sottocategorie
+	@Override
+	public void aggiungiSottocategoria(String nome, Categoria categoria) {
+	    throw new UnsupportedOperationException("Le foglie non possono avere sottocategorie.");
+	}
+	
+	@Override
+	public String getCampo() {
+	    return null; // Campo non applicabile per le foglie
+	}
+	
+	@Override
+	public HashMap<String, String> getDominio() {
+	    return null; // Dominio non applicabile per le foglie
+	}
+	
     @Override
-    public boolean isFoglia() {
-        return true;
+    public String toString() {
+        return nome;
     }
+	
+	
 }

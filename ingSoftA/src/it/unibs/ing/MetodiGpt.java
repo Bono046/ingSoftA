@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Map;
 
 public class MetodiGpt {
+	
+	public void gpt() {
+
 
 	//METODI CLASSE APP
 	/*
@@ -190,5 +193,66 @@ public class MetodiGpt {
 
 
 */	
+	}
+
+
+
+
+	   // METODO CreaGerarchia con STACK
+	// DA RIVEDERE PER CREARE LA NAVIGAZIONE DELL'ALBERO IN V2
+	
+    private void creaGerarchia(GerarchiaCategorie gerarchia) {
+    /*	
+    	Categoria root = gerarchia.getCategoriaCorrente();
+    	Set<String> listaDominio;
+    
+    	
+    	do {
+    		root.attraversaAlbero("");
+    		Categoria padre = gerarchia.getCategoriaCorrente();
+    
+        	listaDominio = padre.getDominio().keySet();
+    		
+    		System.out.println("categoria selezionata: " + padre.getNome() + padre.getDominio().toString());
+	    	System.out.println("Valori campo disponibili: " + listaDominio.toString());
+	    	
+	  // DA AGGIUNGERE VERIFICA CORRETTEZZA
+    		System.out.println("Scegli il valore del campo a cui associare una nuova categoria");
+	    	String valoreDominio = scanner.nextLine();
+	    		
+	    	System.out.println(" 1 - aggiungi sottocategoria, 2 - aggiungi categoria foglia, 3 - torna al nodo precedente" );
+	    	String choice1 = scanner.nextLine();
+	    	
+	    	if(choice1.equals("1")) {
+	    		Categoria sottocat = creaCategoria();
+	            gerarchia.getCategoriaCorrente().aggiungiSottocategoria(valoreDominio, sottocat);
+	            gerarchia.vaiASottocategoria(sottocat);
+	        	    
+	    		
+	    	} else if (choice1.equals("2")) {
+	    		CategoriaFoglia foglia = creaCategoriaFoglia();
+	            gerarchia.getCategoriaCorrente().aggiungiSottocategoria(valoreDominio, foglia);
+
+	    	} else if(choice1.equals("3"))
+	    		gerarchia.tornaIndietro();
+	    	
+	    	
+	    	
+	    } while(true);
+   }
+    
+    */
+    }
+    
+
+    
+	
+
+
+	
+
+
+
+
 
 }

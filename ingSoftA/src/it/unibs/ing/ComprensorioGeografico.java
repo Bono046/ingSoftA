@@ -48,9 +48,7 @@ public class ComprensorioGeografico implements Serializable {
 
     @Override
     public String toString() {
-        return "ComprensorioGeografico{" +
-                "nome='" + nome + '\'' +
-                ", comuni=" + comuni +
-                '}';
+        return nome + " -> " +
+                "comuni = " + comuni;
     }
 }

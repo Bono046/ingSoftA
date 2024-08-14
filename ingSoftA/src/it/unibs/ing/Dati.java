@@ -11,14 +11,14 @@ public class Dati implements Serializable {
 	private static final long serialVersionUID = 4498646267228832155L;
 	private ArrayList<Configuratore> configuratori;
     private ArrayList<ComprensorioGeografico> comprensori;
-    private ArrayList<Categoria> gerarchie;
-    private ArrayList<FattoreDiConversione> fattoriDiConversione;
+    private ArrayList<FattoreConversione> fattoriDiConversione;
+    private ArrayList<GerarchiaCategorie> gerarchie;
 
     public Dati() {
         configuratori = new ArrayList<>();
         comprensori = new ArrayList<>();
-        gerarchie = new ArrayList<>();
         fattoriDiConversione = new ArrayList<>();
+        gerarchie = new ArrayList<>();
     }
 
     public ArrayList<Configuratore> getConfiguratori() {
@@ -41,28 +41,28 @@ public class Dati implements Serializable {
         this.comprensori.add(comprensorio);
     }
     
-
-    public ArrayList<Categoria> getGerarchie() {
-        return gerarchie;
-    }
-
-    public void setGerarchie(ArrayList<Categoria> gerarchie) {
-        this.gerarchie = gerarchie;
-    }
-
-    public ArrayList<FattoreDiConversione> getFattoriDiConversione() {
+    public ArrayList<FattoreConversione> getFattoriDiConversione() {
         return fattoriDiConversione;
     }
 
-    public void setFattoriDiConversione(ArrayList<FattoreDiConversione> fattoriDiConversione) {
+    public void setFattoriDiConversione(ArrayList<FattoreConversione> fattoriDiConversione) {
         this.fattoriDiConversione = fattoriDiConversione;
     }
 
 
+	public ArrayList<GerarchiaCategorie> getGerarchie() {
+		return gerarchie;
+	}
+
+	public void setGerarchie(ArrayList<GerarchiaCategorie> gerarchie) {
+		this.gerarchie = gerarchie;
+	}
 
 	@Override
 	public String toString() {
-		return "Dati [configuratori=" + configuratori + ", comprensori=" + comprensori + ", gerarchie=" + gerarchie
-				+ ", fattoriDiConversione=" + fattoriDiConversione + "]";
+		return "Dati [configuratori=" + configuratori + ", comprensori=" + comprensori + ", fattoriDiConversione="
+				+ fattoriDiConversione + ", gerarchie=" + gerarchie + "]";
 	}
+
+	
 }
