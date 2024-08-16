@@ -1025,7 +1025,7 @@
   ],
   "gerarchie": [
     {
-      "categoriaCorrente": {
+      "radice": {
         "nome": "lezioni di musica",
         "campo": "tipo",
         "dominio": {
@@ -1089,7 +1089,6 @@
           }
         }
       },
-      "percorso": [],
       "listaFoglie": [
         {
           "nome": "lezioni di storia della musica"
@@ -1106,10 +1105,11 @@
         {
           "nome": "lezioni di pianoforte di difficoltà media"
         }
-      ]
+      ],
+      "percorso": []
     },
     {
-      "categoriaCorrente": {
+      "radice": {
         "nome": "matematica",
         "campo": "scuola",
         "dominio": {
@@ -1159,7 +1159,6 @@
           }
         }
       },
-      "percorso": [],
       "listaFoglie": [
         {
           "nome": "lezioni frazioni"
@@ -1179,7 +1178,8 @@
         {
           "nome": "lezioni addizioni"
         }
-      ]
+      ],
+      "percorso": []
     }
   ]
 }

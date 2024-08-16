@@ -6,16 +6,20 @@ import java.util.List;
 import java.util.Stack;
 
 public class GerarchiaCategorie {
+	private Categoria radice;
 	private Categoria categoriaCorrente;
-    private Stack<Categoria> percorso;
     private ArrayList<CategoriaFoglia> listaFoglie = new ArrayList<>();
- 
+    private Stack<Categoria> percorso;
+
 
 	public GerarchiaCategorie(Categoria radice) {
-        this.categoriaCorrente = radice;
+		this.radice = radice;
         this.percorso = new Stack<>();
     }
 	
+	public Categoria getCategoriaRadice() {
+		return this.radice;
+	}
 	
    public ArrayList<CategoriaFoglia> getListaFoglie() {
 		return listaFoglie;
@@ -29,10 +33,15 @@ public class GerarchiaCategorie {
 		this.listaFoglie.add(c);
 	}
 	
-	
+
 
     public Categoria getCategoriaCorrente() {
         return categoriaCorrente;
+    }
+    
+    
+    public void setCategoriaCorrente() { 	//inizializzazione della categoriaCorrente: serve per non salvare due volte la radice nel file
+    		categoriaCorrente = radice;
     }
     
     

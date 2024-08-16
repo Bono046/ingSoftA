@@ -40,7 +40,7 @@ public class App {
         
         // ciclo di inizializzazione delle liste radici e foglieTotali, non salvate su file direttamente ma facilmente derivabili dall'oggetto Gerarchia
         for(GerarchiaCategorie g: listaOggettiGerarchia) {
-    		listaRadici.add(g.getCategoriaCorrente());
+    		listaRadici.add(g.getCategoriaRadice());
     		listaFoglieTotali.addAll(g.getListaFoglie());
     	}
     }
@@ -97,9 +97,9 @@ public class App {
                 	
                 	//metodo per verificare l'unicità del nome per ogni gerarchia
                 	Categoria root = null;
-                	Boolean nomeValido = false;
-                	while(!nomeValido) {
-                		nomeValido=true;         
+                	Boolean nomeValido=true;
+                	do {
+                		nomeValido=true;
                 		root = creaCategoria();
                 		
                 		for(Categoria c: listaRadici) {
@@ -108,7 +108,7 @@ public class App {
                 				nomeValido=false;                	
                 			}
                 		}
-                	}
+                	}while(!nomeValido);
                 
                     creaGerarchia(root);
                     
@@ -174,8 +174,38 @@ public class App {
         return Math.round(input * 100.0) / 100.0;
     }
     
- 
+    private String getConsistentString(String output) {		//verifica che la stringe inserita abbia almeno un carattere valido
+    	System.out.println(output);
+    	
+    	Boolean valido = false;
+    	String input = "";
+    	
+    	while(!valido) {
+    		input = scanner.nextLine();
+    		if(input.isBlank() || input.isEmpty())
+    			System.out.println("Inserimento non valido. Inserire almeno un carattere");
+    		else valido = true;  		
+    	}
+    	return input;
+    }
     
+    private String getNome() {		//metodo di controllo per l'unicità del nome nella stessa gerarchia
+    	String nome = "";
+    	Boolean nomeValido=false;
+    	while(!nomeValido) {
+    		nome = getConsistentString("Inserisci nome categoria: ");
+    		
+    		if(listaNomi.contains(nome))
+    			System.out.println("Nome non valido. Riprovare");
+    		else {
+    			nomeValido=true;
+    			listaNomi.add(nome);
+    			return nome;
+    		}
+    	}
+    	return nome;
+    }
+
     
     private void registraConfiguratore() {
         Boolean check = false;
@@ -192,10 +222,9 @@ public class App {
 
         Boolean userValido = false;
         while (!userValido) {
-            System.out.println("Inserisci nuovo username: ");
-            String username = scanner.nextLine();
-            System.out.println("Inserisci nuova password: ");
-            String password = scanner.nextLine();
+            System.out.println();
+            String username = getConsistentString("Inserisci nuovo username: ");
+            String password = getConsistentString("Inserisci nuova password: ");
 
             userValido = Configuratore.userValido(username, listaConfiguratore);
             if (!userValido) {
@@ -223,13 +252,11 @@ public class App {
     }
 
     private void creaComprensorio() {
-        System.out.print("Inserisci nome comprensorio: ");
-        String nome = scanner.nextLine();
+        String nome = getConsistentString("Inserisci nome comprensorio: ");
         ComprensorioGeografico comprensorio = new ComprensorioGeografico(nome);
         String comune;
 		do {
-			System.out.print("Inserisci nome del comune da aggiungere. Premi 0 per uscire: ");
-			comune = scanner.nextLine();
+			comune = getConsistentString("Inserisci nome del comune da aggiungere. Premi 0 per uscire: ");
 			if(!comune.equals("0"))
 				comprensorio.aggiungiComune(comune);
 		} while(!comune.equals("0"));
@@ -249,45 +276,24 @@ public class App {
         }
     }
 
-    private String getNome() {
-    	String nome = "";
-    	Boolean nomeValido=false;
-    	// metodo di verifica unicità nome all'interno della gerarchia
-    	while(!nomeValido) {
-    		System.out.print("Inserisci nome categoria: ");
-    		nome = scanner.nextLine();
-    		
-    		if(listaNomi.contains(nome))
-    			System.out.println("Nome non valido. Riprovare");
-    		else {
-    			nomeValido=true;
-    			listaNomi.add(nome);
-    			return nome;
-    		}
-    	}
-    	return nome;
-    }
-    
-    
+
     private Categoria creaCategoria() {
     	
     	String nome = getNome(); 	//metodo che verifica unicità del nome nella gerarchia
-        System.out.print("Inserisci nome del campo: ");
-        String campo = scanner.nextLine();
+        String campo = getConsistentString("Inserisci nome del campo: ");
         HashMap<String, String> dominio = new HashMap<>();
        
         int numValori = -1;
         // ciclo per non accettare valori diversi da numeri interi
-        while(numValori < 0) {
+        while(numValori <= 0) {
         	System.out.print("Quanti valori di dominio vuoi inserire? ");
         	numValori = getInt();
-        	if(numValori < 0)
+        	if(numValori <= 0)
         		System.out.println("scelta non valida. Riprovare");
         }	
         // ciclo per inserire i valori del dominio - la descrizione è resa facoltativa lasciando la stringa corrispondente vuota
         for (int i = 0; i < numValori; i++) {
-            System.out.print("Inserisci valore del dominio: ");
-            String valore = scanner.nextLine();
+            String valore = getConsistentString("Inserisci valore del dominio: ");
             System.out.print("Inserisci descrizione (premere invio per lasciarla vuota): "); 
             String descrizione = scanner.nextLine();
             dominio.put(valore, descrizione);
@@ -344,15 +350,14 @@ public class App {
             System.out.println("Non esiste alcuna gerarchia da visualizzare.");
         } else {
             for (Categoria gerarchia : listaRadici) {
-                gerarchia.attraversaAlbero("");
+                gerarchia.stampaAlbero("");
                 System.out.println("\n");
             }
         }
     }
     
     
-    
-    private GerarchiaCategorie sceltaRadice() {				// modificato -> restiuisce un oggetto gerarchia, da cui è possibile ottenere la radice con getCategoriaCorrente
+    private GerarchiaCategorie sceltaRadice() {				// modificato -> restiuisce un oggetto gerarchia, da cui è possibile ottenere la radice con getCategoriaRadice
     	    
     	 if (listaOggettiGerarchia.isEmpty()) {
              System.out.println("Nessuna gerarchia disponibile.");
@@ -361,7 +366,7 @@ public class App {
         System.out.println("Seleziona la gerarchia:");
        
         for (int i = 0; i < listaOggettiGerarchia.size(); i++) {
-            System.out.println((i + 1) + ". " + listaOggettiGerarchia.get(i).getCategoriaCorrente());
+            System.out.println((i + 1) + ". " + listaOggettiGerarchia.get(i).getCategoriaRadice().getNome());
         }
         int scelta = -1;
         boolean sceltaValida = false;
@@ -378,11 +383,7 @@ public class App {
         return listaOggettiGerarchia.get(scelta - 1);
     }
 
-    
-    
 
-    
-    
     private void setFattoriConversioneGerarchia(GerarchiaCategorie gerarchia) {
     	
     	ArrayList<CategoriaFoglia> foglie = gerarchia.getListaFoglie();
@@ -445,10 +446,6 @@ public class App {
     	
     }
 
-    
-	
-    
-    
 
     private void salvaDati() {
         dati.setConfiguratori(listaConfiguratore);

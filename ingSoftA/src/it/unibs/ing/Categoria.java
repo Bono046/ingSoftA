@@ -51,7 +51,7 @@ class Categoria implements Serializable {
 
     
     // METODO CHE STAMPA OUTPUT FUORI DALLA CLASSE APP - DA RIVEDERE
-    public void attraversaAlbero(String indentazione) {
+    public void stampaAlbero(String indentazione) {
 	       
     	try {
     	   System.out.println(indentazione + "- " + nome + "\t(dominio: " + dominio.keySet() + ")");
@@ -62,10 +62,12 @@ class Categoria implements Serializable {
         // Se ci sono sottocategorie, le visitiamo ricorsivamente
         if (sottocategorie != null) {
             for (Categoria sottocategoria : sottocategorie.values()) {
-                sottocategoria.attraversaAlbero(indentazione + "  ");
+                sottocategoria.stampaAlbero(indentazione + "  ");
             }
         }
     }
+    
+
     
     
 

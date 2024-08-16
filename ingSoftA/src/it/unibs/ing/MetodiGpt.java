@@ -11,7 +11,20 @@ public class MetodiGpt {
 	
 	public void gpt() {
 
-
+/*
+	    public Boolean esisteSottocategoria(String nome) {
+	    	if (sottocategorie != null) {
+	            for (Categoria sottocategoria : sottocategorie.values()) {
+	            	if(sottocategoria.getNome().equals(nome)) {
+	            		return true;
+	            	}
+	                sottocategoria.esisteSottocategoria(nome);
+	            }
+	        }
+	    return false;
+	    }
+	*/	
+		
 	//METODI CLASSE APP
 	/*
 	private void creaGerarchia() {
