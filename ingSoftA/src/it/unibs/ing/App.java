@@ -12,7 +12,6 @@ public class App {
     private Boolean logged = false;
 
     //liste salvate e caricate su file
-    private ArrayList<Configuratore> listaConfiguratore = new ArrayList<>();
     private ArrayList<ComprensorioGeografico> listaComprensori = new ArrayList<>();
     private ArrayList<GerarchiaCategorie> listaOggettiGerarchia = new ArrayList<>();
 
@@ -32,11 +31,10 @@ public class App {
             dati = new Dati();
         }
 
-        listaConfiguratore = dati.getConfiguratori();
         listaComprensori = dati.getComprensori();
         listaOggettiGerarchia = dati.getGerarchie();
+        Configuratore.setListaConfiguratori(dati.getConfiguratori());
         FattoreConversione.setListaFattori(dati.getFattoriDiConversione());  //tutte le operazioni della lista vengono svolte nella classe FattoreConversione: si sarebbe reso necessario passare ogni volta la lista ad ogni metodo. Cosi si fa un set e un get per caricare e salvare i dati
-
         
         // ciclo di inizializzazione delle liste radici e foglieTotali, non salvate su file direttamente ma facilmente derivabili dall'oggetto Gerarchia
         for(GerarchiaCategorie g: listaOggettiGerarchia) {
@@ -222,16 +220,15 @@ public class App {
 
         Boolean userValido = false;
         while (!userValido) {
-            System.out.println();
             String username = getConsistentString("Inserisci nuovo username: ");
             String password = getConsistentString("Inserisci nuova password: ");
 
-            userValido = Configuratore.userValido(username, listaConfiguratore);
+            userValido = Configuratore.userValido(username);
             if (!userValido) {
                 System.out.println("Username già esistente. Riprova con un altro." + "\n");
             } else {
                 Configuratore configuratore = new Configuratore(username, password);
-                listaConfiguratore.add(configuratore);
+                Configuratore.addToListaConfiguratori(configuratore);
                 System.out.println("Configuratore registrato con successo." + "\n");
             }
         }
@@ -243,14 +240,15 @@ public class App {
         System.out.println("Inserisci password: ");
         String password = scanner.nextLine();
 
-        Boolean check = Configuratore.loginConfiguratore(username, password, listaConfiguratore);
+        Boolean check = Configuratore.loginConfiguratore(username, password);
         if (check)
             System.out.println("Autenticazione avvenuta con successo. Procedi con il seguente menu:");
         else
             System.out.println("Credenziali non valide. Riprova" + "\n");
         return check;
     }
-
+    
+    
     private void creaComprensorio() {
         String nome = getConsistentString("Inserisci nome comprensorio: ");
         ComprensorioGeografico comprensorio = new ComprensorioGeografico(nome);
@@ -359,29 +357,29 @@ public class App {
     
     private GerarchiaCategorie sceltaRadice() {				// modificato -> restiuisce un oggetto gerarchia, da cui è possibile ottenere la radice con getCategoriaRadice
     	    
-    	 if (listaOggettiGerarchia.isEmpty()) {
-             System.out.println("Nessuna gerarchia disponibile.");
-             return null; 
-         }
-        System.out.println("Seleziona la gerarchia:");
-       
-        for (int i = 0; i < listaOggettiGerarchia.size(); i++) {
-            System.out.println((i + 1) + ". " + listaOggettiGerarchia.get(i).getCategoriaRadice().getNome());
+    	try {
+	        System.out.println("Seleziona la gerarchia:");
+	       
+	        for (int i = 0; i < listaOggettiGerarchia.size(); i++) {
+	            System.out.println((i + 1) + ". " + listaOggettiGerarchia.get(i).getCategoriaRadice().getNome());
+	        }
+	        int scelta = -1;
+	        do {
+	            System.out.print("\nInserisci il numero della scelta: ");
+	            scelta = getInt();
+	            
+	            if (scelta <= 0 || scelta > listaOggettiGerarchia.size()) 
+	                System.out.println("Scelta non valida. Per favore, inserisci un numero tra 1 e " + listaOggettiGerarchia.size() + ".");
+	        } while (scelta <= 0 || scelta > listaOggettiGerarchia.size());
+	        
+	        return listaOggettiGerarchia.get(scelta - 1);
+	    
+    	} catch(NullPointerException e) {
+            System.out.println("Nessuna gerarchia disponibile.");
+            return null;
         }
-        int scelta = -1;
-        boolean sceltaValida = false;
+    }    
 
-        while (!sceltaValida) {
-                System.out.print("\nInserisci il numero della scelta: ");
-                scelta = getInt(); 
-                if (scelta > 0 && scelta <= listaOggettiGerarchia.size()) {
-                    sceltaValida = true;
-                } else {
-                    System.out.println("Scelta non valida. Per favore, inserisci un numero tra 1 e " + listaRadici.size() + ".");
-                }
-        }
-        return listaOggettiGerarchia.get(scelta - 1);
-    }
 
 
     private void setFattoriConversioneGerarchia(GerarchiaCategorie gerarchia) {
@@ -442,13 +440,11 @@ public class App {
     			System.out.println(f.toString());
     		}
     	}
-    	
-    	
     }
 
 
     private void salvaDati() {
-        dati.setConfiguratori(listaConfiguratore);
+        dati.setConfiguratori(Configuratore.getListaConfiguratori());
         dati.setComprensori(listaComprensori);
         dati.setGerarchie(listaOggettiGerarchia);
 

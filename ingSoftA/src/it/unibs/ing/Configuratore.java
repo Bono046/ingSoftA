@@ -12,7 +12,7 @@ public class Configuratore implements Serializable {
 	private String username;
     private String password;
     
-
+    private static ArrayList<Configuratore> listaConfiguratori = new ArrayList<>();
 
 
 	public Configuratore(String username, String password) {
@@ -54,8 +54,21 @@ public class Configuratore implements Serializable {
     }
     
    
-    public static boolean userValido(String user, ArrayList<Configuratore> list) {
-        for (Configuratore conf : list) {
+    public static ArrayList<Configuratore> getListaConfiguratori() {
+		return listaConfiguratori;
+	}
+
+
+	public static void setListaConfiguratori(ArrayList<Configuratore> listaConfiguratori) {
+		Configuratore.listaConfiguratori = listaConfiguratori;
+	}
+	
+	public static void addToListaConfiguratori(Configuratore c) {
+		listaConfiguratori.add(c);
+	}
+
+	public static boolean userValido(String user) {
+        for (Configuratore conf : listaConfiguratori) {
             if (conf.getUsername().equals(user)) 
                 return false;
         }
@@ -63,8 +76,8 @@ public class Configuratore implements Serializable {
     }
     
     
-	public static boolean loginConfiguratore(String username, String password, ArrayList<Configuratore> list) {
-	    for (Configuratore conf : list) {
+	public static boolean loginConfiguratore(String username, String password) {
+	    for (Configuratore conf : listaConfiguratori) {
 	        if (conf.getUsername().equals(username) && conf.getPassword().equals(password)) {
 	            return true;
 	        }
