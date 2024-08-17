@@ -137,7 +137,6 @@ public class App {
                     break;
            //Visualizza Fattori di Conversione         
                 case 9:
-                	System.out.println(FattoreConversione.getListaFattori().toString());
                 	VisualizzaFattoriConversione(sceltaRadice());
                     break;
            // Esci
@@ -168,7 +167,6 @@ public class App {
         	input = scanner.nextDouble();
         } catch (Exception e) {}
         scanner.nextLine();
-        System.out.println(input);
         return Math.round(input * 100.0) / 100.0;
     }
     
@@ -180,7 +178,7 @@ public class App {
     	
     	while(!valido) {
     		input = scanner.nextLine();
-    		if(input.isBlank() || input.isEmpty())
+    		if(input.equals(" ") || input.isEmpty())
     			System.out.println("Inserimento non valido. Inserire almeno un carattere");
     		else valido = true;  		
     	}
@@ -356,89 +354,94 @@ public class App {
     
     
     private GerarchiaCategorie sceltaRadice() {				// modificato -> restiuisce un oggetto gerarchia, da cui è possibile ottenere la radice con getCategoriaRadice
-    	    
-    	try {
-	        System.out.println("Seleziona la gerarchia:");
-	       
-	        for (int i = 0; i < listaOggettiGerarchia.size(); i++) {
-	            System.out.println((i + 1) + ". " + listaOggettiGerarchia.get(i).getCategoriaRadice().getNome());
+    	if(listaRadici.isEmpty()) {
+    		System.out.println("non esistono ancora gerarchia da visualizzare");
+    		return null;
+    	} else {
+	    	try {
+		        System.out.println("Seleziona la gerarchia:");
+		       
+		        for (int i = 0; i < listaOggettiGerarchia.size(); i++) {
+		            System.out.println((i + 1) + ". " + listaOggettiGerarchia.get(i).getCategoriaRadice().getNome());
+		        }
+		        int scelta = -1;
+		        do {
+		            System.out.print("\nInserisci il numero della scelta: ");
+		            scelta = getInt();
+		            
+		            if (scelta <= 0 || scelta > listaOggettiGerarchia.size()) 
+		                System.out.println("Scelta non valida. Per favore, inserisci un numero tra 1 e " + listaOggettiGerarchia.size() + ".");
+		        } while (scelta <= 0 || scelta > listaOggettiGerarchia.size());
+		        
+		        return listaOggettiGerarchia.get(scelta - 1);
+		    
+	    	} catch(NullPointerException e) {
+	            System.out.println("Nessuna gerarchia disponibile.");
+	            return null;
 	        }
-	        int scelta = -1;
-	        do {
-	            System.out.print("\nInserisci il numero della scelta: ");
-	            scelta = getInt();
-	            
-	            if (scelta <= 0 || scelta > listaOggettiGerarchia.size()) 
-	                System.out.println("Scelta non valida. Per favore, inserisci un numero tra 1 e " + listaOggettiGerarchia.size() + ".");
-	        } while (scelta <= 0 || scelta > listaOggettiGerarchia.size());
-	        
-	        return listaOggettiGerarchia.get(scelta - 1);
-	    
-    	} catch(NullPointerException e) {
-            System.out.println("Nessuna gerarchia disponibile.");
-            return null;
-        }
+    	}
     }    
 
 
 
     private void setFattoriConversioneGerarchia(GerarchiaCategorie gerarchia) {
-    	
-    	ArrayList<CategoriaFoglia> foglie = gerarchia.getListaFoglie();
-    	
-    	double min = 0.5;
-		double max = 2;
-		double factor = -1;
-    	
-        for (CategoriaFoglia c1 : foglie) {
-            for (CategoriaFoglia c2 : listaFoglieTotali) {
-                if ( (!c1.getNome().equals(c2.getNome())) && (!FattoreConversione.esisteFattore(c1, c2)) ) {		//if(c1 diversa da s2)&(Fattore(c1,c2) non già esistente)
-                	Boolean valido= false;
-                	while(!valido) {
-                		System.out.println("Inserire il fattore di conversione da " + c1.getNome().toUpperCase() + " a " + c2.getNome().toUpperCase() + ":");
-                		
-                			factor = getDouble();
-                			System.out.println(factor);
-                			if(factor < min || factor > max)
-                				System.out.println("Il fattore deve avere range = ["+min+","+max+"]");
-                			else valido = true;
-                	}
-                    FattoreConversione.addFattore(c1, c2, factor);
-                }
-            }
-        }
-        // NUMERO FAT.CONV. = N.FOGLIE * (N.FOGLIE-1) -> COPPIE ORDINATE DISTINTE ==> POSSIBILE INVARIANTE DI CLASSSE
-        if(FattoreConversione.getListaFattori().size() == (listaFoglieTotali.size() * (listaFoglieTotali.size()-1)))
-        	System.out.println("Tutte le categorie foglia hanno già assegnato un fattore di conversione\n");
+    	if(!listaRadici.isEmpty()) {
+	    	ArrayList<CategoriaFoglia> foglie = gerarchia.getListaFoglie();
+	    	
+	    	double min = 0.5;
+			double max = 2;
+			double factor = -1;
+			
+	        for (CategoriaFoglia c1 : foglie) {
+	            for (CategoriaFoglia c2 : listaFoglieTotali) {
+	                if ( (!c1.getNome().equals(c2.getNome())) && (!FattoreConversione.esisteFattore(c1, c2)) ) {		//if(c1 diversa da s2)&(Fattore(c1,c2) non già esistente)
+	                	Boolean valido= false;
+	                	while(!valido) {
+	                		System.out.println("Inserire il fattore di conversione da " + c1.getNome().toUpperCase() + " a " + c2.getNome().toUpperCase() + ":");
+	                		
+	                			factor = getDouble();
+	                			if(factor < min || factor > max)
+	                				System.out.println("Il fattore deve avere range = ["+min+","+max+"]");
+	                			else valido = true;
+	                	}
+	                    FattoreConversione.addFattore(c1, c2, factor);
+	                }
+	            }
+	        }
+	        // NUMERO FAT.CONV. = N.FOGLIE * (N.FOGLIE-1) -> COPPIE ORDINATE DISTINTE ==> POSSIBILE INVARIANTE DI CLASSSE
+	        if(FattoreConversione.getListaFattori().size() == (listaFoglieTotali.size() * (listaFoglieTotali.size()-1)))
+	        	System.out.println("Tutte le categorie foglia hanno già assegnato un fattore di conversione\n");
+	    }
     }
     
     private void VisualizzaFattoriConversione(GerarchiaCategorie g) {
-    	
     	ArrayList<FattoreConversione> fattoriDaVisualizzare = new ArrayList<>();
     	
-    	System.out.println("inserisci il nome della categoria foglia ricercata: ");
-    	System.out.println(g.getListaFoglie().toString());
-    	
-    	String nome = scanner.nextLine();
-    	
-    	Boolean fogliaOk = false;		// variabile per stampare l'errore giusto tra foglia mancante e fattore mancante
-    	
-    	for(int i=0; i < g.getListaFoglie().size(); i++) {
-    		if(nome.equals(g.getListaFoglie().get(i).getNome())) {
-    			fattoriDaVisualizzare = FattoreConversione.trovaFattore(nome);
-    			fogliaOk = true;
-    			break;
-    		}
-    	}
-    	
-    	if(!fogliaOk)
-    		System.out.println("Categoria foglia non trovata. Riprovare\n");
-    	else if(fattoriDaVisualizzare.isEmpty()) 
-    		System.out.println("Fattore di conversione non trovato\n");
-    	 else {
-    		for (FattoreConversione f : fattoriDaVisualizzare) {
-    			System.out.println(f.toString());
-    		}
+    	if(!listaRadici.isEmpty()) {   		
+	    	System.out.println("inserisci il nome della categoria foglia ricercata: ");
+	    	System.out.println(g.getListaFoglie().toString());
+	    	
+	    	String nome = scanner.nextLine();
+	    	
+	    	Boolean fogliaOk = false;		// variabile per stampare l'errore giusto tra foglia mancante e fattore mancante
+	    	
+	    	for(int i=0; i < g.getListaFoglie().size(); i++) {
+	    		if(nome.equals(g.getListaFoglie().get(i).getNome())) {
+	    			fattoriDaVisualizzare = FattoreConversione.trovaFattore(nome);
+	    			fogliaOk = true;
+	    			break;
+	    		}
+	    	}
+	    	
+	    	if(!fogliaOk) 
+	    		System.out.println("Categoria foglia non trovata. Riprovare\n");
+	    	else if(fattoriDaVisualizzare.isEmpty()) 
+	    		System.out.println("Fattore di conversione non trovato\n");
+	    	else {
+	    		for (FattoreConversione f : fattoriDaVisualizzare) {
+	    			System.out.println(f.toString());
+	    		}
+	    	}
     	}
     }
 

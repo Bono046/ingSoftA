@@ -78,7 +78,7 @@ public class FattoreConversione {
 				}
 				if(fact.getC1().getNome().equals(c1.getNome())) {
 					if(fact.getC2().getNome().equals(c2.getNome()) == false) {
-						valoreFattore = Math.round((f12*fact.getFattore()) * 100.0) / 100.0;
+						valoreFattore = Math.round(((1/f12)*fact.getFattore()) * 100.0) / 100.0;
 						FattoreConversione newFattore = new FattoreConversione(c2, c3, valoreFattore);
 						fattoriDaAggiungere.add(newFattore);
 						fattoriDaAggiungere.add(creaFattoreInverso(newFattore));
