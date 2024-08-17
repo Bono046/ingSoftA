@@ -26,7 +26,9 @@ public class GerarchiaCategorie {
 	}
 
 	public void setListaFoglie(ArrayList<CategoriaFoglia> c) {
-		this.listaFoglie = c;
+		
+		for(CategoriaFoglia foglia: c)
+			this.listaFoglie.add(foglia);
 	}
 	
 	public void addToListaFoglie(CategoriaFoglia c) {
