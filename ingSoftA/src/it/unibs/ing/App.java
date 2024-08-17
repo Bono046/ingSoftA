@@ -71,13 +71,12 @@ public class App {
 
     private void mostraMenuPrincipale() {
         while (logged) {
-            System.out.println("3. Crea Comprensorio Geografico");
-            System.out.println("4. Crea Gerarchia di Categorie");
-            System.out.println("5. Visualizza categorie foglia");
-            System.out.println("6. Stabilisci Fattore di Conversione");
-            System.out.println("7. Visualizza Comprensori");
-            System.out.println("8. Visualizza Gerarchie");
-            System.out.println("9. Visualizza Fattori di Conversione");
+            System.out.println("1. Crea Comprensorio Geografico");
+            System.out.println("2. Crea Gerarchia di Categorie");
+            System.out.println("3. Stabilisci Fattore di Conversione");
+            System.out.println("4. Visualizza Comprensori");
+            System.out.println("5. Visualizza Gerarchie");
+            System.out.println("6. Visualizza Fattori di Conversione");
             System.out.println("0. Esci");
             System.out.print("Seleziona un'opzione: ");
 
@@ -85,15 +84,15 @@ public class App {
 
             switch (scelta) {
             // Crea Comprensorio Geografico
-                case 3:
+                case 1:
                     creaComprensorio();
                     break;
             // Crea Gerarchia di Categorie
-                case 4:
+                case 2:
                 	listaFoglie.clear();
                 	listaNomi.clear();
                 	
-                	//metodo per verificare l'unicità del nome per ogni gerarchia
+                	//ciclo per verificare l'unicità del nome per ogni gerarchia
                 	Categoria root = null;
                 	Boolean nomeValido=true;
                 	do {
@@ -117,26 +116,20 @@ public class App {
                     g.setListaFoglie(listaFoglie);
 
                     break;  
-           // Visualizza categorie foglia         
-                case 5 : 
-                	for(GerarchiaCategorie gerar : listaOggettiGerarchia) {
-                		System.out.println(gerar.getListaFoglie());
-                	}
-                	break;
            // Stabilisci Fattore di Conversione	
-                case 6:               	
+                case 3:               	
                     setFattoriConversioneGerarchia(sceltaRadice());
                     break;
            // Visualizza Comprensori         
-                case 7:
+                case 4:
                     visualizzaComprensori();
                     break;
            // Visualizza Gerarchie         
-                case 8:
+                case 5:
                     visualizzaGerarchie();
                     break;
            //Visualizza Fattori di Conversione         
-                case 9:
+                case 6:
                 	VisualizzaFattoriConversione(sceltaRadice());
                     break;
            // Esci
@@ -263,12 +256,12 @@ public class App {
     
     private void visualizzaComprensori() {
         if (listaComprensori.isEmpty()) {
-            System.out.println("Non ci sono comprensori da visualizzare.");
+            System.out.println("Non ci sono comprensori da visualizzare.\n");
         } else {
             for (ComprensorioGeografico comprensorio : listaComprensori) {
                 System.out.println("Comprensorio: " + comprensorio.toString());
             }
-            System.out.println("\n");
+            System.out.println("");
         }
     }
 
@@ -287,14 +280,22 @@ public class App {
         	if(numValori <= 0)
         		System.out.println("scelta non valida. Riprovare");
         }	
-        // ciclo per inserire i valori del dominio - la descrizione è resa facoltativa lasciando la stringa corrispondente vuota
+        // ciclo per inserire i valori del dominio - la descrizione è resa facoltativa lasciando la stringa vuota - ciclo do-while per evitare duplicati
         for (int i = 0; i < numValori; i++) {
-            String valore = getConsistentString("Inserisci valore del dominio: ");
-            System.out.print("Inserisci descrizione (premere invio per lasciarla vuota): "); 
-            String descrizione = scanner.nextLine();
+        	String valore;
+        	String descrizione;
+        	Boolean valido = false;
+            do {
+	        	valore = getConsistentString("Inserisci valore del dominio: ");
+	            System.out.print("Inserisci descrizione (premere invio per lasciarla vuota): "); 
+	            descrizione = scanner.nextLine();
+	            if(dominio.containsKey(valore))
+	            	System.out.println("Valore duplicato. Riprovare");
+	            else valido = true;
+            }while(!valido);
+            
             dominio.put(valore, descrizione);
         }
-
         Categoria categoria = new Categoria(nome, campo, dominio);
         return categoria;
     }
@@ -343,7 +344,7 @@ public class App {
     
     private void visualizzaGerarchie() {
         if (listaRadici.isEmpty()) {
-            System.out.println("Non esiste alcuna gerarchia da visualizzare.");
+            System.out.println("Non esiste alcuna gerarchia da visualizzare.\n");
         } else {
             for (Categoria gerarchia : listaRadici) {
                 gerarchia.stampaAlbero("");
@@ -355,7 +356,7 @@ public class App {
     
     private GerarchiaCategorie sceltaRadice() {				// modificato -> restiuisce un oggetto gerarchia, da cui è possibile ottenere la radice con getCategoriaRadice
     	if(listaRadici.isEmpty()) {
-    		System.out.println("non esistono ancora gerarchia da visualizzare");
+    		System.out.println("Non esiste alcuna gerarchia da visualizzare.\n");
     		return null;
     	} else {
 	    	try {

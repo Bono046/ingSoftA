@@ -14,7 +14,6 @@ public class Configuratore implements Serializable {
     
     private static ArrayList<Configuratore> listaConfiguratori = new ArrayList<>();
 
-
 	public Configuratore(String username, String password) {
         this.username = username;
         this.password = password;
@@ -37,7 +36,7 @@ public class Configuratore implements Serializable {
 	}
 
 
-	private String getUsername() {
+	public String getUsername() {
         return username;
     }
 

@@ -13,12 +13,14 @@ public class Dati implements Serializable {
     private ArrayList<ComprensorioGeografico> comprensori;
     private ArrayList<FattoreConversione> fattoriDiConversione;
     private ArrayList<GerarchiaCategorie> gerarchie;
+    private ArrayList<Fruitore> fruitori;
 
     public Dati() {
         configuratori = new ArrayList<>();
         comprensori = new ArrayList<>();
         fattoriDiConversione = new ArrayList<>();
         gerarchie = new ArrayList<>();
+        fruitori = new ArrayList<>();
     }
 
     public ArrayList<Configuratore> getConfiguratori() {
@@ -58,11 +60,18 @@ public class Dati implements Serializable {
 		this.gerarchie = gerarchie;
 	}
 
+	public ArrayList<Fruitore> getFruitori() {
+		return fruitori;
+	}
+
+	public void setFruitori(ArrayList<Fruitore> fruitori) {
+		this.fruitori = fruitori;
+	}
+
 	@Override
 	public String toString() {
 		return "Dati [configuratori=" + configuratori + ", comprensori=" + comprensori + ", fattoriDiConversione="
-				+ fattoriDiConversione + ", gerarchie=" + gerarchie + "]";
+				+ fattoriDiConversione + ", gerarchie=" + gerarchie + ", fruitori=" + fruitori + "]";
 	}
 
-	
 }

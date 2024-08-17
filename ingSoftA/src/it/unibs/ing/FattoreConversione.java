@@ -51,9 +51,9 @@ public class FattoreConversione {
 		FattoreConversione.listaFattori = listaFattori;
 	}
 	
-	public static void addFattore (CategoriaFoglia c1, CategoriaFoglia c2, double f12) {
+	public static void addFattore (CategoriaFoglia c1, CategoriaFoglia c3, double f13) {
 		
-		FattoreConversione fattore = new FattoreConversione(c1, c2, f12);
+		FattoreConversione fattore = new FattoreConversione(c1, c3, f13);
 		FattoreConversione f_inverso = creaFattoreInverso(fattore);
 		
 		//algoritmo per aggiungere in automatico tutti i fattori deducibili
@@ -66,19 +66,23 @@ public class FattoreConversione {
 			listaFattori.add(f_inverso);
 		} else {
 			for(FattoreConversione fact : listaFattori) {
-				CategoriaFoglia c3 = fact.getC2();
-				
+				CategoriaFoglia c2 = fact.getC2();
+		/*		
 				if(fact.getC1().getNome().equals(c2.getNome())) {
 					if(c3.getNome().equals(c1.getNome()) == false) {
 						valoreFattore = Math.round((f12*fact.getFattore()) * 100.0) / 100.0;
 						FattoreConversione newFattore = new FattoreConversione(c1, c3, valoreFattore);
+						//-----------------------------------------
+						System.out.println("c1 c3" + newFattore.toString());
+						//-----------------------------------------
 						fattoriDaAggiungere.add(newFattore);
 						fattoriDaAggiungere.add(creaFattoreInverso(newFattore));
 					}
 				}
+				*/
 				if(fact.getC1().getNome().equals(c1.getNome())) {
-					if(fact.getC2().getNome().equals(c2.getNome()) == false) {
-						valoreFattore = Math.round(((1/f12)*fact.getFattore()) * 100.0) / 100.0;
+					if(c3.getNome().equals(c2.getNome()) == false) {
+						valoreFattore = Math.round((f13 / fact.getFattore()) * 100.0) / 100.0;
 						FattoreConversione newFattore = new FattoreConversione(c2, c3, valoreFattore);
 						fattoriDaAggiungere.add(newFattore);
 						fattoriDaAggiungere.add(creaFattoreInverso(newFattore));
@@ -89,7 +93,6 @@ public class FattoreConversione {
 			listaFattori.add(f_inverso);
 			listaFattori.addAll(fattoriDaAggiungere);
 		}
-		
 	}
 	
 	
