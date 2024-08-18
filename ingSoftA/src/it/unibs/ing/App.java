@@ -4,9 +4,6 @@ package it.unibs.ing;
 import java.io.IOException;
 import java.util.*;
 
-import com.sun.javafx.collections.TrackableObservableList;
-
-//import javax.swing.plaf.synth.SynthSpinnerUI;
 
 public class App {
     private Dati dati;
@@ -168,6 +165,7 @@ public class App {
     	while (loggedFruitore) {
             System.out.println("3. Esplora gerarchie");
             System.out.println("4. Formula proposta scambio");
+            System.out.println("5. Visualziza proposta scambio");
             System.out.println("0. Esci");
             System.out.print("Seleziona un'opzione: ");
 
@@ -176,15 +174,17 @@ public class App {
             switch (scelta) {
             // Esplora gerarchie
                 case 3:
-                    
                 	GerarchiaCategorie g = sceltaRadice();
                 	g.setCategoriaCorrente();
-                	
                 	esploraGerarchia(g);
-
                     break;
                 case 4: 
                 	creaProposta();
+                	break;
+                case 5:
+                	for(Proposta p : listaProposte) {
+                		System.out.println(p.toString());
+                	}
                 	break;
                 case 0:
                     salvaDati();
@@ -279,7 +279,7 @@ public class App {
 
             userValido = Configuratore.userValido(username);
             if (!userValido) {
-                System.out.println("Username giï¿½ esistente. Riprova con un altro." + "\n");
+                System.out.println("Username già esistente. Riprova con un altro." + "\n");
             } else {
                 Configuratore configuratore = new Configuratore(username, password);
                 Configuratore.addToListaConfiguratori(configuratore);
@@ -334,7 +334,7 @@ public class App {
 		
 		        userValido = Fruitore.userValido(username);
 		        if (!userValido) {
-		            System.out.println("Username giï¿½ esistente. Riprova con un altro." + "\n");
+		            System.out.println("Username già esistente. Riprova con un altro." + "\n");
 		        } else {
 		            Fruitore fruitore = new Fruitore(username, password, comprensorio, mail);
 		            Fruitore.addToListaConfiguratori(fruitore);
@@ -481,7 +481,7 @@ public class App {
     }
     
     /**
-     * restiuisce un oggetto gerarchia, da cui ï¿½ possibile ottenere la radice con getCategoriaRadice
+     * restiuisce un oggetto gerarchia, da cui è possibile ottenere la radice con getCategoriaRadice
      * Precondizione: deve esistere almeno un oggetto Categoria non nullo salvato in listaRadici
      */
     private GerarchiaCategorie sceltaRadice() {				
@@ -516,7 +516,7 @@ public class App {
 
 /**
  * Precondizione: esiste non nullo almeno un oggetto GerarchiaCategorie
- * Postcondizione: ogni coppia distinta di categorie foglia avrï¿½ un fattore di conversione compreso tra 0.5 e 2
+ * Postcondizione: ogni coppia distinta di categorie foglia avrà un fattore di conversione compreso tra 0.5 e 2
  * @param gerarchia
  */
     private void setFattoriConversioneGerarchia(GerarchiaCategorie gerarchia) {
@@ -543,9 +543,8 @@ public class App {
 	                }
 	            }
 	        }
-	        // NUMERO FAT.CONV. = N.FOGLIE * (N.FOGLIE-1) -> COPPIE ORDINATE DISTINTE ==> POSSIBILE INVARIANTE DI CLASSSE
 	        if(FattoreConversione.getListaFattori().size() == (listaFoglieTotali.size() * (listaFoglieTotali.size()-1)))
-	        	System.out.println("Tutte le categorie foglia hanno giï¿½ assegnato un fattore di conversione\n");
+	        	System.out.println("Tutte le categorie foglia hanno già assegnato un fattore di conversione\n");
 	    }
     }
     
@@ -633,6 +632,10 @@ public class App {
     	boolean checkOfferta = false;
     	boolean checkDiverso = false;
 		do {
+			checkRichiesta = false;
+	    	checkOfferta = false;
+	    	checkDiverso = false;
+	    	
 	    	System.out.println("seleziona la categoria foglia richiesta");
 			System.out.println(listaFoglieTotali.toString());
 			inputRichiesta = scanner.nextLine();
@@ -646,26 +649,37 @@ public class App {
 			System.out.println(listaFoglieTotali.toString());
 			inputOfferta = scanner.nextLine();
 			for(CategoriaFoglia f : listaFoglieTotali) {
-				if(f.getNome().equals(inputOfferta) && !f.getNome().equals(inputRichiesta)) {
+				if(f.getNome().equals(inputOfferta)) {
+					if(!f.getNome().equals(inputRichiesta)) {
 					offerta = f;
 					checkOfferta = true;
 					checkDiverso = true;
-				
-				}
+				}}
 			}
+			if(!checkRichiesta || !checkOfferta || !checkDiverso)
+				System.out.println("Inserimento non valido. Riprovare\n");
+
 		} while (!checkOfferta || !checkRichiesta || !checkDiverso);
+		
 		System.out.println("quante ore per la richiesta?");
-		int durataRichiesta = scanner.nextInt();
+		int durataRichiesta = getInt();
 		
 		Proposta proposta = new Proposta(richiesta, offerta, durataRichiesta);
 		calcolaDurataOfferta(proposta);
 		System.out.println(proposta.toString());
 		System.out.println("vuoi confermare la proposta? s/n");
-		String conferma = scanner.nextLine();
-		if (conferma.equals("s"))
-			proposta.setAperto(true);
-			listaProposte.add(proposta);
-	}
+		String conferma = "";
+		do {
+			conferma = scanner.nextLine();
+			if (conferma.equals("s")) {
+				proposta.setAperto(true);
+				listaProposte.add(proposta);
+				System.out.println("Proposta confermata");;
+			} else if(conferma.equals("n"))
+				System.out.println("Proposta non confermata");
+			else System.out.println("Input non valido. Riprovare");
+		} while(!(conferma.equals("s") || conferma.equals("n")));
+    }
 
 	private void calcolaDurataOfferta(Proposta proposta) {
 		int durataOfferta=0;

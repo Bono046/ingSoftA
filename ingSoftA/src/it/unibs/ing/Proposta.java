@@ -68,8 +68,8 @@ public class Proposta {
 
 	@Override
 	public String toString() {
-		return "Proposta [richiesta=" + richiesta + ", offerta=" + offerta + ", durataRichiesta=" + durataRichiesta
-				+ ", durataOfferta=" + durataOfferta + ", aperto=" + aperto + "]";
+		return "Proposta [richiesta=" + richiesta +", durataRichiesta=" + durataRichiesta
+				+ "], offerta=" + offerta + "durataOfferta=" + durataOfferta + ", aperto=" + aperto + "]";
 	}
 	
 	

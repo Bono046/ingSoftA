@@ -1299,5 +1299,29 @@
       },
       "mail": "bono@g.it"
     }
+  ],
+  "proposte": [
+    {
+      "richiesta": {
+        "nome": "lezioni di chitarra per principianti"
+      },
+      "offerta": {
+        "nome": "lezioni di solfeggio"
+      },
+      "durataRichiesta": 7,
+      "durataOfferta": 8,
+      "aperto": true
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni di solfeggio"
+      },
+      "offerta": {
+        "nome": "lezioni di storia della musica"
+      },
+      "durataRichiesta": 15,
+      "durataOfferta": 14,
+      "aperto": true
+    }
   ]
 }
