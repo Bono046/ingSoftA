@@ -34,1093 +34,1167 @@
   "fattoriDiConversione": [
     {
       "c1": {
-        "nome": "1"
+        "nome": "lezioni frazioni"
       },
       "c2": {
-        "nome": "2"
+        "nome": "lezioni di storia della musica"
       },
-      "fattore": 1.5
+      "fattore": 0.8
     },
     {
       "c1": {
-        "nome": "2"
+        "nome": "lezioni di storia della musica"
       },
       "c2": {
-        "nome": "1"
+        "nome": "lezioni frazioni"
       },
-      "fattore": 0.67
+      "fattore": 1.25
     },
     {
       "c1": {
-        "nome": "1"
+        "nome": "lezioni frazioni"
       },
       "c2": {
-        "nome": "3"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "3"
-      },
-      "c2": {
-        "nome": "1"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "2"
-      },
-      "c2": {
-        "nome": "3"
-      },
-      "fattore": 1.33
-    },
-    {
-      "c1": {
-        "nome": "3"
-      },
-      "c2": {
-        "nome": "2"
-      },
-      "fattore": 0.75
-    },
-    {
-      "c1": {
-        "nome": "1"
-      },
-      "c2": {
-        "nome": "4"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "4"
-      },
-      "c2": {
-        "nome": "1"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "2"
-      },
-      "c2": {
-        "nome": "4"
-      },
-      "fattore": 1.33
-    },
-    {
-      "c1": {
-        "nome": "4"
-      },
-      "c2": {
-        "nome": "2"
-      },
-      "fattore": 0.75
-    },
-    {
-      "c1": {
-        "nome": "3"
-      },
-      "c2": {
-        "nome": "4"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "4"
-      },
-      "c2": {
-        "nome": "3"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "1"
-      },
-      "c2": {
-        "nome": "5"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "5"
-      },
-      "c2": {
-        "nome": "1"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "2"
-      },
-      "c2": {
-        "nome": "5"
-      },
-      "fattore": 0.67
-    },
-    {
-      "c1": {
-        "nome": "5"
-      },
-      "c2": {
-        "nome": "2"
-      },
-      "fattore": 1.49
-    },
-    {
-      "c1": {
-        "nome": "3"
-      },
-      "c2": {
-        "nome": "5"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "5"
-      },
-      "c2": {
-        "nome": "3"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "4"
-      },
-      "c2": {
-        "nome": "5"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "5"
-      },
-      "c2": {
-        "nome": "4"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "1"
-      },
-      "c2": {
-        "nome": "6"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "6"
-      },
-      "c2": {
-        "nome": "1"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "2"
-      },
-      "c2": {
-        "nome": "6"
-      },
-      "fattore": 0.67
-    },
-    {
-      "c1": {
-        "nome": "6"
-      },
-      "c2": {
-        "nome": "2"
-      },
-      "fattore": 1.49
-    },
-    {
-      "c1": {
-        "nome": "3"
-      },
-      "c2": {
-        "nome": "6"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "6"
-      },
-      "c2": {
-        "nome": "3"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "4"
-      },
-      "c2": {
-        "nome": "6"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "6"
-      },
-      "c2": {
-        "nome": "4"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "5"
-      },
-      "c2": {
-        "nome": "6"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "6"
-      },
-      "c2": {
-        "nome": "5"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "7"
-      },
-      "c2": {
-        "nome": "1"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "1"
-      },
-      "c2": {
-        "nome": "7"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "7"
-      },
-      "c2": {
-        "nome": "2"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "2"
-      },
-      "c2": {
-        "nome": "7"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "1"
-      },
-      "c2": {
-        "nome": "2"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "2"
-      },
-      "c2": {
-        "nome": "1"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "7"
-      },
-      "c2": {
-        "nome": "3"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "3"
-      },
-      "c2": {
-        "nome": "7"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "1"
-      },
-      "c2": {
-        "nome": "3"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "3"
-      },
-      "c2": {
-        "nome": "1"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "2"
-      },
-      "c2": {
-        "nome": "3"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "3"
-      },
-      "c2": {
-        "nome": "2"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "7"
-      },
-      "c2": {
-        "nome": "4"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "4"
-      },
-      "c2": {
-        "nome": "7"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "1"
-      },
-      "c2": {
-        "nome": "4"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "4"
-      },
-      "c2": {
-        "nome": "1"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "2"
-      },
-      "c2": {
-        "nome": "4"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "4"
-      },
-      "c2": {
-        "nome": "2"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "3"
-      },
-      "c2": {
-        "nome": "4"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "4"
-      },
-      "c2": {
-        "nome": "3"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "7"
-      },
-      "c2": {
-        "nome": "5"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "5"
-      },
-      "c2": {
-        "nome": "7"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "1"
-      },
-      "c2": {
-        "nome": "5"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "5"
-      },
-      "c2": {
-        "nome": "1"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "2"
-      },
-      "c2": {
-        "nome": "5"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "5"
-      },
-      "c2": {
-        "nome": "2"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "3"
-      },
-      "c2": {
-        "nome": "5"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "5"
-      },
-      "c2": {
-        "nome": "3"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "4"
-      },
-      "c2": {
-        "nome": "5"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "5"
-      },
-      "c2": {
-        "nome": "4"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "7"
-      },
-      "c2": {
-        "nome": "6"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "6"
-      },
-      "c2": {
-        "nome": "7"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "1"
-      },
-      "c2": {
-        "nome": "6"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "6"
-      },
-      "c2": {
-        "nome": "1"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "2"
-      },
-      "c2": {
-        "nome": "6"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "6"
-      },
-      "c2": {
-        "nome": "2"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "3"
-      },
-      "c2": {
-        "nome": "6"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "6"
-      },
-      "c2": {
-        "nome": "3"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "4"
-      },
-      "c2": {
-        "nome": "6"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "6"
-      },
-      "c2": {
-        "nome": "4"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "5"
-      },
-      "c2": {
-        "nome": "6"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "6"
-      },
-      "c2": {
-        "nome": "5"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "7"
-      },
-      "c2": {
-        "nome": "8"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "8"
-      },
-      "c2": {
-        "nome": "7"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "1"
-      },
-      "c2": {
-        "nome": "8"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "8"
-      },
-      "c2": {
-        "nome": "1"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "2"
-      },
-      "c2": {
-        "nome": "8"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "8"
-      },
-      "c2": {
-        "nome": "2"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "3"
-      },
-      "c2": {
-        "nome": "8"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "8"
-      },
-      "c2": {
-        "nome": "3"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "4"
-      },
-      "c2": {
-        "nome": "8"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "8"
-      },
-      "c2": {
-        "nome": "4"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "5"
-      },
-      "c2": {
-        "nome": "8"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "8"
-      },
-      "c2": {
-        "nome": "5"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "6"
-      },
-      "c2": {
-        "nome": "8"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "8"
-      },
-      "c2": {
-        "nome": "6"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "7"
-      },
-      "c2": {
-        "nome": "9"
-      },
-      "fattore": 0.6
-    },
-    {
-      "c1": {
-        "nome": "9"
-      },
-      "c2": {
-        "nome": "7"
-      },
-      "fattore": 1.67
-    },
-    {
-      "c1": {
-        "nome": "1"
-      },
-      "c2": {
-        "nome": "9"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "9"
-      },
-      "c2": {
-        "nome": "1"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "2"
-      },
-      "c2": {
-        "nome": "9"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "9"
-      },
-      "c2": {
-        "nome": "2"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "3"
-      },
-      "c2": {
-        "nome": "9"
+        "nome": "lezioni di solfeggio"
       },
       "fattore": 1.2
     },
     {
       "c1": {
-        "nome": "9"
+        "nome": "lezioni di solfeggio"
       },
       "c2": {
-        "nome": "3"
+        "nome": "lezioni frazioni"
       },
       "fattore": 0.83
     },
     {
       "c1": {
-        "nome": "4"
+        "nome": "lezioni di solfeggio"
       },
       "c2": {
-        "nome": "9"
+        "nome": "lezioni di storia della musica"
       },
-      "fattore": 0.5
+      "fattore": 0.96
     },
     {
       "c1": {
-        "nome": "9"
+        "nome": "lezioni di storia della musica"
       },
       "c2": {
-        "nome": "4"
+        "nome": "lezioni di solfeggio"
       },
-      "fattore": 2.0
+      "fattore": 1.04
     },
     {
       "c1": {
-        "nome": "5"
+        "nome": "lezioni frazioni"
       },
       "c2": {
-        "nome": "9"
+        "nome": "lezioni di chitarra per principianti"
       },
-      "fattore": 0.5
+      "fattore": 1.0
     },
     {
       "c1": {
-        "nome": "9"
+        "nome": "lezioni di chitarra per principianti"
       },
       "c2": {
-        "nome": "5"
+        "nome": "lezioni frazioni"
       },
-      "fattore": 2.0
+      "fattore": 1.0
     },
     {
       "c1": {
-        "nome": "6"
+        "nome": "lezioni di chitarra per principianti"
       },
       "c2": {
-        "nome": "9"
+        "nome": "lezioni di storia della musica"
       },
-      "fattore": 0.5
+      "fattore": 0.8
     },
     {
       "c1": {
-        "nome": "9"
+        "nome": "lezioni di storia della musica"
       },
       "c2": {
-        "nome": "6"
+        "nome": "lezioni di chitarra per principianti"
       },
-      "fattore": 2.0
+      "fattore": 1.25
     },
     {
       "c1": {
-        "nome": "8"
+        "nome": "lezioni di chitarra per principianti"
       },
       "c2": {
-        "nome": "9"
+        "nome": "lezioni di solfeggio"
       },
-      "fattore": 0.5
+      "fattore": 1.2
     },
     {
       "c1": {
-        "nome": "9"
+        "nome": "lezioni di solfeggio"
       },
       "c2": {
-        "nome": "8"
+        "nome": "lezioni di chitarra per principianti"
       },
-      "fattore": 2.0
+      "fattore": 0.83
+    },
+    {
+      "c1": {
+        "nome": "lezioni frazioni"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "fattore": 1.5
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "c2": {
+        "nome": "lezioni frazioni"
+      },
+      "fattore": 0.67
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "c2": {
+        "nome": "lezioni di storia della musica"
+      },
+      "fattore": 1.2
+    },
+    {
+      "c1": {
+        "nome": "lezioni di storia della musica"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "fattore": 0.83
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "c2": {
+        "nome": "lezioni di solfeggio"
+      },
+      "fattore": 1.8
+    },
+    {
+      "c1": {
+        "nome": "lezioni di solfeggio"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "fattore": 0.56
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "c2": {
+        "nome": "lezioni di chitarra per principianti"
+      },
+      "fattore": 1.5
+    },
+    {
+      "c1": {
+        "nome": "lezioni di chitarra per principianti"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "fattore": 0.67
+    },
+    {
+      "c1": {
+        "nome": "lezioni frazioni"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "fattore": 1.9
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "c2": {
+        "nome": "lezioni frazioni"
+      },
+      "fattore": 0.53
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "c2": {
+        "nome": "lezioni di storia della musica"
+      },
+      "fattore": 1.52
+    },
+    {
+      "c1": {
+        "nome": "lezioni di storia della musica"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "fattore": 0.66
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "c2": {
+        "nome": "lezioni di solfeggio"
+      },
+      "fattore": 2.28
+    },
+    {
+      "c1": {
+        "nome": "lezioni di solfeggio"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "fattore": 0.44
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "c2": {
+        "nome": "lezioni di chitarra per principianti"
+      },
+      "fattore": 1.9
+    },
+    {
+      "c1": {
+        "nome": "lezioni di chitarra per principianti"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "fattore": 0.53
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "fattore": 2.85
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "fattore": 0.35
+    },
+    {
+      "c1": {
+        "nome": "lezioni frazioni"
+      },
+      "c2": {
+        "nome": "lezioni potenze"
+      },
+      "fattore": 0.7
+    },
+    {
+      "c1": {
+        "nome": "lezioni potenze"
+      },
+      "c2": {
+        "nome": "lezioni frazioni"
+      },
+      "fattore": 1.43
+    },
+    {
+      "c1": {
+        "nome": "lezioni potenze"
+      },
+      "c2": {
+        "nome": "lezioni di storia della musica"
+      },
+      "fattore": 0.56
+    },
+    {
+      "c1": {
+        "nome": "lezioni di storia della musica"
+      },
+      "c2": {
+        "nome": "lezioni potenze"
+      },
+      "fattore": 1.79
+    },
+    {
+      "c1": {
+        "nome": "lezioni potenze"
+      },
+      "c2": {
+        "nome": "lezioni di solfeggio"
+      },
+      "fattore": 0.84
+    },
+    {
+      "c1": {
+        "nome": "lezioni di solfeggio"
+      },
+      "c2": {
+        "nome": "lezioni potenze"
+      },
+      "fattore": 1.19
+    },
+    {
+      "c1": {
+        "nome": "lezioni potenze"
+      },
+      "c2": {
+        "nome": "lezioni di chitarra per principianti"
+      },
+      "fattore": 0.7
+    },
+    {
+      "c1": {
+        "nome": "lezioni di chitarra per principianti"
+      },
+      "c2": {
+        "nome": "lezioni potenze"
+      },
+      "fattore": 1.43
+    },
+    {
+      "c1": {
+        "nome": "lezioni potenze"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "fattore": 1.05
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "c2": {
+        "nome": "lezioni potenze"
+      },
+      "fattore": 0.95
+    },
+    {
+      "c1": {
+        "nome": "lezioni potenze"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "fattore": 1.33
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "c2": {
+        "nome": "lezioni potenze"
+      },
+      "fattore": 0.75
+    },
+    {
+      "c1": {
+        "nome": "lezioni frazioni"
+      },
+      "c2": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "fattore": 0.6
+    },
+    {
+      "c1": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "c2": {
+        "nome": "lezioni frazioni"
+      },
+      "fattore": 1.67
+    },
+    {
+      "c1": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "c2": {
+        "nome": "lezioni di storia della musica"
+      },
+      "fattore": 0.48
+    },
+    {
+      "c1": {
+        "nome": "lezioni di storia della musica"
+      },
+      "c2": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "fattore": 2.08
+    },
+    {
+      "c1": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "c2": {
+        "nome": "lezioni di solfeggio"
+      },
+      "fattore": 0.72
+    },
+    {
+      "c1": {
+        "nome": "lezioni di solfeggio"
+      },
+      "c2": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "fattore": 1.39
+    },
+    {
+      "c1": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "c2": {
+        "nome": "lezioni di chitarra per principianti"
+      },
+      "fattore": 0.6
+    },
+    {
+      "c1": {
+        "nome": "lezioni di chitarra per principianti"
+      },
+      "c2": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "fattore": 1.67
+    },
+    {
+      "c1": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "fattore": 0.9
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "c2": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "fattore": 1.11
+    },
+    {
+      "c1": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "fattore": 1.14
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "c2": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "fattore": 0.88
+    },
+    {
+      "c1": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "c2": {
+        "nome": "lezioni potenze"
+      },
+      "fattore": 0.42
+    },
+    {
+      "c1": {
+        "nome": "lezioni potenze"
+      },
+      "c2": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "fattore": 2.38
+    },
+    {
+      "c1": {
+        "nome": "lezioni frazioni"
+      },
+      "c2": {
+        "nome": "lezioni sottrazioni"
+      },
+      "fattore": 1.2
+    },
+    {
+      "c1": {
+        "nome": "lezioni sottrazioni"
+      },
+      "c2": {
+        "nome": "lezioni frazioni"
+      },
+      "fattore": 0.83
+    },
+    {
+      "c1": {
+        "nome": "lezioni sottrazioni"
+      },
+      "c2": {
+        "nome": "lezioni di storia della musica"
+      },
+      "fattore": 0.96
+    },
+    {
+      "c1": {
+        "nome": "lezioni di storia della musica"
+      },
+      "c2": {
+        "nome": "lezioni sottrazioni"
+      },
+      "fattore": 1.04
+    },
+    {
+      "c1": {
+        "nome": "lezioni sottrazioni"
+      },
+      "c2": {
+        "nome": "lezioni di solfeggio"
+      },
+      "fattore": 1.44
+    },
+    {
+      "c1": {
+        "nome": "lezioni di solfeggio"
+      },
+      "c2": {
+        "nome": "lezioni sottrazioni"
+      },
+      "fattore": 0.69
+    },
+    {
+      "c1": {
+        "nome": "lezioni sottrazioni"
+      },
+      "c2": {
+        "nome": "lezioni di chitarra per principianti"
+      },
+      "fattore": 1.2
+    },
+    {
+      "c1": {
+        "nome": "lezioni di chitarra per principianti"
+      },
+      "c2": {
+        "nome": "lezioni sottrazioni"
+      },
+      "fattore": 0.83
+    },
+    {
+      "c1": {
+        "nome": "lezioni sottrazioni"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "fattore": 1.8
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "c2": {
+        "nome": "lezioni sottrazioni"
+      },
+      "fattore": 0.56
+    },
+    {
+      "c1": {
+        "nome": "lezioni sottrazioni"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "fattore": 2.28
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "c2": {
+        "nome": "lezioni sottrazioni"
+      },
+      "fattore": 0.44
+    },
+    {
+      "c1": {
+        "nome": "lezioni sottrazioni"
+      },
+      "c2": {
+        "nome": "lezioni potenze"
+      },
+      "fattore": 0.84
+    },
+    {
+      "c1": {
+        "nome": "lezioni potenze"
+      },
+      "c2": {
+        "nome": "lezioni sottrazioni"
+      },
+      "fattore": 1.19
+    },
+    {
+      "c1": {
+        "nome": "lezioni sottrazioni"
+      },
+      "c2": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "fattore": 0.72
+    },
+    {
+      "c1": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "c2": {
+        "nome": "lezioni sottrazioni"
+      },
+      "fattore": 1.39
+    },
+    {
+      "c1": {
+        "nome": "lezioni frazioni"
+      },
+      "c2": {
+        "nome": "lezioni divisioni"
+      },
+      "fattore": 1.0
+    },
+    {
+      "c1": {
+        "nome": "lezioni divisioni"
+      },
+      "c2": {
+        "nome": "lezioni frazioni"
+      },
+      "fattore": 1.0
+    },
+    {
+      "c1": {
+        "nome": "lezioni divisioni"
+      },
+      "c2": {
+        "nome": "lezioni di storia della musica"
+      },
+      "fattore": 0.8
+    },
+    {
+      "c1": {
+        "nome": "lezioni di storia della musica"
+      },
+      "c2": {
+        "nome": "lezioni divisioni"
+      },
+      "fattore": 1.25
+    },
+    {
+      "c1": {
+        "nome": "lezioni divisioni"
+      },
+      "c2": {
+        "nome": "lezioni di solfeggio"
+      },
+      "fattore": 1.2
+    },
+    {
+      "c1": {
+        "nome": "lezioni di solfeggio"
+      },
+      "c2": {
+        "nome": "lezioni divisioni"
+      },
+      "fattore": 0.83
+    },
+    {
+      "c1": {
+        "nome": "lezioni divisioni"
+      },
+      "c2": {
+        "nome": "lezioni di chitarra per principianti"
+      },
+      "fattore": 1.0
+    },
+    {
+      "c1": {
+        "nome": "lezioni di chitarra per principianti"
+      },
+      "c2": {
+        "nome": "lezioni divisioni"
+      },
+      "fattore": 1.0
+    },
+    {
+      "c1": {
+        "nome": "lezioni divisioni"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "fattore": 1.5
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "c2": {
+        "nome": "lezioni divisioni"
+      },
+      "fattore": 0.67
+    },
+    {
+      "c1": {
+        "nome": "lezioni divisioni"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "fattore": 1.9
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "c2": {
+        "nome": "lezioni divisioni"
+      },
+      "fattore": 0.53
+    },
+    {
+      "c1": {
+        "nome": "lezioni divisioni"
+      },
+      "c2": {
+        "nome": "lezioni potenze"
+      },
+      "fattore": 0.7
+    },
+    {
+      "c1": {
+        "nome": "lezioni potenze"
+      },
+      "c2": {
+        "nome": "lezioni divisioni"
+      },
+      "fattore": 1.43
+    },
+    {
+      "c1": {
+        "nome": "lezioni divisioni"
+      },
+      "c2": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "fattore": 0.6
+    },
+    {
+      "c1": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "c2": {
+        "nome": "lezioni divisioni"
+      },
+      "fattore": 1.67
+    },
+    {
+      "c1": {
+        "nome": "lezioni divisioni"
+      },
+      "c2": {
+        "nome": "lezioni sottrazioni"
+      },
+      "fattore": 1.2
+    },
+    {
+      "c1": {
+        "nome": "lezioni sottrazioni"
+      },
+      "c2": {
+        "nome": "lezioni divisioni"
+      },
+      "fattore": 0.83
+    },
+    {
+      "c1": {
+        "nome": "lezioni frazioni"
+      },
+      "c2": {
+        "nome": "lezioni addizioni"
+      },
+      "fattore": 1.4
+    },
+    {
+      "c1": {
+        "nome": "lezioni addizioni"
+      },
+      "c2": {
+        "nome": "lezioni frazioni"
+      },
+      "fattore": 0.71
+    },
+    {
+      "c1": {
+        "nome": "lezioni addizioni"
+      },
+      "c2": {
+        "nome": "lezioni di storia della musica"
+      },
+      "fattore": 1.12
+    },
+    {
+      "c1": {
+        "nome": "lezioni di storia della musica"
+      },
+      "c2": {
+        "nome": "lezioni addizioni"
+      },
+      "fattore": 0.89
+    },
+    {
+      "c1": {
+        "nome": "lezioni addizioni"
+      },
+      "c2": {
+        "nome": "lezioni di solfeggio"
+      },
+      "fattore": 1.68
+    },
+    {
+      "c1": {
+        "nome": "lezioni di solfeggio"
+      },
+      "c2": {
+        "nome": "lezioni addizioni"
+      },
+      "fattore": 0.6
+    },
+    {
+      "c1": {
+        "nome": "lezioni addizioni"
+      },
+      "c2": {
+        "nome": "lezioni di chitarra per principianti"
+      },
+      "fattore": 1.4
+    },
+    {
+      "c1": {
+        "nome": "lezioni di chitarra per principianti"
+      },
+      "c2": {
+        "nome": "lezioni addizioni"
+      },
+      "fattore": 0.71
+    },
+    {
+      "c1": {
+        "nome": "lezioni addizioni"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "fattore": 2.1
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "c2": {
+        "nome": "lezioni addizioni"
+      },
+      "fattore": 0.48
+    },
+    {
+      "c1": {
+        "nome": "lezioni addizioni"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "fattore": 2.66
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte di difficoltà media"
+      },
+      "c2": {
+        "nome": "lezioni addizioni"
+      },
+      "fattore": 0.38
+    },
+    {
+      "c1": {
+        "nome": "lezioni addizioni"
+      },
+      "c2": {
+        "nome": "lezioni potenze"
+      },
+      "fattore": 0.98
+    },
+    {
+      "c1": {
+        "nome": "lezioni potenze"
+      },
+      "c2": {
+        "nome": "lezioni addizioni"
+      },
+      "fattore": 1.02
+    },
+    {
+      "c1": {
+        "nome": "lezioni addizioni"
+      },
+      "c2": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "fattore": 0.84
+    },
+    {
+      "c1": {
+        "nome": "lezioni moltiplicazioni"
+      },
+      "c2": {
+        "nome": "lezioni addizioni"
+      },
+      "fattore": 1.19
+    },
+    {
+      "c1": {
+        "nome": "lezioni addizioni"
+      },
+      "c2": {
+        "nome": "lezioni sottrazioni"
+      },
+      "fattore": 1.68
+    },
+    {
+      "c1": {
+        "nome": "lezioni sottrazioni"
+      },
+      "c2": {
+        "nome": "lezioni addizioni"
+      },
+      "fattore": 0.6
+    },
+    {
+      "c1": {
+        "nome": "lezioni addizioni"
+      },
+      "c2": {
+        "nome": "lezioni divisioni"
+      },
+      "fattore": 1.4
+    },
+    {
+      "c1": {
+        "nome": "lezioni divisioni"
+      },
+      "c2": {
+        "nome": "lezioni addizioni"
+      },
+      "fattore": 0.71
     }
   ],
   "gerarchie": [
     {
       "radice": {
-        "nome": "a",
-        "campo": "a",
+        "nome": "lezioni di musica",
+        "campo": "tipo",
         "dominio": {
-          "1": "",
-          "2": "",
-          "3": ""
+          "teoria": "",
+          "strumento": ""
         },
         "sottocategorie": {
-          "1": {
-            "nome": "1"
+          "teoria": {
+            "nome": "lezioni di teoria musicale",
+            "campo": "materia",
+            "dominio": {
+              "storia della musica": "",
+              "solfeggio": ""
+            },
+            "sottocategorie": {
+              "storia della musica": {
+                "nome": "lezioni di storia della musica"
+              },
+              "solfeggio": {
+                "nome": "lezioni di solfeggio"
+              }
+            }
           },
-          "2": {
-            "nome": "2"
-          },
-          "3": {
-            "nome": "3"
+          "strumento": {
+            "nome": "lezioni di strumento musicale",
+            "campo": "strumento",
+            "dominio": {
+              "chitarra": "",
+              "pianoforte": ""
+            },
+            "sottocategorie": {
+              "chitarra": {
+                "nome": "lezioni di chitarra",
+                "campo": "livello",
+                "dominio": {
+                  "principianti": ""
+                },
+                "sottocategorie": {
+                  "principianti": {
+                    "nome": "lezioni di chitarra per principianti"
+                  }
+                }
+              },
+              "pianoforte": {
+                "nome": "lezioni di pianoforte",
+                "campo": "livello",
+                "dominio": {
+                  "principianti": "",
+                  "medio": ""
+                },
+                "sottocategorie": {
+                  "principianti": {
+                    "nome": "lezioni di pianoforte per principianti"
+                  },
+                  "medio": {
+                    "nome": "lezioni di pianoforte di difficoltà media"
+                  }
+                }
+              }
+            }
           }
         }
       },
       "listaFoglie": [
         {
-          "nome": "1"
+          "nome": "lezioni di storia della musica"
         },
         {
-          "nome": "2"
+          "nome": "lezioni di solfeggio"
         },
         {
-          "nome": "3"
+          "nome": "lezioni di chitarra per principianti"
+        },
+        {
+          "nome": "lezioni di pianoforte per principianti"
+        },
+        {
+          "nome": "lezioni di pianoforte di difficoltà media"
         }
       ],
       "percorso": []
     },
     {
       "radice": {
-        "nome": "b",
-        "campo": "b",
+        "nome": "matematica",
+        "campo": "scuola",
         "dominio": {
-          "4": "",
-          "5": "",
-          "6": ""
+          "medie": "",
+          "elementari": ""
         },
         "sottocategorie": {
-          "4": {
-            "nome": "4"
+          "medie": {
+            "nome": "lezioni matematica medie",
+            "campo": "argomenti",
+            "dominio": {
+              "frazioni": "",
+              "potenze": ""
+            },
+            "sottocategorie": {
+              "frazioni": {
+                "nome": "lezioni frazioni"
+              },
+              "potenze": {
+                "nome": "lezioni potenze"
+              }
+            }
           },
-          "5": {
-            "nome": "5"
-          },
-          "6": {
-            "nome": "6"
+          "elementari": {
+            "nome": "lezioni matematica elementari",
+            "campo": "argomenti",
+            "dominio": {
+              "moltiplicazioni": "*",
+              "sottrazioni": "-",
+              "divisioni": "/",
+              "addizioni": "+"
+            },
+            "sottocategorie": {
+              "moltiplicazioni": {
+                "nome": "lezioni moltiplicazioni"
+              },
+              "sottrazioni": {
+                "nome": "lezioni sottrazioni"
+              },
+              "divisioni": {
+                "nome": "lezioni divisioni"
+              },
+              "addizioni": {
+                "nome": "lezioni addizioni"
+              }
+            }
           }
         }
       },
       "listaFoglie": [
         {
-          "nome": "4"
+          "nome": "lezioni frazioni"
         },
         {
-          "nome": "5"
+          "nome": "lezioni potenze"
         },
         {
-          "nome": "6"
+          "nome": "lezioni moltiplicazioni"
+        },
+        {
+          "nome": "lezioni sottrazioni"
+        },
+        {
+          "nome": "lezioni divisioni"
+        },
+        {
+          "nome": "lezioni addizioni"
         }
       ],
       "percorso": []
-    },
+    }
+  ],
+  "fruitori": [
     {
-      "radice": {
-        "nome": "c",
-        "campo": "c",
-        "dominio": {
-          "7": "",
-          "8": "",
-          "9": ""
-        },
-        "sottocategorie": {
-          "7": {
-            "nome": "7"
-          },
-          "8": {
-            "nome": "8"
-          },
-          "9": {
-            "nome": "9"
-          }
-        }
+      "username": "bono",
+      "password": "b",
+      "comprensiorio": {
+        "nome": "Mazzano",
+        "comuni": [
+          "Ciliverghe",
+          "Mazzano",
+          "Molinetto"
+        ]
       },
-      "listaFoglie": [
-        {
-          "nome": "7"
-        },
-        {
-          "nome": "8"
-        },
-        {
-          "nome": "9"
-        }
-      ],
-      "percorso": []
-    },
-    {
-      "radice": {
-        "nome": "d",
-        "campo": "d",
-        "dominio": {
-          "a": "",
-          "d": "d",
-          "v": ""
-        },
-        "sottocategorie": {
-          "a": {
-            "nome": "f"
-          },
-          "d": {
-            "nome": "1"
-          },
-          "v": {
-            "nome": "v"
-          }
-        }
-      },
-      "listaFoglie": [
-        {
-          "nome": "f"
-        },
-        {
-          "nome": "1"
-        },
-        {
-          "nome": "v"
-        }
-      ],
-      "percorso": []
-    },
-    {
-      "radice": {
-        "nome": "x",
-        "campo": "x",
-        "dominio": {
-          "a": "",
-          "b": "",
-          "c": ""
-        },
-        "sottocategorie": {
-          "a": {
-            "nome": "b"
-          },
-          "b": {
-            "nome": "a"
-          },
-          "c": {
-            "nome": "c"
-          }
-        }
-      },
-      "listaFoglie": [
-        {
-          "nome": "b"
-        },
-        {
-          "nome": "a"
-        },
-        {
-          "nome": "c"
-        }
-      ],
-      "percorso": []
+      "mail": "bono@g.it"
     }
   ]
 }
