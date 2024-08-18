@@ -105,7 +105,7 @@ public class App {
                 				nomeValido=false;                	
                 			}
                 		}
-                	}while(!nomeValido);
+                	} while(!nomeValido);
                 
                     creaGerarchia(root);
                     
@@ -163,7 +163,12 @@ public class App {
         return Math.round(input * 100.0) / 100.0;
     }
     
-    private String getConsistentString(String output) {		//verifica che la stringe inserita abbia almeno un carattere valido
+    
+    /*
+     * Precondizioni: riceve una stringa in input
+     * Postcondizioni: restituisce una stringe che abbia almeno un carattere valido
+     */
+    private String getConsistentString(String output) {		
     	System.out.println(output);
     	
     	Boolean valido = false;
@@ -178,7 +183,8 @@ public class App {
     	return input;
     }
     
-    private String getNome() {		//metodo di controllo per l'unicità del nome nella stessa gerarchia
+    //Postcondizioni: assegna un nome alla categoria solo se unico all'interno della gerarchia di appartenenza
+    private String getNome() {		
     	String nome = "";
     	Boolean nomeValido=false;
     	while(!nomeValido) {
@@ -195,7 +201,7 @@ public class App {
     	return nome;
     }
 
-    
+  //Postcondizioni: crea un configuratore con username non gia presente nell'elenco
     private void registraConfiguratore() {
         Boolean check = false;
         while (!check) {
@@ -225,6 +231,10 @@ public class App {
         }
     }
 
+    /*
+     * Precondizioni: esiste un configuratore
+     * Postcondizioni: manda al menu successivo
+     */
     private Boolean autenticaConfiguratore() {
         System.out.println("Inserisci username: ");
         String username = scanner.nextLine();
@@ -251,7 +261,6 @@ public class App {
 		} while(!comune.equals("0"));
         listaComprensori.add(comprensorio);
         System.out.println("Comprensorio creato con successo." + "\n");
-        
     }
     
     private void visualizzaComprensori() {
@@ -274,7 +283,7 @@ public class App {
        
         int numValori = -1;
         // ciclo per non accettare valori diversi da numeri interi
-        while(numValori <= 0) {
+        while (numValori <= 0) {
         	System.out.print("Quanti valori di dominio vuoi inserire? ");
         	numValori = getInt();
         	if(numValori <= 0)
@@ -292,7 +301,7 @@ public class App {
 	            if(dominio.containsKey(valore))
 	            	System.out.println("Valore duplicato. Riprovare");
 	            else valido = true;
-            }while(!valido);
+            } while(!valido);
             
             dominio.put(valore, descrizione);
         }
@@ -308,7 +317,13 @@ public class App {
         return categoria;
     }
 
-    private void creaGerarchia(Categoria padre) {			// metodo ricorsivo per la creazioni di tutte le sottocategorie in una gerarchia
+    /**
+     * metodo ricorsivo per la creazioni di tutte le sottocategorie in una gerarchia
+     * Precondizione: deve esistere un oggetto Categoria non nullo passato come parametro.
+     * Postcondizione: la gerarchia deve essere aggiunta correttamente alla lista delle gerarchie e le foglie alla lista delle categoria foglia.
+     * @param padre
+     */
+    private void creaGerarchia(Categoria padre) {			
     	System.out.println("categoria selezionata: " + padre.getNome());
     	
     	ArrayList<String> listaDominio = new ArrayList<>(padre.getDominio().keySet());
@@ -341,7 +356,9 @@ public class App {
             }
     }
    }
-    
+    /*
+     * Precondizioni: esiste almeno una gerarchia
+     */
     private void visualizzaGerarchie() {
         if (listaRadici.isEmpty()) {
             System.out.println("Non esiste alcuna gerarchia da visualizzare.\n");
@@ -353,8 +370,11 @@ public class App {
         }
     }
     
-    
-    private GerarchiaCategorie sceltaRadice() {				// modificato -> restiuisce un oggetto gerarchia, da cui è possibile ottenere la radice con getCategoriaRadice
+    /**
+     * restiuisce un oggetto gerarchia, da cui è possibile ottenere la radice con getCategoriaRadice
+     * Precondizione: deve esistere almeno un oggetto Categoria non nullo salvato in listaRadici
+     */
+    private GerarchiaCategorie sceltaRadice() {				
     	if(listaRadici.isEmpty()) {
     		System.out.println("Non esiste alcuna gerarchia da visualizzare.\n");
     		return null;
@@ -384,7 +404,11 @@ public class App {
     }    
 
 
-
+/**
+ * Precondizione: esiste non nullo almeno un oggetto GerarchiaCategorie
+ * Postcondizione: ogni coppia distinta di categorie foglia avrà un fattore di conversione compreso tra 0.5 e 2
+ * @param gerarchia
+ */
     private void setFattoriConversioneGerarchia(GerarchiaCategorie gerarchia) {
     	if(!listaRadici.isEmpty()) {
 	    	ArrayList<CategoriaFoglia> foglie = gerarchia.getListaFoglie();
@@ -415,6 +439,10 @@ public class App {
 	    }
     }
     
+    /**
+     * Precondizione: esiste almeno un fattore di conversione
+     * @param g
+     */
     private void VisualizzaFattoriConversione(GerarchiaCategorie g) {
     	ArrayList<FattoreConversione> fattoriDaVisualizzare = new ArrayList<>();
     	
@@ -446,7 +474,7 @@ public class App {
     	}
     }
 
-
+    // salva i dati inseriti in un file json 
     private void salvaDati() {
         dati.setConfiguratori(Configuratore.getListaConfiguratori());
         dati.setComprensori(listaComprensori);
