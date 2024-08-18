@@ -162,6 +162,8 @@ public class App {
     private void mostraMenuPrincipaleFruitore() {
     	while (loggedFruitore) {
             System.out.println("3. Esplora gerarchie");
+            System.out.println("4. ");
+            System.out.println("5. ");
             System.out.println("0. Esci");
             System.out.print("Seleziona un'opzione: ");
 
@@ -584,47 +586,41 @@ public class App {
     }
 
     
-    private void esploraGerarchia(GerarchiaCategorie g) {
+    private Boolean esploraGerarchia(GerarchiaCategorie g) {
     	
-    	String valore = "";
-    	
-	    	do{
-	    		if(valore.equals("exit"))
-	    			break;
-	    		
-		    	Categoria c = g.getCategoriaCorrente();
-		    	System.out.println("\nCategoria corrente:"+ c.getNome());
-		    	
-		    	Boolean foglia = false;
-		    	for(CategoriaFoglia f: g.getListaFoglie()) {
-		    		if(f.getNome().equals(c.getNome())) {
-		    		System.out.println("Categoria foglia - Premi 0 per tornare indietro o digita 'exit' per uscire");
-		    		foglia = true;}
-		    	}
-		    	if(!foglia){
-			    	System.out.println("Valori disponibili:");
-		    		c.getSottocategorie().forEach((k,v) -> System.out.println(k.toUpperCase() + "->" + v.getNome()));
-			    	System.out.println("Inserisci il valore del campo per navigare nella sottocategoria (0 per tornare indietro - 'exit per uscire)");
-		    	}
-		    	valore = scanner.nextLine();
-		
-	
-			
-			    	if(valore.equals("0")) {
-			    		g.tornaIndietro();
-			    		esploraGerarchia(g);
-			    	}
-			    	if(valore.equals("exit"))
-			    		break;
-			    	if(c.getSottocategorie().keySet().contains(valore)) {
-			   			g.vaiASottocategoria(c.getSottocategorie().get(valore));
-			   			esploraGerarchia(g);
-			    	}
-			    	else {
-			    		System.out.println("Valore non valido. riprovare");
-			    		esploraGerarchia(g);}
+    	Boolean ricerca = true;
+    	do{ 
+	    	Categoria c = g.getCategoriaCorrente();
+	    	System.out.println("\nCategoria corrente:"+ c.getNome());
 	    	
-	    	}while(!valore.equals("exit"));
+	    	Boolean foglia = false;
+	    	for(CategoriaFoglia f: g.getListaFoglie()) {
+	    		if(f.getNome().equals(c.getNome())) {
+	    		System.out.println("Categoria foglia - Premi 0 per tornare indietro o digita 'exit' per uscire");
+	    		foglia = true;}
+	    	}
+	    	if(!foglia){
+		    	System.out.println("Valori disponibili:");
+	    		c.getSottocategorie().forEach((k,v) -> System.out.println(k.toUpperCase() + "->" + v.getNome()));
+		    	System.out.println("Inserisci il valore del campo per navigare nella sottocategoria (0 per tornare indietro - 'exit per uscire)");
+	    	}
+		    	String valore = scanner.nextLine();
+	
+		    	
+		    	if(valore.equals("exit")) {
+		    		ricerca = false;
+		    		return ricerca;
+		    		
+		    	}else if(valore.equals("0")) 
+		    		g.tornaIndietro();
+		    	 else if(c.getSottocategorie().keySet().contains(valore)) 
+		   			g.vaiASottocategoria(c.getSottocategorie().get(valore));
+		    	else 
+		    		System.out.println("Valore non valido. riprovare");
+		    		
+		    	ricerca = esploraGerarchia(g);
+    	}while(ricerca);
+    	return false;
     	
 
     	
