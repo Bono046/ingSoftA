@@ -4,6 +4,8 @@ package it.unibs.ing;
 import java.io.IOException;
 import java.util.*;
 
+import com.sun.javafx.collections.TrackableObservableList;
+
 //import javax.swing.plaf.synth.SynthSpinnerUI;
 
 public class App {
@@ -16,13 +18,15 @@ public class App {
     //liste salvate e caricate su file
     private ArrayList<ComprensorioGeografico> listaComprensori = new ArrayList<>();
     private ArrayList<GerarchiaCategorie> listaOggettiGerarchia = new ArrayList<>();
+    private ArrayList<Proposta> listaProposte= new ArrayList<>(); 
 
     //liste derivate da oggetti salvati su file (non memorizzate direttamente)
     private ArrayList<CategoriaFoglia> listaFoglieTotali = new ArrayList<>();		//lista di tutte le foglie di tutte le gerarchie - serve per assegnare i fattori di conversione a gerarchie diverse
     private ArrayList<Categoria> listaRadici = new ArrayList<>();					//lista di utilit� in vari metodi
     //liste resettate ad ogni gerarchia
     private ArrayList<CategoriaFoglia> listaFoglie = new ArrayList<>();				//lista che va a settare la corrispondente nell'oggetto Grarchia - resettata ad ogni g
-    private ArrayList<String> listaNomi = new ArrayList<>(); 						//lista per verificare unicit� nomi categorie nelle gerarchie
+    private ArrayList<String> listaNomi = new ArrayList<>(); 
+    
    
 
     public App() {
@@ -35,6 +39,7 @@ public class App {
 
         listaComprensori = dati.getComprensori();
         listaOggettiGerarchia = dati.getGerarchie();
+        listaProposte = dati.getProposte();
         Configuratore.setListaConfiguratori(dati.getConfiguratori());
         FattoreConversione.setListaFattori(dati.getFattoriDiConversione());  //tutte le operazioni della lista vengono svolte nella classe FattoreConversione: si sarebbe reso necessario passare ogni volta la lista ad ogni metodo. Cosi si fa un set e un get per caricare e salvare i dati
         Fruitore.setListaFruitori(dati.getFruitori());
@@ -162,6 +167,7 @@ public class App {
     private void mostraMenuPrincipaleFruitore() {
     	while (loggedFruitore) {
             System.out.println("3. Esplora gerarchie");
+            System.out.println("4. Formula proposta scambio");
             System.out.println("0. Esci");
             System.out.print("Seleziona un'opzione: ");
 
@@ -177,7 +183,9 @@ public class App {
                 	esploraGerarchia(g);
 
                     break;
-           // Esci
+                case 4: 
+                	creaProposta();
+                	break;
                 case 0:
                     salvaDati();
                     loggedFruitore=false;
@@ -192,7 +200,9 @@ public class App {
     
     
     
-    private int getInt() {
+    
+
+	private int getInt() {
     	int input = -1;
         try {
             input = scanner.nextInt();
@@ -611,11 +621,64 @@ public class App {
 		    	ricerca = esploraGerarchia(g);
     	}while(ricerca);
     	return false;
-    	
-
-    	
     }
     
+    
+    private void creaProposta() {
+    	CategoriaFoglia richiesta=null;
+    	CategoriaFoglia offerta=null;
+    	String inputRichiesta;
+    	String inputOfferta;
+    	boolean checkRichiesta = false;
+    	boolean checkOfferta = false;
+    	boolean checkDiverso = false;
+		do {
+	    	System.out.println("seleziona la categoria foglia richiesta");
+			System.out.println(listaFoglieTotali.toString());
+			inputRichiesta = scanner.nextLine();
+			for(CategoriaFoglia f : listaFoglieTotali) {
+				if(f.getNome().equals(inputRichiesta)) {
+					richiesta = f;
+					checkRichiesta = true;
+				}
+			}
+			System.out.println("ora seleziona la categoria foglia offerta");
+			System.out.println(listaFoglieTotali.toString());
+			inputOfferta = scanner.nextLine();
+			for(CategoriaFoglia f : listaFoglieTotali) {
+				if(f.getNome().equals(inputOfferta) && !f.getNome().equals(inputRichiesta)) {
+					offerta = f;
+					checkOfferta = true;
+					checkDiverso = true;
+				
+				}
+			}
+		} while (!checkOfferta || !checkRichiesta || !checkDiverso);
+		System.out.println("quante ore per la richiesta?");
+		int durataRichiesta = scanner.nextInt();
+		
+		Proposta proposta = new Proposta(richiesta, offerta, durataRichiesta);
+		calcolaDurataOfferta(proposta);
+		System.out.println(proposta.toString());
+		System.out.println("vuoi confermare la proposta? s/n");
+		String conferma = scanner.nextLine();
+		if (conferma.equals("s"))
+			proposta.setAperto(true);
+			listaProposte.add(proposta);
+	}
+
+	private void calcolaDurataOfferta(Proposta proposta) {
+		int durataOfferta=0;
+		try {
+			FattoreConversione f = FattoreConversione.trovaFattore(proposta.getRichiesta().getNome(), proposta.getOfferta().getNome());
+			durataOfferta = (int) (proposta.getDurataRichiesta() * f.getFattore());
+			proposta.setDurataOfferta(durataOfferta);
+		} catch (NullPointerException e) {
+			System.out.println("non esiste questo fattore di conversione");
+		};
+		
+	}
+	
     
     // salva i dati inseriti in un file json 
     private void salvaDati() {
@@ -624,6 +687,7 @@ public class App {
         dati.setGerarchie(listaOggettiGerarchia);
         dati.setFattoriDiConversione(FattoreConversione.getListaFattori());
         dati.setFruitori(Fruitore.getListaFruitori());
+        dati.setProposte(listaProposte);
 
         
         try {

@@ -14,6 +14,7 @@ public class Dati implements Serializable {
     private ArrayList<FattoreConversione> fattoriDiConversione;
     private ArrayList<GerarchiaCategorie> gerarchie;
     private ArrayList<Fruitore> fruitori;
+    private ArrayList<Proposta> proposte;
 
     public Dati() {
         configuratori = new ArrayList<>();
@@ -21,9 +22,18 @@ public class Dati implements Serializable {
         fattoriDiConversione = new ArrayList<>();
         gerarchie = new ArrayList<>();
         fruitori = new ArrayList<>();
+        proposte = new ArrayList<>();
     }
 
-    public ArrayList<Configuratore> getConfiguratori() {
+    public ArrayList<Proposta> getProposte() {
+		return proposte;
+	}
+
+	public void setProposte(ArrayList<Proposta> proposte) {
+		this.proposte = proposte;
+	}
+
+	public ArrayList<Configuratore> getConfiguratori() {
         return configuratori;
     }
 

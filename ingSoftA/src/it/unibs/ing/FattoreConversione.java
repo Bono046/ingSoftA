@@ -120,6 +120,14 @@ public class FattoreConversione {
 	}
 	
 	
+	public static FattoreConversione trovaFattore(String foglia1, String foglia2) {
+		for(FattoreConversione f: listaFattori) {
+			if( f.getC1().getNome().equals(foglia1) && f.getC2().getNome().equals(foglia2) )
+				return f;
+		}	
+		return null;
+	}
+	
 	
 	@Override
 	public String toString() {
