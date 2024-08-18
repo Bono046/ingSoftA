@@ -19,10 +19,10 @@ public class App {
 
     //liste derivate da oggetti salvati su file (non memorizzate direttamente)
     private ArrayList<CategoriaFoglia> listaFoglieTotali = new ArrayList<>();		//lista di tutte le foglie di tutte le gerarchie - serve per assegnare i fattori di conversione a gerarchie diverse
-    private ArrayList<Categoria> listaRadici = new ArrayList<>();					//lista di utilità in vari metodi
+    private ArrayList<Categoria> listaRadici = new ArrayList<>();					//lista di utilitï¿½ in vari metodi
     //liste resettate ad ogni gerarchia
     private ArrayList<CategoriaFoglia> listaFoglie = new ArrayList<>();				//lista che va a settare la corrispondente nell'oggetto Grarchia - resettata ad ogni g
-    private ArrayList<String> listaNomi = new ArrayList<>(); 						//lista per verificare unicità nomi categorie nelle gerarchie
+    private ArrayList<String> listaNomi = new ArrayList<>(); 						//lista per verificare unicitï¿½ nomi categorie nelle gerarchie
    
 
     public App() {
@@ -107,7 +107,7 @@ public class App {
                 	listaFoglie.clear();
                 	listaNomi.clear();
                 	
-                	//ciclo per verificare l'unicità del nome per ogni gerarchia
+                	//ciclo per verificare l'unicitï¿½ del nome per ogni gerarchia
                 	Categoria root = null;
                 	Boolean nomeValido=true;
                 	do {
@@ -162,8 +162,6 @@ public class App {
     private void mostraMenuPrincipaleFruitore() {
     	while (loggedFruitore) {
             System.out.println("3. Esplora gerarchie");
-            System.out.println("4. ");
-            System.out.println("5. ");
             System.out.println("0. Esci");
             System.out.print("Seleziona un'opzione: ");
 
@@ -179,14 +177,6 @@ public class App {
                 	esploraGerarchia(g);
 
                     break;
-            // 
-                case 4:
-
-                    break;  
-           //    
-                case 5 : 
-
-                	break;
            // Esci
                 case 0:
                     salvaDati();
@@ -279,7 +269,7 @@ public class App {
 
             userValido = Configuratore.userValido(username);
             if (!userValido) {
-                System.out.println("Username già esistente. Riprova con un altro." + "\n");
+                System.out.println("Username giï¿½ esistente. Riprova con un altro." + "\n");
             } else {
                 Configuratore configuratore = new Configuratore(username, password);
                 Configuratore.addToListaConfiguratori(configuratore);
@@ -334,7 +324,7 @@ public class App {
 		
 		        userValido = Fruitore.userValido(username);
 		        if (!userValido) {
-		            System.out.println("Username già esistente. Riprova con un altro." + "\n");
+		            System.out.println("Username giï¿½ esistente. Riprova con un altro." + "\n");
 		        } else {
 		            Fruitore fruitore = new Fruitore(username, password, comprensorio, mail);
 		            Fruitore.addToListaConfiguratori(fruitore);
@@ -387,7 +377,7 @@ public class App {
 
     private Categoria creaCategoria() {
     	
-    	String nome = getNome(); 	//metodo che verifica unicità del nome nella gerarchia
+    	String nome = getNome(); 	//metodo che verifica unicitï¿½ del nome nella gerarchia
         String campo = getConsistentString("Inserisci nome del campo: ");
         HashMap<String, String> dominio = new HashMap<>();
        
@@ -399,7 +389,7 @@ public class App {
         	if(numValori <= 0)
         		System.out.println("scelta non valida. Riprovare");
         }	
-        // ciclo per inserire i valori del dominio - la descrizione è resa facoltativa lasciando la stringa vuota - ciclo do-while per evitare duplicati
+        // ciclo per inserire i valori del dominio - la descrizione ï¿½ resa facoltativa lasciando la stringa vuota - ciclo do-while per evitare duplicati
         for (int i = 0; i < numValori; i++) {
         	String valore;
         	String descrizione;
@@ -420,7 +410,7 @@ public class App {
     }
     
     private CategoriaFoglia creaCategoriaFoglia() {
-    	String nome = getNome(); 		//metodo che verifica unicità del nome nella gerarchia
+    	String nome = getNome(); 		//metodo che verifica unicitï¿½ del nome nella gerarchia
 
         CategoriaFoglia categoria = new CategoriaFoglia(nome);
         System.out.println("Categoria foglia creata con successo." + "\n");
@@ -481,7 +471,7 @@ public class App {
     }
     
     /**
-     * restiuisce un oggetto gerarchia, da cui è possibile ottenere la radice con getCategoriaRadice
+     * restiuisce un oggetto gerarchia, da cui ï¿½ possibile ottenere la radice con getCategoriaRadice
      * Precondizione: deve esistere almeno un oggetto Categoria non nullo salvato in listaRadici
      */
     private GerarchiaCategorie sceltaRadice() {				
@@ -516,7 +506,7 @@ public class App {
 
 /**
  * Precondizione: esiste non nullo almeno un oggetto GerarchiaCategorie
- * Postcondizione: ogni coppia distinta di categorie foglia avrà un fattore di conversione compreso tra 0.5 e 2
+ * Postcondizione: ogni coppia distinta di categorie foglia avrï¿½ un fattore di conversione compreso tra 0.5 e 2
  * @param gerarchia
  */
     private void setFattoriConversioneGerarchia(GerarchiaCategorie gerarchia) {
@@ -529,7 +519,7 @@ public class App {
 			
 	        for (CategoriaFoglia c1 : foglie) {
 	            for (CategoriaFoglia c2 : listaFoglieTotali) {
-	                if ( (!c1.getNome().equals(c2.getNome())) && (!FattoreConversione.esisteFattore(c1, c2)) ) {		//if(c1 diversa da s2)&(Fattore(c1,c2) non già esistente)
+	                if ( (!c1.getNome().equals(c2.getNome())) && (!FattoreConversione.esisteFattore(c1, c2)) ) {		//if(c1 diversa da s2)&(Fattore(c1,c2) non giï¿½ esistente)
 	                	Boolean valido= false;
 	                	while(!valido) {
 	                		System.out.println("Inserire il fattore di conversione da " + c1.getNome().toUpperCase() + " a " + c2.getNome().toUpperCase() + ":");
@@ -545,7 +535,7 @@ public class App {
 	        }
 	        // NUMERO FAT.CONV. = N.FOGLIE * (N.FOGLIE-1) -> COPPIE ORDINATE DISTINTE ==> POSSIBILE INVARIANTE DI CLASSSE
 	        if(FattoreConversione.getListaFattori().size() == (listaFoglieTotali.size() * (listaFoglieTotali.size()-1)))
-	        	System.out.println("Tutte le categorie foglia hanno già assegnato un fattore di conversione\n");
+	        	System.out.println("Tutte le categorie foglia hanno giï¿½ assegnato un fattore di conversione\n");
 	    }
     }
     
@@ -596,13 +586,13 @@ public class App {
 	    	Boolean foglia = false;
 	    	for(CategoriaFoglia f: g.getListaFoglie()) {
 	    		if(f.getNome().equals(c.getNome())) {
-	    		System.out.println("Categoria foglia - Premi 0 per tornare indietro o digita 'exit' per uscire");
+	    		System.out.println("Categoria foglia - Premi 0 per tornare indietro nella gerarchia o digita 'exit' per uscire");
 	    		foglia = true;}
 	    	}
 	    	if(!foglia){
 		    	System.out.println("Valori disponibili:");
 	    		c.getSottocategorie().forEach((k,v) -> System.out.println(k.toUpperCase() + "->" + v.getNome()));
-		    	System.out.println("Inserisci il valore del campo per navigare nella sottocategoria (0 per tornare indietro - 'exit per uscire)");
+		    	System.out.println("Inserisci il valore del campo per navigare nella sottocategoria (0 per tornare indietro nella gerarchia - 'exit per uscire)");
 	    	}
 		    	String valore = scanner.nextLine();
 	

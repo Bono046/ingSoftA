@@ -1089,6 +1089,44 @@
           }
         }
       },
+      "categoriaCorrente": {
+        "nome": "lezioni di strumento musicale",
+        "campo": "strumento",
+        "dominio": {
+          "chitarra": "",
+          "pianoforte": ""
+        },
+        "sottocategorie": {
+          "chitarra": {
+            "nome": "lezioni di chitarra",
+            "campo": "livello",
+            "dominio": {
+              "principianti": ""
+            },
+            "sottocategorie": {
+              "principianti": {
+                "nome": "lezioni di chitarra per principianti"
+              }
+            }
+          },
+          "pianoforte": {
+            "nome": "lezioni di pianoforte",
+            "campo": "livello",
+            "dominio": {
+              "principianti": "",
+              "medio": ""
+            },
+            "sottocategorie": {
+              "principianti": {
+                "nome": "lezioni di pianoforte per principianti"
+              },
+              "medio": {
+                "nome": "lezioni di pianoforte di difficoltà media"
+              }
+            }
+          }
+        }
+      },
       "listaFoglie": [
         {
           "nome": "lezioni di storia della musica"
@@ -1106,7 +1144,72 @@
           "nome": "lezioni di pianoforte di difficoltà media"
         }
       ],
-      "percorso": []
+      "percorso": [
+        {
+          "nome": "lezioni di musica",
+          "campo": "tipo",
+          "dominio": {
+            "teoria": "",
+            "strumento": ""
+          },
+          "sottocategorie": {
+            "teoria": {
+              "nome": "lezioni di teoria musicale",
+              "campo": "materia",
+              "dominio": {
+                "storia della musica": "",
+                "solfeggio": ""
+              },
+              "sottocategorie": {
+                "storia della musica": {
+                  "nome": "lezioni di storia della musica"
+                },
+                "solfeggio": {
+                  "nome": "lezioni di solfeggio"
+                }
+              }
+            },
+            "strumento": {
+              "nome": "lezioni di strumento musicale",
+              "campo": "strumento",
+              "dominio": {
+                "chitarra": "",
+                "pianoforte": ""
+              },
+              "sottocategorie": {
+                "chitarra": {
+                  "nome": "lezioni di chitarra",
+                  "campo": "livello",
+                  "dominio": {
+                    "principianti": ""
+                  },
+                  "sottocategorie": {
+                    "principianti": {
+                      "nome": "lezioni di chitarra per principianti"
+                    }
+                  }
+                },
+                "pianoforte": {
+                  "nome": "lezioni di pianoforte",
+                  "campo": "livello",
+                  "dominio": {
+                    "principianti": "",
+                    "medio": ""
+                  },
+                  "sottocategorie": {
+                    "principianti": {
+                      "nome": "lezioni di pianoforte per principianti"
+                    },
+                    "medio": {
+                      "nome": "lezioni di pianoforte di difficoltà media"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     {
       "radice": {
