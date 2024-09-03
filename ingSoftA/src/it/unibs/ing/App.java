@@ -8,18 +8,18 @@ import java.util.*;
 public class App {
     private Dati dati;
     private Scanner scanner = new Scanner(System.in);
-    private Boolean loggedConfig = false;
-    private Boolean loggedFruitore = false;
+    private Boolean loggedAsConfig = false;
+    private Boolean loggedAsFruitore = false;
+
 
     
     //liste salvate e caricate su file
     private ArrayList<ComprensorioGeografico> listaComprensori = new ArrayList<>();
     private ArrayList<GerarchiaCategorie> listaOggettiGerarchia = new ArrayList<>();
-    private ArrayList<Proposta> listaProposte= new ArrayList<>(); 
 
     //liste derivate da oggetti salvati su file (non memorizzate direttamente)
     private ArrayList<CategoriaFoglia> listaFoglieTotali = new ArrayList<>();		//lista di tutte le foglie di tutte le gerarchie - serve per assegnare i fattori di conversione a gerarchie diverse
-    private ArrayList<Categoria> listaRadici = new ArrayList<>();					//lista di utilitï¿½ in vari metodi
+    private ArrayList<Categoria> listaRadici = new ArrayList<>();					//lista di utilità in vari metodi
     //liste resettate ad ogni gerarchia
     private ArrayList<CategoriaFoglia> listaFoglie = new ArrayList<>();				//lista che va a settare la corrispondente nell'oggetto Grarchia - resettata ad ogni g
     private ArrayList<String> listaNomi = new ArrayList<>(); 
@@ -36,10 +36,10 @@ public class App {
 
         listaComprensori = dati.getComprensori();
         listaOggettiGerarchia = dati.getGerarchie();
-        listaProposte = dati.getProposte();
         Configuratore.setListaConfiguratori(dati.getConfiguratori());
         FattoreConversione.setListaFattori(dati.getFattoriDiConversione());  //tutte le operazioni della lista vengono svolte nella classe FattoreConversione: si sarebbe reso necessario passare ogni volta la lista ad ogni metodo. Cosi si fa un set e un get per caricare e salvare i dati
         Fruitore.setListaFruitori(dati.getFruitori());
+        Proposta.setListaProposte(dati.getProposte());
 
         
         // ciclo di inizializzazione delle liste radici e foglieTotali, non salvate su file direttamente ma facilmente derivabili dall'oggetto Gerarchia
@@ -51,19 +51,16 @@ public class App {
 
     public void start() {
         mostraMenuAutenticazione();
-        if(loggedConfig)
-        	mostraMenuPrincipaleConfig();
-        if(loggedFruitore)
-        	mostraMenuPrincipaleFruitore();
     }
 
     private void mostraMenuAutenticazione() {
-        while (!loggedConfig && !loggedFruitore) {
+        while (!loggedAsConfig && !loggedAsFruitore) {
             System.out.println("Menu Principale:");
             System.out.println("1. Primo accesso Configuratore");
             System.out.println("2. Autenticazione Configuratore");
             System.out.println("3. Primo accesso fruitore");	
             System.out.println("4. Autenticazione fruitore");
+            System.out.println("0. Esci dal programma");
             int scelta = getInt();
 
             switch (scelta) {
@@ -71,14 +68,21 @@ public class App {
                     registraConfiguratore();
                     break;
                 case 2:
-                    loggedConfig = autenticaConfiguratore();
+                    loggedAsConfig = autenticaConfiguratore();
+                    mostraMenuPrincipaleConfig();
                     break;
                 case 3:
                 	registraFruitore();
                 	break;
                 case 4:
-                	loggedFruitore = autenticaFruitore();
+                    Fruitore userLogged = autenticaFruitore();
+                	if(userLogged != null)
+                		loggedAsFruitore = true;
+                	 	mostraMenuPrincipaleFruitore(userLogged.getUsername());
                 	break;
+                case 0: 
+                	System.out.println("Arrivederci!\n");
+                	return;
               
                 default:
                     System.out.println("Opzione non valida. Riprova" + "\n");
@@ -87,7 +91,7 @@ public class App {
     }
 
     private void mostraMenuPrincipaleConfig() {
-        while (loggedConfig) {
+        while (loggedAsConfig) {
             System.out.println("1. Crea Comprensorio Geografico");
             System.out.println("2. Crea Gerarchia di Categorie");
             System.out.println("3. Stabilisci Fattore di Conversione");
@@ -152,7 +156,7 @@ public class App {
            // Esci
                 case 0:
                     salvaDati();
-                    loggedConfig=false;
+                    loggedAsConfig=false;
                     System.out.println("Arrivederci!");
                     return;
                 default:
@@ -161,11 +165,11 @@ public class App {
         }
     }
 
-    private void mostraMenuPrincipaleFruitore() {
-    	while (loggedFruitore) {
+    private void mostraMenuPrincipaleFruitore(String user) {
+    	while (loggedAsFruitore) {
             System.out.println("3. Esplora gerarchie");
             System.out.println("4. Formula proposta scambio");
-            System.out.println("5. Visualziza proposta scambio");
+            System.out.println("5. Visualizza proposte scambio");
             System.out.println("0. Esci");
             System.out.print("Seleziona un'opzione: ");
 
@@ -179,17 +183,19 @@ public class App {
                 	esploraGerarchia(g);
                     break;
                 case 4: 
-                	creaProposta();
+                	creaProposta(user);
                 	break;
                 case 5:
-                	for(Proposta p : listaProposte) {
+                	
+                	for(Proposta p : Proposta.getListaProposte()) {
                 		System.out.println(p.toString());
                 	}
+                	System.out.println();
                 	break;
                 case 0:
                     salvaDati();
-                    loggedFruitore=false;
-                    System.out.println("Arrivederci!");
+                    loggedAsFruitore=false;
+                    System.out.println("Arrivederci!\n");
                     return;
                 default:
                     System.out.println("Opzione non valida. Riprova" + "\n");
@@ -344,19 +350,19 @@ public class App {
     	}catch (NullPointerException e) { System.out.println("Nessun comprensorio disponibile."); }
     }
     
-    private Boolean autenticaFruitore() {
+    private Fruitore autenticaFruitore() {
         System.out.println("Inserisci username: ");
         String username = scanner.nextLine();
         System.out.println("Inserisci password: ");
         String password = scanner.nextLine();
 
-        Boolean check = Fruitore.loginFruitore(username, password);
-        if (check) {
+        Fruitore user = Fruitore.loginFruitore(username, password);
+        if (user != null) {
             System.out.println("Autenticazione avvenuta con successo. Procedi con il seguente menu:");
-        	loggedFruitore= true;
+            return user;
         }else
             System.out.println("Credenziali non valide. Riprova" + "\n");
-        return check;
+        return null;
     }
     
     
@@ -623,7 +629,7 @@ public class App {
     }
     
     
-    private void creaProposta() {
+    private void creaProposta(String user) {
     	CategoriaFoglia richiesta=null;
     	CategoriaFoglia offerta=null;
     	String inputRichiesta;
@@ -645,7 +651,7 @@ public class App {
 					checkRichiesta = true;
 				}
 			}
-			System.out.println("ora seleziona la categoria foglia offerta");
+			System.out.println("seleziona la categoria foglia offerta");
 			System.out.println(listaFoglieTotali.toString());
 			inputOfferta = scanner.nextLine();
 			for(CategoriaFoglia f : listaFoglieTotali) {
@@ -662,9 +668,12 @@ public class App {
 		} while (!checkOfferta || !checkRichiesta || !checkDiverso);
 		
 		System.out.println("quante ore per la richiesta?");
-		int durataRichiesta = getInt();
+		int durataRichiesta;
+		do{
+			durataRichiesta = getInt();
+		} while(durataRichiesta < 0);
 		
-		Proposta proposta = new Proposta(richiesta, offerta, durataRichiesta);
+		Proposta proposta = new Proposta(richiesta, offerta, durataRichiesta, user);
 		calcolaDurataOfferta(proposta);
 		System.out.println(proposta.toString());
 		System.out.println("vuoi confermare la proposta? s/n");
@@ -672,11 +681,11 @@ public class App {
 		do {
 			conferma = scanner.nextLine();
 			if (conferma.equals("s")) {
-				proposta.setAperto(true);
-				listaProposte.add(proposta);
-				System.out.println("Proposta confermata");;
+				proposta.accettaProposta();
+				Proposta.addProposta(proposta);
+				System.out.println("Proposta confermata\n");;
 			} else if(conferma.equals("n"))
-				System.out.println("Proposta non confermata");
+				System.out.println("Proposta non confermata\n");
 			else System.out.println("Input non valido. Riprovare");
 		} while(!(conferma.equals("s") || conferma.equals("n")));
     }
@@ -701,7 +710,8 @@ public class App {
         dati.setGerarchie(listaOggettiGerarchia);
         dati.setFattoriDiConversione(FattoreConversione.getListaFattori());
         dati.setFruitori(Fruitore.getListaFruitori());
-        dati.setProposte(listaProposte);
+        dati.setProposte(Proposta.getListaProposte());
+        
 
         
         try {

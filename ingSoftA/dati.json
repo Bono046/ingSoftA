@@ -1303,25 +1303,39 @@
   "proposte": [
     {
       "richiesta": {
-        "nome": "lezioni di chitarra per principianti"
+        "nome": "lezioni di storia della musica"
       },
       "offerta": {
         "nome": "lezioni di solfeggio"
       },
-      "durataRichiesta": 7,
-      "durataOfferta": 8,
-      "aperto": true
+      "durataRichiesta": 10,
+      "durataOfferta": 10,
+      "stato": "APERTA",
+      "username": "bono"
     },
     {
       "richiesta": {
-        "nome": "lezioni di solfeggio"
-      },
-      "offerta": {
         "nome": "lezioni di storia della musica"
       },
-      "durataRichiesta": 15,
-      "durataOfferta": 14,
-      "aperto": true
+      "offerta": {
+        "nome": "lezioni di solfeggio"
+      },
+      "durataRichiesta": 9,
+      "durataOfferta": 9,
+      "stato": "APERTA",
+      "username": "bono"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni di pianoforte per principianti"
+      },
+      "offerta": {
+        "nome": "lezioni potenze"
+      },
+      "durataRichiesta": 7,
+      "durataOfferta": 6,
+      "stato": "APERTA",
+      "username": "bono"
     }
   ]
 }
