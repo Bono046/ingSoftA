@@ -630,43 +630,40 @@ public class App {
     }
     
     
+	private CategoriaFoglia getFogliaDaGerarchia(GerarchiaCategorie g) {
+		ArrayList<CategoriaFoglia> foglie = g.getListaFoglie();
+		boolean check = false;
+		do{
+			String input = getConsistentString(foglie.toString());
+            for(CategoriaFoglia c : foglie) {
+                if (input.equals(c.getNome())) {
+                	check=true;
+                	return c;  
+                }
+            }
+            if(!check)
+            	System.out.println("input non valido. Riprovare");
+		}while(!check);
+        return null;	
+	}
+	
+	
     private void creaProposta(String user) {
-    	CategoriaFoglia richiesta=null;
-    	CategoriaFoglia offerta=null;
-    	String inputRichiesta;
-    	String inputOfferta;
-    	boolean checkRichiesta = false;
-    	boolean checkOfferta = false;
+    	CategoriaFoglia richiesta = null;
+    	CategoriaFoglia offerta = null;
     	boolean checkDiverso = false;
 		do {
-			checkRichiesta = false;
-	    	checkOfferta = false;
-	    	checkDiverso = false;
+	    	System.out.println("Seleziona la categoria foglia richiesta\n"); 
+	    	richiesta = getFogliaDaGerarchia(sceltaRadice());
 	    	
-	    	System.out.println("seleziona la categoria foglia richiesta");
-			System.out.println(listaFoglieTotali.toString());
-			inputRichiesta = scanner.nextLine();
-			for(CategoriaFoglia f : listaFoglieTotali) {
-				if(f.getNome().equals(inputRichiesta)) {
-					richiesta = f;
-					checkRichiesta = true;
-				}
-			}
-			System.out.println("seleziona la categoria foglia offerta");
-			System.out.println(listaFoglieTotali.toString());
-			inputOfferta = scanner.nextLine();
-			for(CategoriaFoglia f : listaFoglieTotali) {
-				if(f.getNome().equals(inputOfferta)) {
-					if(!f.getNome().equals(inputRichiesta)) {
-					offerta = f;
-					checkOfferta = true;
-					checkDiverso = true;
-				}}
-			}
-			if(!checkRichiesta || !checkOfferta || !checkDiverso)
-				System.out.println("Inserimento non valido. Riprovare\n");
+	    	System.out.println("Seleziona la categoria foglia offerta\n"); 
+	    	offerta = getFogliaDaGerarchia(sceltaRadice());
 
-		} while (!checkOfferta || !checkRichiesta || !checkDiverso);
+			if(richiesta.getNome().equals(offerta.getNome()))
+				System.out.println("Non può essere selezionata la stessa categoria. Riprovare\n");
+			else checkDiverso = true;
+
+		} while (!checkDiverso);
 		
 		System.out.println("quante ore per la richiesta?");
 		int durataRichiesta;
