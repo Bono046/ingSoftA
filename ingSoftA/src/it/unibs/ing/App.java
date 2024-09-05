@@ -19,7 +19,7 @@ public class App {
 
     //liste derivate da oggetti salvati su file (non memorizzate direttamente)
     private ArrayList<CategoriaFoglia> listaFoglieTotali = new ArrayList<>();		//lista di tutte le foglie di tutte le gerarchie - serve per assegnare i fattori di conversione a gerarchie diverse
-    private ArrayList<Categoria> listaRadici = new ArrayList<>();					//lista di utilit� in vari metodi
+    private ArrayList<Categoria> listaRadici = new ArrayList<>();					//lista di utilità in vari metodi
     //liste resettate ad ogni gerarchia
     private ArrayList<CategoriaFoglia> listaFoglie = new ArrayList<>();				//lista che va a settare la corrispondente nell'oggetto Grarchia - resettata ad ogni g
     private ArrayList<String> listaNomi = new ArrayList<>(); 
@@ -76,9 +76,10 @@ public class App {
                 	break;
                 case 4:
                     Fruitore userLogged = autenticaFruitore();
-                	if(userLogged != null)
+                	if(userLogged != null){
                 		loggedAsFruitore = true;
                 	 	mostraMenuPrincipaleFruitore(userLogged.getUsername());
+			}	
                 	break;
                 case 0: 
                 	System.out.println("Arrivederci!\n");
@@ -113,7 +114,7 @@ public class App {
                 	listaFoglie.clear();
                 	listaNomi.clear();
                 	
-                	//ciclo per verificare l'unicit� del nome per ogni gerarchia
+                	//ciclo per verificare l'unicitï¿½ del nome per ogni gerarchia
                 	Categoria root = null;
                 	Boolean nomeValido=true;
                 	do {
@@ -285,7 +286,7 @@ public class App {
 
             userValido = Configuratore.userValido(username);
             if (!userValido) {
-                System.out.println("Username gi� esistente. Riprova con un altro." + "\n");
+                System.out.println("Username già esistente. Riprova con un altro." + "\n");
             } else {
                 Configuratore configuratore = new Configuratore(username, password);
                 Configuratore.addToListaConfiguratori(configuratore);
@@ -340,7 +341,7 @@ public class App {
 		
 		        userValido = Fruitore.userValido(username);
 		        if (!userValido) {
-		            System.out.println("Username gi� esistente. Riprova con un altro." + "\n");
+		            System.out.println("Username già esistente. Riprova con un altro." + "\n");
 		        } else {
 		            Fruitore fruitore = new Fruitore(username, password, comprensorio, mail);
 		            Fruitore.addToListaConfiguratori(fruitore);
@@ -393,7 +394,7 @@ public class App {
 
     private Categoria creaCategoria() {
     	
-    	String nome = getNome(); 	//metodo che verifica unicit� del nome nella gerarchia
+    	String nome = getNome(); 	//metodo che verifica unicitï¿½ del nome nella gerarchia
         String campo = getConsistentString("Inserisci nome del campo: ");
         HashMap<String, String> dominio = new HashMap<>();
        
@@ -405,7 +406,7 @@ public class App {
         	if(numValori <= 0)
         		System.out.println("scelta non valida. Riprovare");
         }	
-        // ciclo per inserire i valori del dominio - la descrizione � resa facoltativa lasciando la stringa vuota - ciclo do-while per evitare duplicati
+        // ciclo per inserire i valori del dominio - la descrizione ï¿½ resa facoltativa lasciando la stringa vuota - ciclo do-while per evitare duplicati
         for (int i = 0; i < numValori; i++) {
         	String valore;
         	String descrizione;
@@ -426,7 +427,7 @@ public class App {
     }
     
     private CategoriaFoglia creaCategoriaFoglia() {
-    	String nome = getNome(); 		//metodo che verifica unicit� del nome nella gerarchia
+    	String nome = getNome(); 		//metodo che verifica unicitï¿½ del nome nella gerarchia
 
         CategoriaFoglia categoria = new CategoriaFoglia(nome);
         System.out.println("Categoria foglia creata con successo." + "\n");
@@ -487,7 +488,7 @@ public class App {
     }
     
     /**
-     * restiuisce un oggetto gerarchia, da cui � possibile ottenere la radice con getCategoriaRadice
+     * restiuisce un oggetto gerarchia, da cui è possibile ottenere la radice con getCategoriaRadice
      * Precondizione: deve esistere almeno un oggetto Categoria non nullo salvato in listaRadici
      */
     private GerarchiaCategorie sceltaRadice() {				
@@ -522,7 +523,7 @@ public class App {
 
 /**
  * Precondizione: esiste non nullo almeno un oggetto GerarchiaCategorie
- * Postcondizione: ogni coppia distinta di categorie foglia avr� un fattore di conversione compreso tra 0.5 e 2
+ * Postcondizione: ogni coppia distinta di categorie foglia avrà un fattore di conversione compreso tra 0.5 e 2
  * @param gerarchia
  */
     private void setFattoriConversioneGerarchia(GerarchiaCategorie gerarchia) {
@@ -535,7 +536,7 @@ public class App {
 			
 	        for (CategoriaFoglia c1 : foglie) {
 	            for (CategoriaFoglia c2 : listaFoglieTotali) {
-	                if ( (!c1.getNome().equals(c2.getNome())) && (!FattoreConversione.esisteFattore(c1, c2)) ) {		//if(c1 diversa da s2)&(Fattore(c1,c2) non gi� esistente)
+	                if ( (!c1.getNome().equals(c2.getNome())) && (!FattoreConversione.esisteFattore(c1, c2)) ) {		//if(c1 diversa da s2)&(Fattore(c1,c2) non giï¿½ esistente)
 	                	Boolean valido= false;
 	                	while(!valido) {
 	                		System.out.println("Inserire il fattore di conversione da " + c1.getNome().toUpperCase() + " a " + c2.getNome().toUpperCase() + ":");
@@ -550,7 +551,7 @@ public class App {
 	            }
 	        }
 	        if(FattoreConversione.getListaFattori().size() == (listaFoglieTotali.size() * (listaFoglieTotali.size()-1)))
-	        	System.out.println("Tutte le categorie foglia hanno gi� assegnato un fattore di conversione\n");
+	        	System.out.println("Tutte le categorie foglia hanno già assegnato un fattore di conversione\n");
 	    }
     }
     
