@@ -56,8 +56,6 @@ public class FattoreConversione {
 		FattoreConversione fattore = new FattoreConversione(c1, c3, f13);
 		FattoreConversione f_inverso = creaFattoreInverso(fattore);
 		
-		//algoritmo per aggiungere in automatico tutti i fattori deducibili
-		
 		 ArrayList<FattoreConversione> fattoriDaAggiungere = new ArrayList<>();
 		 double valoreFattore;
 		 
@@ -67,22 +65,10 @@ public class FattoreConversione {
 		} else {
 			for(FattoreConversione fact : listaFattori) {
 				CategoriaFoglia c2 = fact.getC2();
-		/*		
-				if(fact.getC1().getNome().equals(c2.getNome())) {
-					if(c3.getNome().equals(c1.getNome()) == false) {
-						valoreFattore = Math.round((f12*fact.getFattore()) * 100.0) / 100.0;
-						FattoreConversione newFattore = new FattoreConversione(c1, c3, valoreFattore);
-						//-----------------------------------------
-						System.out.println("c1 c3" + newFattore.toString());
-						//-----------------------------------------
-						fattoriDaAggiungere.add(newFattore);
-						fattoriDaAggiungere.add(creaFattoreInverso(newFattore));
-					}
-				}
-				*/
 				if(fact.getC1().getNome().equals(c1.getNome())) {
 					if(c3.getNome().equals(c2.getNome()) == false) {
 						valoreFattore = Math.round((f13 / fact.getFattore()) * 100.0) / 100.0;
+						valoreFattore = Math.max(0.5, Math.min(2.0, valoreFattore));
 						FattoreConversione newFattore = new FattoreConversione(c2, c3, valoreFattore);
 						fattoriDaAggiungere.add(newFattore);
 						fattoriDaAggiungere.add(creaFattoreInverso(newFattore));
@@ -126,11 +112,17 @@ public class FattoreConversione {
 			if( f.getC1().getNome().equals(s) || f.getC2().getNome().equals(s) )
 				fattoriDaVisualizzare.add(f);
 		}
-		
 		return fattoriDaVisualizzare;
-		
 	}
 	
+	
+	public static FattoreConversione trovaFattore(String foglia1, String foglia2) {
+		for(FattoreConversione f: listaFattori) {
+			if( f.getC1().getNome().equals(foglia1) && f.getC2().getNome().equals(foglia2) )
+				return f;
+		}	
+		return null;
+	}
 	
 	
 	@Override

@@ -11,6 +11,8 @@ public class ComprensorioGeografico implements Serializable {
 	private String nome;
     private Set<String> comuni;
     
+    private static ArrayList<ComprensorioGeografico> listaComprensori = new ArrayList<>();
+    
 
     public ComprensorioGeografico(String nome) {
         this.nome = nome;
@@ -45,10 +47,27 @@ public class ComprensorioGeografico implements Serializable {
     public boolean contieneComune(String comune) {
         return comuni.contains(comune);
     }
+    
+    
 
-    @Override
+    public static ArrayList<ComprensorioGeografico> getListaComprensori() {
+		return listaComprensori;
+	}
+
+	public static void setListaComprensori(ArrayList<ComprensorioGeografico> lista) {
+		for(ComprensorioGeografico c : lista) {
+			listaComprensori.add(c);
+		}
+	}
+
+	@Override
     public String toString() {
         return nome + " -> " +
                 "comuni = " + comuni;
     }
+
+	public static void addComprensorio(ComprensorioGeografico comprensorio) {
+		listaComprensori.add(comprensorio);
+		
+	}
 }

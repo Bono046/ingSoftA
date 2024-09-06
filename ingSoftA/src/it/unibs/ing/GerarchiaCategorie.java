@@ -11,7 +11,11 @@ public class GerarchiaCategorie {
     private ArrayList<CategoriaFoglia> listaFoglie = new ArrayList<>();
     private Stack<Categoria> percorso;
 
+    private static ArrayList<GerarchiaCategorie> listaOggettiGerarchia = new ArrayList<>();
 
+    
+    
+    
 	public GerarchiaCategorie(Categoria radice) {
 		this.radice = radice;
         this.percorso = new Stack<>();
@@ -71,4 +75,27 @@ public class GerarchiaCategorie {
         }
         return false; // Non ci sono categorie superiori
     }
+
+	public static ArrayList<GerarchiaCategorie> getListaOggettiGerarchia() {
+		return listaOggettiGerarchia;
+	}
+
+
+	public static void setListaOggettiGerarchia(ArrayList<GerarchiaCategorie> gerarchie) {
+		GerarchiaCategorie.listaOggettiGerarchia = gerarchie;
+	}
+	
+	public static void addGerarchia(GerarchiaCategorie g) {
+		GerarchiaCategorie.listaOggettiGerarchia.add(g);
+	}
+    
+    public static ArrayList<Categoria> getListaRadici() {
+    	ArrayList<Categoria> listaRadici = new ArrayList<>(); 
+    	
+    	for(GerarchiaCategorie c : listaOggettiGerarchia) {
+    		listaRadici.add(c.getCategoriaRadice());
+    	}
+    	return listaRadici;
+    }
+    
 }

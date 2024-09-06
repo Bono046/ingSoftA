@@ -32,5 +32,85 @@
     }
   ],
   "fattoriDiConversione": [],
-  "gerarchie": []
+  "gerarchie": [
+    {
+      "radice": {
+        "nome": "matematica",
+        "campo": "scuola",
+        "dominio": {
+          "medie": "",
+          "superiori": ""
+        },
+        "sottocategorie": {
+          "medie": {
+            "nome": "lezioni medie",
+            "campo": "operazioni",
+            "dominio": {
+              "meno": "",
+              "piu": ""
+            },
+            "sottocategorie": {
+              "meno": {
+                "nome": "lezioni piu"
+              },
+              "piu": {
+                "nome": "lezioni meno"
+              }
+            }
+          },
+          "superiori": {
+            "nome": "lezioni superiori",
+            "campo": "operazioni",
+            "dominio": {
+              "lezioni per": "",
+              "lezioni diviso": ""
+            },
+            "sottocategorie": {
+              "lezioni per": {
+                "nome": "lezioni per"
+              },
+              "lezioni diviso": {
+                "nome": "lezioni diviso"
+              }
+            }
+          }
+        }
+      },
+      "listaFoglie": [
+        {
+          "nome": "lezioni piu"
+        },
+        {
+          "nome": "lezioni meno"
+        },
+        {
+          "nome": "lezioni per"
+        },
+        {
+          "nome": "lezioni diviso"
+        }
+      ],
+      "percorso": []
+    },
+    {
+      "radice": {
+        "nome": "forme",
+        "campo": "e",
+        "dominio": {
+          "f": ""
+        },
+        "sottocategorie": {
+          "f": {
+            "nome": "quadrato"
+          }
+        }
+      },
+      "listaFoglie": [
+        {
+          "nome": "quadrato"
+        }
+      ],
+      "percorso": []
+    }
+  ]
 }
