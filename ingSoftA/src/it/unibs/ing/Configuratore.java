@@ -1,11 +1,8 @@
 package it.unibs.ing;
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Configuratore implements Serializable {
+public class Configuratore {
     
-	private static final long serialVersionUID = 1L;
-	
     private static final String USERNAME_PREDEFINITO = "user";
     private static final String PASSWORD_PREDEFINITO = "password";
     

@@ -1,14 +1,11 @@
 package it.unibs.ing;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
-public class Dati implements Serializable {
+public class Dati {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 4498646267228832155L;
 	private ArrayList<Configuratore> configuratori;
     private ArrayList<ComprensorioGeografico> comprensori;
     private ArrayList<FattoreConversione> fattoriDiConversione;

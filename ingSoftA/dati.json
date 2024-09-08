@@ -111,6 +111,49 @@
         }
       ],
       "percorso": []
+    },
+    {
+      "radice": {
+        "nome": "musica",
+        "campo": "l",
+        "dominio": {
+          "piano": "",
+          "chitarra": ""
+        },
+        "sottocategorie": {
+          "piano": {
+            "nome": "livello",
+            "campo": "livello",
+            "dominio": {
+              "esp": "",
+              "princi": ""
+            },
+            "sottocategorie": {
+              "esp": {
+                "nome": "piano esperto"
+              },
+              "princi": {
+                "nome": "piano princp"
+              }
+            }
+          },
+          "chitarra": {
+            "nome": "lezioni chitarra"
+          }
+        }
+      },
+      "listaFoglie": [
+        {
+          "nome": "piano esperto"
+        },
+        {
+          "nome": "piano princp"
+        },
+        {
+          "nome": "lezioni chitarra"
+        }
+      ],
+      "percorso": []
     }
   ]
 }

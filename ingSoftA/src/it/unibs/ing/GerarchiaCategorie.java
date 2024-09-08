@@ -98,4 +98,22 @@ public class GerarchiaCategorie {
     	return listaRadici;
     }
     
+    public CategoriaFoglia getFogliaDaNome(String nome) {
+    	for(CategoriaFoglia c: listaFoglie) {
+    		if(c.getNome().equals(nome))
+    			return c;
+    	}
+    	return null;
+    }
+    
+    public static boolean checkNomeGerarchia(String nome) {
+    	for(Categoria c : getListaRadici()) {
+    		if(c.getNome().equals(nome))
+    			return false;
+    	}
+    	return true;
+    }
+    
+    
+    
 }

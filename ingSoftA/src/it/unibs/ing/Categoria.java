@@ -1,11 +1,9 @@
 package it.unibs.ing;
 
-import java.io.Serializable;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
-class Categoria implements Serializable {
+
+class Categoria  {
     protected String nome;
     private String campo;
     private HashMap<String, String> dominio;
@@ -46,48 +44,30 @@ class Categoria implements Serializable {
 
     public boolean isFoglia() {
         return false;
-    }
-
-
-    
-    // METODO CHE STAMPA OUTPUT FUORI DALLA CLASSE APP - DA RIVEDERE
-    public void stampaAlbero(String indentazione) {
-	       
-    	try {
-    	   System.out.println(indentazione + "- " + nome + "\t(dominio: " + dominio.keySet() + ")");
-       } catch (NullPointerException e) {
-    	   System.out.println(indentazione + "- " + nome + "\t(foglia)");
-       }
-
-        // Se ci sono sottocategorie, le visitiamo ricorsivamente
-        if (sottocategorie != null) {
-            for (Categoria sottocategoria : sottocategorie.values()) {
-                sottocategoria.stampaAlbero(indentazione + "  ");
-            }
-        }
-    }
-    
-
-    
-    
+    }    
 
     @Override
     public String toString() {
         return nome + "[campo=" + campo + ", dominio=" + dominio + ", sottocategorie="
                 + sottocategorie + "]";
     	}
+	
+
+
+	public boolean isNomeUnivoco(String nomeSottocategoria) {
+	    if (this.nome.equals(nomeSottocategoria)) {
+	        return false;  
+	    }
+	    if(sottocategorie != null) {
+		    for (Categoria sottocategoria : sottocategorie.values()) {
+		        if (!sottocategoria.isNomeUnivoco(nomeSottocategoria)) {
+		            return false; 
+		        }
+		    }}
+	    return true;
 	}
 
-
-
-
-
-
-
-
-
-
-
+}
 
 
 class CategoriaFoglia extends Categoria {

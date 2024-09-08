@@ -1,13 +1,11 @@
 package it.unibs.ing;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ComprensorioGeografico implements Serializable {
+public class ComprensorioGeografico {
     
-	private static final long serialVersionUID = 1L;
 	private String nome;
     private Set<String> comuni;
     
