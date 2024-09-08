@@ -8,7 +8,8 @@ import java.util.*;
 public class App {
     private Dati dati;
     private Scanner scanner = new Scanner(System.in);
-    private Boolean logged = false;
+    private Boolean loggedConfig = false;
+    private Boolean loggedFruitore = false;
 
 
     public App() {
@@ -22,20 +23,25 @@ public class App {
         ComprensorioGeografico.setListaComprensori(dati.getComprensori());
         GerarchiaCategorie.setListaOggettiGerarchia(dati.getGerarchie());
         Configuratore.setListaConfiguratori(dati.getConfiguratori());
-        FattoreConversione.setListaFattori(dati.getFattoriDiConversione());  
+        FattoreConversione.setListaFattori(dati.getFattoriDiConversione());
+        Fruitore.setListaFruitori(dati.getFruitori());
     }
 
     public void start() {
-        mostraMenuAutenticazione();
-        mostraMenuPrincipale();
+    	 mostraMenuAutenticazione();
+         if(loggedConfig)
+         	mostraMenuPrincipaleConfig();
+         if(loggedFruitore)
+         	mostraMenuPrincipaleFruitore();
     }
 
     private void mostraMenuAutenticazione() {
-        while (!logged) {
+        while (!loggedConfig && !loggedFruitore) {
             System.out.println("Menu Principale:");
             System.out.println("1. Primo accesso Configuratore");
             System.out.println("2. Autenticazione Configuratore");
-
+            System.out.println("3. Primo accesso fruitore");	
+            System.out.println("4. Autenticazione fruitore");
             int scelta = getInt();
 
             switch (scelta) {
@@ -43,16 +49,23 @@ public class App {
                     registraConfiguratore();
                     break;
                 case 2:
-                    logged = autenticaConfiguratore();
+                    loggedConfig = autenticaConfiguratore();
                     break;
+                case 3:
+                	registraFruitore();
+                	break;
+                case 4:
+                	loggedFruitore = autenticaFruitore();
+                	break;
+              
                 default:
                     System.out.println("Opzione non valida. Riprova" + "\n");
             }
         }
     }
 
-    private void mostraMenuPrincipale() {
-        while (logged) {
+    private void mostraMenuPrincipaleConfig() {
+        while (loggedConfig) {
             System.out.println("1. Crea Comprensorio Geografico");
             System.out.println("2. Crea Gerarchia di Categorie");
             System.out.println("3. Stabilisci Fattore di Conversione");
@@ -97,7 +110,7 @@ public class App {
            // Esci
                 case 0:
                     salvaDati();
-                    logged=false;
+                    loggedConfig=false;
                     System.out.println("Arrivederci!");
                     return;
                 default:
@@ -106,6 +119,34 @@ public class App {
         }
     }
 
+    
+    private void mostraMenuPrincipaleFruitore() {
+    	while (loggedFruitore) {
+            System.out.println("1. Esplora gerarchie");
+            System.out.println("0. Esci");
+            System.out.print("Seleziona un'opzione: ");
+
+            int scelta = getInt();
+
+            switch (scelta) {
+            // Esplora gerarchie
+                case 1:
+                	GerarchiaCategorie g = sceltaRadice();
+                	g.setCategoriaCorrente();
+                	esploraGerarchia(g);
+                    break;
+           // Esci
+                case 0:
+                    salvaDati();
+                    loggedFruitore=false;
+                    System.out.println("Arrivederci!");
+                    return;
+                default:
+                    System.out.println("Opzione non valida. Riprova" + "\n");
+            }
+        }
+    }
+    
     
     private int getInt() {
     	int input = -1;
@@ -197,6 +238,58 @@ public class App {
         return check;
     }
     
+    
+    private void registraFruitore() {
+    	//scelta comprensorio
+    	try {
+    		ArrayList<ComprensorioGeografico> listaComprensori = ComprensorioGeografico.getListaComprensori();
+    		System.out.println("Seleziona il comprensorio di appartenenza: ");
+	        for (int i = 0; i < listaComprensori.size(); i++) {
+	            System.out.println((i + 1) + ". " + listaComprensori.get(i).getNome());
+	        }
+	        int scelta = -1;
+	        do {
+	            System.out.print("\nInserisci il numero della scelta: ");
+	            scelta = getInt();
+	            if (scelta <= 0 || scelta > listaComprensori.size()) 
+	                System.out.println("Scelta non valida. Per favore, inserisci un numero tra 1 e " + listaComprensori.size() + ".");
+	        } while (scelta <= 0 || scelta > listaComprensori.size());
+	
+	        ComprensorioGeografico comprensorio = listaComprensori.get(scelta - 1);
+	       
+	    	//registrazione credenziali
+			Boolean userValido = false;
+		    while (!userValido) {
+		        String username = getConsistentString("Inserisci nuovo username: ");
+		        String password = getConsistentString("Inserisci nuova password: ");
+		        String mail = getConsistentString("Inserisci mail: ");
+		
+		        userValido = Fruitore.userValido(username);
+		        if (!userValido) {
+		            System.out.println("Username già esistente. Riprova con un altro." + "\n");
+		        } else {
+		            Fruitore fruitore = new Fruitore(username, password, comprensorio, mail);
+		            Fruitore.addToListaConfiguratori(fruitore);
+		            System.out.println("Fruitore registrato con successo." + "\n");
+		         }
+		     }
+    	}catch (NullPointerException e) { System.out.println("Nessun comprensorio disponibile."); }
+    }
+    
+    private Boolean autenticaFruitore() {
+        System.out.println("Inserisci username: ");
+        String username = scanner.nextLine();
+        System.out.println("Inserisci password: ");
+        String password = scanner.nextLine();
+
+        Boolean check = Fruitore.loginFruitore(username, password);
+        if (check) {
+            System.out.println("Autenticazione avvenuta con successo. Procedi con il seguente menu:");
+        	loggedFruitore= true;
+        }else
+            System.out.println("Credenziali non valide. Riprova" + "\n");
+        return check;
+    }
     
     private void creaComprensorio() {
         String nome = getConsistentString("Inserisci nome comprensorio: ");
@@ -443,14 +536,52 @@ public class App {
     	}
     }
 
+    
+ private Boolean esploraGerarchia(GerarchiaCategorie g) {
+    	
+    	Boolean ricerca = true;
+    	do{ 
+	    	Categoria c = g.getCategoriaCorrente();
+	    	System.out.println("\nCategoria corrente: "+ c.getNome());
+	    	
+	    	Boolean foglia = false;
+	    	for(CategoriaFoglia f: g.getListaFoglie()) {
+	    		if(f.getNome().equals(c.getNome())) {
+	    		System.out.println("Categoria foglia - Premi 0 per tornare indietro nella gerarchia o digita 'exit' per uscire");
+	    		foglia = true;}
+	    	}
+	    	if(!foglia){
+		    	System.out.println("Valori disponibili:");
+	    		c.getSottocategorie().forEach((k,v) -> System.out.println(k + " -> " + v.getNome()));
+		    	System.out.println("Inserisci il valore del campo per navigare nella sottocategoria (0 per tornare indietro nella gerarchia - 'exit per uscire)");
+	    	}
+		    	String valore = scanner.nextLine();
+	
+		    	
+		    	if(valore.equals("exit")) {
+		    		ricerca = false;
+		    		return ricerca;
+		    		
+		    	}else if(valore.equals("0")) 
+		    		g.tornaIndietro();
+		    	 else if(c.getSottocategorie().keySet().contains(valore)) 
+		   			g.vaiASottocategoria(c.getSottocategorie().get(valore));
+		    	else 
+		    		System.out.println("Valore non valido. riprovare");
+		    		
+		    	ricerca = esploraGerarchia(g);
+    	} while(ricerca);
+    	return false;
+    }
+    
 
     private void salvaDati() {
         dati.setConfiguratori(Configuratore.getListaConfiguratori());
         dati.setComprensori(ComprensorioGeografico.getListaComprensori());
         dati.setGerarchie(GerarchiaCategorie.getListaOggettiGerarchia());
-
         dati.setFattoriDiConversione(FattoreConversione.getListaFattori());
-
+        dati.setFruitori(Fruitore.getListaFruitori());
+        
         try {
             FileManager.salvaDati(dati);
             System.out.println("Dati salvati con successo.");

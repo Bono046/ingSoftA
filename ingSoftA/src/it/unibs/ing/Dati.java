@@ -1,21 +1,26 @@
 package it.unibs.ing;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Dati {
+public class Dati implements Serializable {
     /**
 	 * 
 	 */
+	private static final long serialVersionUID = 4498646267228832155L;
 	private ArrayList<Configuratore> configuratori;
     private ArrayList<ComprensorioGeografico> comprensori;
     private ArrayList<FattoreConversione> fattoriDiConversione;
     private ArrayList<GerarchiaCategorie> gerarchie;
+    private ArrayList<Fruitore> fruitori;
 
     public Dati() {
         configuratori = new ArrayList<>();
         comprensori = new ArrayList<>();
         fattoriDiConversione = new ArrayList<>();
         gerarchie = new ArrayList<>();
+        fruitori = new ArrayList<>();
     }
 
     public ArrayList<Configuratore> getConfiguratori() {
@@ -55,11 +60,18 @@ public class Dati {
 		this.gerarchie = gerarchie;
 	}
 
+	public ArrayList<Fruitore> getFruitori() {
+		return fruitori;
+	}
+
+	public void setFruitori(ArrayList<Fruitore> fruitori) {
+		this.fruitori = fruitori;
+	}
 
 	@Override
 	public String toString() {
 		return "Dati [configuratori=" + configuratori + ", comprensori=" + comprensori + ", fattoriDiConversione="
-				+ fattoriDiConversione + ", gerarchie=" + gerarchie+"]";
+				+ fattoriDiConversione + ", gerarchie=" + gerarchie + ", fruitori=" + fruitori + "]";
 	}
 
 }

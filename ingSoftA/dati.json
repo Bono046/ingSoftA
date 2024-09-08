@@ -76,6 +76,9 @@
           }
         }
       },
+      "categoriaCorrente": {
+        "nome": "lezioni piu"
+      },
       "listaFoglie": [
         {
           "nome": "lezioni piu"
@@ -90,7 +93,66 @@
           "nome": "lezioni diviso"
         }
       ],
-      "percorso": []
+      "percorso": [
+        {
+          "nome": "matematica",
+          "campo": "scuola",
+          "dominio": {
+            "medie": "",
+            "superiori": ""
+          },
+          "sottocategorie": {
+            "medie": {
+              "nome": "lezioni medie",
+              "campo": "operazioni",
+              "dominio": {
+                "meno": "",
+                "piu": ""
+              },
+              "sottocategorie": {
+                "meno": {
+                  "nome": "lezioni piu"
+                },
+                "piu": {
+                  "nome": "lezioni meno"
+                }
+              }
+            },
+            "superiori": {
+              "nome": "lezioni superiori",
+              "campo": "operazioni",
+              "dominio": {
+                "lezioni per": "",
+                "lezioni diviso": ""
+              },
+              "sottocategorie": {
+                "lezioni per": {
+                  "nome": "lezioni per"
+                },
+                "lezioni diviso": {
+                  "nome": "lezioni diviso"
+                }
+              }
+            }
+          }
+        },
+        {
+          "nome": "lezioni medie",
+          "campo": "operazioni",
+          "dominio": {
+            "meno": "",
+            "piu": ""
+          },
+          "sottocategorie": {
+            "meno": {
+              "nome": "lezioni piu"
+            },
+            "piu": {
+              "nome": "lezioni meno"
+            }
+          }
+        }
+      ]
     },
     {
       "radice": {
@@ -142,6 +204,9 @@
           }
         }
       },
+      "categoriaCorrente": {
+        "nome": "piano princp"
+      },
       "listaFoglie": [
         {
           "nome": "piano esperto"
@@ -153,7 +218,68 @@
           "nome": "lezioni chitarra"
         }
       ],
-      "percorso": []
+      "percorso": [
+        {
+          "nome": "musica",
+          "campo": "l",
+          "dominio": {
+            "piano": "",
+            "chitarra": ""
+          },
+          "sottocategorie": {
+            "piano": {
+              "nome": "livello",
+              "campo": "livello",
+              "dominio": {
+                "esp": "",
+                "princi": ""
+              },
+              "sottocategorie": {
+                "esp": {
+                  "nome": "piano esperto"
+                },
+                "princi": {
+                  "nome": "piano princp"
+                }
+              }
+            },
+            "chitarra": {
+              "nome": "lezioni chitarra"
+            }
+          }
+        },
+        {
+          "nome": "livello",
+          "campo": "livello",
+          "dominio": {
+            "esp": "",
+            "princi": ""
+          },
+          "sottocategorie": {
+            "esp": {
+              "nome": "piano esperto"
+            },
+            "princi": {
+              "nome": "piano princp"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "fruitori": [
+    {
+      "username": "b",
+      "password": "b",
+      "comprensiorio": {
+        "nome": "Mazzano",
+        "comuni": [
+          "Ciliverghe",
+          "Mazzano",
+          "Molinetto"
+        ]
+      },
+      "mail": "b"
     }
   ]
 }
