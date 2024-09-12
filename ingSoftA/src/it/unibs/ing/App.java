@@ -129,7 +129,7 @@ public class App {
     	while (loggedAsFruitore) {
             System.out.println("1. Esplora gerarchie");
             System.out.println("2. Formula proposta scambio");
-            System.out.println("3. Visualizza proposte scambio");
+            System.out.println("3. Visualizza proposte scambio aperte");
             System.out.println("0. Esci");
             System.out.print("Seleziona un'opzione: ");
 
@@ -146,10 +146,11 @@ public class App {
                 	creaProposta(user);
                 	break;
                 case 3:
-                	for(Proposta p : Proposta.getListaProposte()) {
-                		System.out.println(p.toString());
-                	}
-                	System.out.println();
+                	ArrayList<Proposta> list = Proposta.getListaProposteUser(user);
+                	if (list.isEmpty())
+                		System.out.println("Non sono presenti proposte da visualizzare");
+                	else
+                		System.out.println(list.toString());
                 	break;
                 case 0:
                     salvaDati();
@@ -666,6 +667,7 @@ public class App {
         dati.setGerarchie(GerarchiaCategorie.getListaOggettiGerarchia());
         dati.setFattoriDiConversione(FattoreConversione.getListaFattori());
         dati.setFruitori(Fruitore.getListaFruitori());
+        dati.setProposte(Proposta.getListaProposte());
         
         try {
             FileManager.salvaDati(dati);

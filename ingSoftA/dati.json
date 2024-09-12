@@ -571,6 +571,276 @@
         "nome": "lezioni per"
       },
       "fattore": 1.0
+    },
+    {
+      "c1": {
+        "nome": "piano esperto"
+      },
+      "c2": {
+        "nome": "quadrato"
+      },
+      "fattore": 1.0
+    },
+    {
+      "c1": {
+        "nome": "quadrato"
+      },
+      "c2": {
+        "nome": "piano esperto"
+      },
+      "fattore": 1.0
+    },
+    {
+      "c1": {
+        "nome": "lezioni piu"
+      },
+      "c2": {
+        "nome": "quadrato"
+      },
+      "fattore": 0.83
+    },
+    {
+      "c1": {
+        "nome": "quadrato"
+      },
+      "c2": {
+        "nome": "lezioni piu"
+      },
+      "fattore": 1.2
+    },
+    {
+      "c1": {
+        "nome": "lezioni meno"
+      },
+      "c2": {
+        "nome": "quadrato"
+      },
+      "fattore": 1.0
+    },
+    {
+      "c1": {
+        "nome": "quadrato"
+      },
+      "c2": {
+        "nome": "lezioni meno"
+      },
+      "fattore": 1.0
+    },
+    {
+      "c1": {
+        "nome": "lezioni per"
+      },
+      "c2": {
+        "nome": "quadrato"
+      },
+      "fattore": 1.25
+    },
+    {
+      "c1": {
+        "nome": "quadrato"
+      },
+      "c2": {
+        "nome": "lezioni per"
+      },
+      "fattore": 0.8
+    },
+    {
+      "c1": {
+        "nome": "lezioni diviso"
+      },
+      "c2": {
+        "nome": "quadrato"
+      },
+      "fattore": 0.67
+    },
+    {
+      "c1": {
+        "nome": "quadrato"
+      },
+      "c2": {
+        "nome": "lezioni diviso"
+      },
+      "fattore": 1.49
+    },
+    {
+      "c1": {
+        "nome": "piano princp"
+      },
+      "c2": {
+        "nome": "quadrato"
+      },
+      "fattore": 1.2
+    },
+    {
+      "c1": {
+        "nome": "quadrato"
+      },
+      "c2": {
+        "nome": "piano princp"
+      },
+      "fattore": 0.83
+    },
+    {
+      "c1": {
+        "nome": "lezioni piu"
+      },
+      "c2": {
+        "nome": "quadrato"
+      },
+      "fattore": 0.67
+    },
+    {
+      "c1": {
+        "nome": "quadrato"
+      },
+      "c2": {
+        "nome": "lezioni piu"
+      },
+      "fattore": 1.49
+    },
+    {
+      "c1": {
+        "nome": "lezioni meno"
+      },
+      "c2": {
+        "nome": "quadrato"
+      },
+      "fattore": 2.0
+    },
+    {
+      "c1": {
+        "nome": "quadrato"
+      },
+      "c2": {
+        "nome": "lezioni meno"
+      },
+      "fattore": 0.5
+    },
+    {
+      "c1": {
+        "nome": "lezioni per"
+      },
+      "c2": {
+        "nome": "quadrato"
+      },
+      "fattore": 0.6
+    },
+    {
+      "c1": {
+        "nome": "quadrato"
+      },
+      "c2": {
+        "nome": "lezioni per"
+      },
+      "fattore": 1.67
+    },
+    {
+      "c1": {
+        "nome": "lezioni diviso"
+      },
+      "c2": {
+        "nome": "quadrato"
+      },
+      "fattore": 1.2
+    },
+    {
+      "c1": {
+        "nome": "quadrato"
+      },
+      "c2": {
+        "nome": "lezioni diviso"
+      },
+      "fattore": 0.83
+    },
+    {
+      "c1": {
+        "nome": "lezioni chitarra"
+      },
+      "c2": {
+        "nome": "quadrato"
+      },
+      "fattore": 1.3
+    },
+    {
+      "c1": {
+        "nome": "quadrato"
+      },
+      "c2": {
+        "nome": "lezioni chitarra"
+      },
+      "fattore": 0.77
+    },
+    {
+      "c1": {
+        "nome": "lezioni piu"
+      },
+      "c2": {
+        "nome": "quadrato"
+      },
+      "fattore": 1.3
+    },
+    {
+      "c1": {
+        "nome": "quadrato"
+      },
+      "c2": {
+        "nome": "lezioni piu"
+      },
+      "fattore": 0.77
+    },
+    {
+      "c1": {
+        "nome": "lezioni meno"
+      },
+      "c2": {
+        "nome": "quadrato"
+      },
+      "fattore": 1.3
+    },
+    {
+      "c1": {
+        "nome": "quadrato"
+      },
+      "c2": {
+        "nome": "lezioni meno"
+      },
+      "fattore": 0.77
+    },
+    {
+      "c1": {
+        "nome": "lezioni per"
+      },
+      "c2": {
+        "nome": "quadrato"
+      },
+      "fattore": 1.3
+    },
+    {
+      "c1": {
+        "nome": "quadrato"
+      },
+      "c2": {
+        "nome": "lezioni per"
+      },
+      "fattore": 0.77
+    },
+    {
+      "c1": {
+        "nome": "lezioni diviso"
+      },
+      "c2": {
+        "nome": "quadrato"
+      },
+      "fattore": 1.3
+    },
+    {
+      "c1": {
+        "nome": "quadrato"
+      },
+      "c2": {
+        "nome": "lezioni diviso"
+      },
+      "fattore": 0.77
     }
   ],
   "gerarchie": [
@@ -877,5 +1147,18 @@
       "mail": "b"
     }
   ],
-  "proposte": []
+  "proposte": [
+    {
+      "richiesta": {
+        "nome": "lezioni per"
+      },
+      "offerta": {
+        "nome": "piano esperto"
+      },
+      "durataRichiesta": 10,
+      "durataOfferta": 12,
+      "stato": "APERTA",
+      "username": "b"
+    }
+  ]
 }

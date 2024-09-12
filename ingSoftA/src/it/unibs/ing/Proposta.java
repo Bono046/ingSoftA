@@ -74,6 +74,25 @@ public class Proposta {
 		this.stato = StatoProposta.APERTA;
 	}
 
+	public StatoProposta getStato() {
+		return stato;
+	}
+
+
+	public void setStato(StatoProposta stato) {
+		this.stato = stato;
+	}
+
+
+	public String getUsername() {
+		return username;
+	}
+
+
+	private void setUsername(String username) {
+		this.username = username;
+	}
+
 
 	@Override
 	public String toString() {
@@ -97,7 +116,14 @@ public class Proposta {
 		}
 	}
 	
-	
+	public static ArrayList<Proposta> getListaProposteUser(String user) {
+		ArrayList<Proposta> lista = new ArrayList<>();
+		for(Proposta p : listaProposte) {
+			if(p.getUsername().equals(user))
+				lista.add(p);
+		}
+		return lista;
+	}
 
 	
 	
