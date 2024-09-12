@@ -8,8 +8,8 @@ import java.util.*;
 public class App {
     private Dati dati;
     private Scanner scanner = new Scanner(System.in);
-    private Boolean loggedConfig = false;
-    private Boolean loggedFruitore = false;
+    private Boolean loggedAsConfig = false;
+    private Boolean loggedAsFruitore = false;
 
 
     public App() {
@@ -25,23 +25,21 @@ public class App {
         Configuratore.setListaConfiguratori(dati.getConfiguratori());
         FattoreConversione.setListaFattori(dati.getFattoriDiConversione());
         Fruitore.setListaFruitori(dati.getFruitori());
+        Proposta.setListaProposte(dati.getProposte());
     }
 
     public void start() {
     	 mostraMenuAutenticazione();
-         if(loggedConfig)
-         	mostraMenuPrincipaleConfig();
-         if(loggedFruitore)
-         	mostraMenuPrincipaleFruitore();
     }
 
     private void mostraMenuAutenticazione() {
-        while (!loggedConfig && !loggedFruitore) {
+        while (!loggedAsConfig && !loggedAsFruitore) {
             System.out.println("Menu Principale:");
             System.out.println("1. Primo accesso Configuratore");
             System.out.println("2. Autenticazione Configuratore");
             System.out.println("3. Primo accesso fruitore");	
             System.out.println("4. Autenticazione fruitore");
+            System.out.println("0. Esci dal programma");
             int scelta = getInt();
 
             switch (scelta) {
@@ -49,15 +47,22 @@ public class App {
                     registraConfiguratore();
                     break;
                 case 2:
-                    loggedConfig = autenticaConfiguratore();
+                	loggedAsConfig = autenticaConfiguratore();
+                    mostraMenuPrincipaleConfig();
                     break;
                 case 3:
                 	registraFruitore();
                 	break;
                 case 4:
-                	loggedFruitore = autenticaFruitore();
+                    Fruitore userLogged = autenticaFruitore();
+                	if(userLogged != null){
+                		loggedAsFruitore = true;
+                	 	mostraMenuPrincipaleFruitore(userLogged.getUsername());
+			}	
                 	break;
-              
+                case 0: 
+                	System.out.println("Arrivederci!\n");
+                	return;
                 default:
                     System.out.println("Opzione non valida. Riprova" + "\n");
             }
@@ -65,7 +70,7 @@ public class App {
     }
 
     private void mostraMenuPrincipaleConfig() {
-        while (loggedConfig) {
+        while (loggedAsConfig) {
             System.out.println("1. Crea Comprensorio Geografico");
             System.out.println("2. Crea Gerarchia di Categorie");
             System.out.println("3. Stabilisci Fattore di Conversione");
@@ -110,7 +115,7 @@ public class App {
            // Esci
                 case 0:
                     salvaDati();
-                    loggedConfig=false;
+                    loggedAsConfig=false;
                     System.out.println("Arrivederci!");
                     return;
                 default:
@@ -120,9 +125,11 @@ public class App {
     }
 
     
-    private void mostraMenuPrincipaleFruitore() {
-    	while (loggedFruitore) {
+    private void mostraMenuPrincipaleFruitore(String user) {
+    	while (loggedAsFruitore) {
             System.out.println("1. Esplora gerarchie");
+            System.out.println("2. Formula proposta scambio");
+            System.out.println("3. Visualizza proposte scambio");
             System.out.println("0. Esci");
             System.out.print("Seleziona un'opzione: ");
 
@@ -135,11 +142,19 @@ public class App {
                 	g.setCategoriaCorrente();
                 	esploraGerarchia(g);
                     break;
-           // Esci
+                case 2: 
+                	creaProposta(user);
+                	break;
+                case 3:
+                	for(Proposta p : Proposta.getListaProposte()) {
+                		System.out.println(p.toString());
+                	}
+                	System.out.println();
+                	break;
                 case 0:
                     salvaDati();
-                    loggedFruitore=false;
-                    System.out.println("Arrivederci!");
+                    loggedAsFruitore=false;
+                    System.out.println("Arrivederci!\n");
                     return;
                 default:
                     System.out.println("Opzione non valida. Riprova" + "\n");
@@ -276,19 +291,19 @@ public class App {
     	}catch (NullPointerException e) { System.out.println("Nessun comprensorio disponibile."); }
     }
     
-    private Boolean autenticaFruitore() {
+    private Fruitore autenticaFruitore() {
         System.out.println("Inserisci username: ");
         String username = scanner.nextLine();
         System.out.println("Inserisci password: ");
         String password = scanner.nextLine();
 
-        Boolean check = Fruitore.loginFruitore(username, password);
-        if (check) {
+        Fruitore user = Fruitore.loginFruitore(username, password);
+        if (user != null) {
             System.out.println("Autenticazione avvenuta con successo. Procedi con il seguente menu:");
-        	loggedFruitore= true;
+            return user;
         }else
             System.out.println("Credenziali non valide. Riprova" + "\n");
-        return check;
+        return null;
     }
     
     private void creaComprensorio() {
@@ -574,6 +589,76 @@ public class App {
     	return false;
     }
     
+ 
+ private CategoriaFoglia getFogliaDaGerarchia(GerarchiaCategorie g) {
+		ArrayList<CategoriaFoglia> foglie = g.getListaFoglie();
+		boolean check = false;
+		do{
+			String input = getConsistentString(foglie.toString());
+         for(CategoriaFoglia c : foglie) {
+             if (input.equals(c.getNome())) {
+             	check=true;
+             	return c;  
+             }
+         }
+         if(!check)
+         	System.out.println("input non valido. Riprovare");
+		}while(!check);
+     return null;	
+	}
+	
+	
+ private void creaProposta(String user) {
+ 	CategoriaFoglia richiesta = null;
+ 	CategoriaFoglia offerta = null;
+ 	boolean checkDiverso = false;
+		do {
+	    	System.out.println("Seleziona la categoria foglia richiesta\n"); 
+	    	richiesta = getFogliaDaGerarchia(sceltaRadice());
+	    	
+	    	System.out.println("Seleziona la categoria foglia offerta\n"); 
+	    	offerta = getFogliaDaGerarchia(sceltaRadice());
+
+			if(richiesta.getNome().equals(offerta.getNome()))
+				System.out.println("Non può essere selezionata la stessa categoria. Riprovare\n");
+			else checkDiverso = true;
+
+		} while (!checkDiverso);
+		
+		System.out.println("quante ore per la richiesta?");
+		int durataRichiesta;
+		do{
+			durataRichiesta = getInt();
+		} while(durataRichiesta < 0);
+		
+		Proposta proposta = new Proposta(richiesta, offerta, durataRichiesta, user);
+		calcolaDurataOfferta(proposta);
+		System.out.println(proposta.toString());
+		System.out.println("vuoi confermare la proposta? s/n");
+		String conferma = "";
+		do {
+			conferma = scanner.nextLine();
+			if (conferma.equals("s")) {
+				proposta.accettaProposta();
+				Proposta.addProposta(proposta);
+				System.out.println("Proposta confermata\n");;
+			} else if(conferma.equals("n"))
+				System.out.println("Proposta non confermata\n");
+			else System.out.println("Input non valido. Riprovare");
+		} while(!(conferma.equals("s") || conferma.equals("n")));
+ }
+
+	private void calcolaDurataOfferta(Proposta proposta) {
+		int durataOfferta=0;
+		try {
+			FattoreConversione f = FattoreConversione.trovaFattore(proposta.getRichiesta().getNome(), proposta.getOfferta().getNome());
+			durataOfferta = (int) (proposta.getDurataRichiesta() * f.getFattore());
+			proposta.setDurataOfferta(durataOfferta);
+		} catch (NullPointerException e) {
+			System.out.println("non esiste questo fattore di conversione");
+		};
+		
+	}
 
     private void salvaDati() {
         dati.setConfiguratori(Configuratore.getListaConfiguratori());

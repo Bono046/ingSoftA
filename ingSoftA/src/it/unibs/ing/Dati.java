@@ -4,16 +4,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dati implements Serializable {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 4498646267228832155L;
+public class Dati  {
+
+	
 	private ArrayList<Configuratore> configuratori;
     private ArrayList<ComprensorioGeografico> comprensori;
     private ArrayList<FattoreConversione> fattoriDiConversione;
     private ArrayList<GerarchiaCategorie> gerarchie;
     private ArrayList<Fruitore> fruitori;
+    private ArrayList<Proposta> proposte;
 
     public Dati() {
         configuratori = new ArrayList<>();
@@ -21,9 +20,18 @@ public class Dati implements Serializable {
         fattoriDiConversione = new ArrayList<>();
         gerarchie = new ArrayList<>();
         fruitori = new ArrayList<>();
+        proposte = new ArrayList<>();
     }
 
-    public ArrayList<Configuratore> getConfiguratori() {
+    public ArrayList<Proposta> getProposte() {
+		return proposte;
+	}
+
+	public void setProposte(ArrayList<Proposta> proposte) {
+		this.proposte = proposte;
+	}
+
+	public ArrayList<Configuratore> getConfiguratori() {
         return configuratori;
     }
 

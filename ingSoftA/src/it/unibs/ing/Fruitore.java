@@ -26,7 +26,7 @@ public class Fruitore {
 	}
 
 
-	private String getUsername() {
+	public String getUsername() {
         return username;
     }
 
@@ -89,13 +89,13 @@ public class Fruitore {
     }
     
     
-	public static boolean loginFruitore(String username, String password) {
+	public static Fruitore loginFruitore(String username, String password) {
 	    for (Fruitore user : listaFruitori) {
 	        if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-	            return true;
+	            return user;
 	        }
 	    }
-	    return false;
+	    return null;
 	}
 
 
