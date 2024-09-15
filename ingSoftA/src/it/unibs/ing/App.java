@@ -78,7 +78,7 @@ public class App {
                     Fruitore userLogged = autenticaFruitore();
                 	if(userLogged != null){
                 		loggedAsFruitore = true;
-                	 	mostraMenuPrincipaleFruitore(userLogged.getUsername());
+                	 	mostraMenuPrincipaleFruitore(userLogged);
 			}	
                 	break;
                 case 0: 
@@ -166,7 +166,7 @@ public class App {
         }
     }
 
-    private void mostraMenuPrincipaleFruitore(String user) {
+    private void mostraMenuPrincipaleFruitore(Fruitore fruitore) {
     	while (loggedAsFruitore) {
             System.out.println("3. Esplora gerarchie");
             System.out.println("4. Formula proposta scambio");
@@ -180,11 +180,11 @@ public class App {
             // Esplora gerarchie
                 case 3:
                 	GerarchiaCategorie g = sceltaRadice();
-                	g.setCategoriaCorrente();
+                	g.setCategoriaCorrente();  // ????????
                 	esploraGerarchia(g);
                     break;
                 case 4: 
-                	creaProposta(user);
+                	creaProposta(fruitore);
                 	break;
                 case 5:
                 	
@@ -602,30 +602,31 @@ public class App {
 	    	Boolean foglia = false;
 	    	for(CategoriaFoglia f: g.getListaFoglie()) {
 	    		if(f.getNome().equals(c.getNome())) {
-	    		System.out.println("Categoria foglia - Premi 0 per tornare indietro nella gerarchia o digita 'exit' per uscire");
-	    		foglia = true;}
+	    			System.out.println("Categoria foglia - Premi '0' per tornare indietro nella gerarchia, 'exit' per uscire");
+	    			foglia = true;
+	    		}
 	    	}
+	    	
 	    	if(!foglia){
 		    	System.out.println("Valori disponibili:");
 	    		c.getSottocategorie().forEach((k,v) -> System.out.println(k.toUpperCase() + "->" + v.getNome()));
 		    	System.out.println("Inserisci il valore del campo per navigare nella sottocategoria (0 per tornare indietro nella gerarchia - 'exit per uscire)");
 	    	}
-		    	String valore = scanner.nextLine();
-	
-		    	
-		    	if(valore.equals("exit")) {
-		    		ricerca = false;
-		    		return ricerca;
-		    		
-		    	}else if(valore.equals("0")) 
-		    		g.tornaIndietro();
-		    	 else if(c.getSottocategorie().keySet().contains(valore)) 
-		   			g.vaiASottocategoria(c.getSottocategorie().get(valore));
-		    	else 
-		    		System.out.println("Valore non valido. riprovare");
-		    		
-		    	ricerca = esploraGerarchia(g);
-    	}while(ricerca);
+	    	String valore = scanner.nextLine();
+	    	
+	    	if(valore.equals("exit")) {
+	    		ricerca = false;
+	    		return ricerca;
+	    		
+	    	} else if (valore.equals("0")) 
+	    		g.tornaIndietro();
+	    	 else if(c.getSottocategorie().keySet().contains(valore)) 
+	   			g.vaiASottocategoria(c.getSottocategorie().get(valore));
+	    	 else 
+	    		System.out.println("Valore non valido. riprovare");
+	    		
+	    	ricerca = esploraGerarchia(g);
+    	} while(ricerca);
     	return false;
     }
     
@@ -648,7 +649,7 @@ public class App {
 	}
 	
 	
-    private void creaProposta(String user) {
+    private void creaProposta(Fruitore fruitore) {
     	CategoriaFoglia richiesta = null;
     	CategoriaFoglia offerta = null;
     	boolean checkDiverso = false;
@@ -671,7 +672,7 @@ public class App {
 			durataRichiesta = getInt();
 		} while(durataRichiesta < 0);
 		
-		Proposta proposta = new Proposta(richiesta, offerta, durataRichiesta, user);
+		Proposta proposta = new Proposta(richiesta, offerta, durataRichiesta, fruitore);
 		calcolaDurataOfferta(proposta);
 		System.out.println(proposta.toString());
 		System.out.println("vuoi confermare la proposta? s/n");
@@ -681,12 +682,20 @@ public class App {
 			if (conferma.equals("s")) {
 				proposta.accettaProposta();
 				Proposta.addProposta(proposta);
-				System.out.println("Proposta confermata\n");;
+				System.out.println("Proposta confermata\n");
+				valutaProposta(proposta);
 			} else if(conferma.equals("n"))
 				System.out.println("Proposta non confermata\n");
 			else System.out.println("Input non valido. Riprovare");
 		} while(!(conferma.equals("s") || conferma.equals("n")));
     }
+
+	private void valutaProposta(Proposta proposta) {
+		ComprensorioGeografico comprensorio = proposta.getFruitore().getComprensiorio();
+		
+	}
+	
+
 
 	private void calcolaDurataOfferta(Proposta proposta) {
 		int durataOfferta=0;

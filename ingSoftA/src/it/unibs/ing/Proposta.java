@@ -8,20 +8,19 @@ public class Proposta {
 	private int durataRichiesta;
 	private int durataOfferta;
 	private StatoProposta stato;
-	private String username;
+	private Fruitore fruitore;
 	
-	private enum StatoProposta {CREATA, APERTA}; 
+	private enum StatoProposta {CREATA, APERTA, CHIUSA}; 
+	private static ArrayList<Proposta> listaProposte= new ArrayList<>(); 
 	
-	 private static ArrayList<Proposta> listaProposte= new ArrayList<>(); 
 	
-	
-	public Proposta(CategoriaFoglia richiesta, CategoriaFoglia offerta, int durataRichiesta, String username) {
+	public Proposta(CategoriaFoglia richiesta, CategoriaFoglia offerta, int durataRichiesta, Fruitore fruitore) {
 		super();
 		this.richiesta = richiesta;
 		this.offerta = offerta;
 		this.durataRichiesta = durataRichiesta;
 		this.stato = StatoProposta.CREATA;
-		this.username = username;
+		this.fruitore = fruitore;
 	}
 
 
@@ -73,6 +72,10 @@ public class Proposta {
 	public void accettaProposta() {
 		this.stato = StatoProposta.APERTA;
 	}
+	
+	public void confermaProposta() {
+		this.stato = StatoProposta.CHIUSA;
+	}
 
 
 	@Override
@@ -96,12 +99,13 @@ public class Proposta {
 			Proposta.listaProposte.add(p);
 		}
 	}
-	
-	
 
-	
-	
-	
+
+	public Fruitore getFruitore() {
+		return fruitore;
+	}
+
+
 	
 	
 }

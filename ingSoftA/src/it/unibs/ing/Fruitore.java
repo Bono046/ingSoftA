@@ -6,16 +6,16 @@ public class Fruitore {
 
 	private String username;
     private String password;
-    private ComprensorioGeografico comprensiorio;
+    private ComprensorioGeografico comprensorio;
     private String mail;
     
     private static ArrayList<Fruitore> listaFruitori = new ArrayList<>();
     
     
-	public Fruitore(String username, String password, ComprensorioGeografico comprensiorio, String mail) {
+	public Fruitore(String username, String password, ComprensorioGeografico comprensorio, String mail) {
         this.username = username;
         this.password = password;
-        this.comprensiorio = comprensiorio;
+        this.comprensorio = comprensorio;
         this.mail = mail;
     }
     
@@ -44,12 +44,12 @@ public class Fruitore {
     
    
     public ComprensorioGeografico getComprensiorio() {
-		return comprensiorio;
+		return comprensorio;
 	}
 
 
 	public void setComprensiorio(ComprensorioGeografico comprensiorio) {
-		this.comprensiorio = comprensiorio;
+		this.comprensorio = comprensiorio;
 	}
 
 
