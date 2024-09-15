@@ -98,6 +98,22 @@ public class Fruitore {
 	    return null;
 	}
 
-
+	public static ComprensorioGeografico getComprensorioFromUser(String user) {
+		for(Fruitore f : listaFruitori) {
+			if(f.getUsername().equals(user))
+				return f.getComprensiorio();
+		}
+		return null;
+	}
+	
+	public static ArrayList<Fruitore> getListaFruitoreFromComprensorio(ComprensorioGeografico c){
+		ArrayList<Fruitore> lista = new ArrayList<>();
+		for(Fruitore f : listaFruitori) {
+			if(f.getComprensiorio().equals(c))
+				lista.add(f);				
+		}
+		return lista;
+	}
+	
 
 }

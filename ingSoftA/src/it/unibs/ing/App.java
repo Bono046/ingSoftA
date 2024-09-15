@@ -144,6 +144,7 @@ public class App {
                     break;
                 case 2: 
                 	creaProposta(user);
+                	verificaProposteAperte(user);
                 	break;
                 case 3:
                 	ArrayList<Proposta> list = Proposta.getListaProposteUser(user);
@@ -164,7 +165,7 @@ public class App {
     }
     
     
-    private int getInt() {
+	private int getInt() {
     	int input = -1;
         try {
             input = scanner.nextInt();
@@ -658,8 +659,20 @@ public class App {
 		} catch (NullPointerException e) {
 			System.out.println("non esiste questo fattore di conversione");
 		};
-		
 	}
+	
+	
+	
+	private void verificaProposteAperte(String user) {
+		ComprensorioGeografico comprensorio = Fruitore.getComprensorioFromUser(user);
+		  
+		  
+		  
+	}	
+	
+	
+	
+	
 
     private void salvaDati() {
         dati.setConfiguratori(Configuratore.getListaConfiguratori());
