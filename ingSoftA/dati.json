@@ -841,6 +841,24 @@
         "nome": "lezioni diviso"
       },
       "fattore": 0.77
+    },
+    {
+      "c1": {
+        "nome": "a"
+      },
+      "c2": {
+        "nome": "b"
+      },
+      "fattore": 2.0
+    },
+    {
+      "c1": {
+        "nome": "b"
+      },
+      "c2": {
+        "nome": "a"
+      },
+      "fattore": 0.5
     }
   ],
   "gerarchie": [
@@ -1130,6 +1148,33 @@
           }
         }
       ]
+    },
+    {
+      "radice": {
+        "nome": "lettere",
+        "campo": "lettera",
+        "dominio": {
+          "a": "a",
+          "b": "b"
+        },
+        "sottocategorie": {
+          "a": {
+            "nome": "a"
+          },
+          "b": {
+            "nome": "b"
+          }
+        }
+      },
+      "listaFoglie": [
+        {
+          "nome": "a"
+        },
+        {
+          "nome": "b"
+        }
+      ],
+      "percorso": []
     }
   ],
   "fruitori": [
@@ -1145,6 +1190,32 @@
         ]
       },
       "mail": "b"
+    },
+    {
+      "username": "nicola",
+      "password": "nicola",
+      "comprensiorio": {
+        "nome": "Brescia",
+        "comuni": [
+          "Rezzato",
+          "Nave",
+          "San polo"
+        ]
+      },
+      "mail": "nicola"
+    },
+    {
+      "username": "antonio",
+      "password": "antonio",
+      "comprensiorio": {
+        "nome": "Brescia",
+        "comuni": [
+          "Rezzato",
+          "Nave",
+          "San polo"
+        ]
+      },
+      "mail": "antonio"
     }
   ],
   "proposte": [
@@ -1159,6 +1230,54 @@
       "durataOfferta": 12,
       "stato": "APERTA",
       "username": "b"
+    },
+    {
+      "richiesta": {
+        "nome": "a"
+      },
+      "offerta": {
+        "nome": "b"
+      },
+      "durataRichiesta": 10,
+      "durataOfferta": 20,
+      "stato": "CHIUSA",
+      "username": "nicola"
+    },
+    {
+      "richiesta": {
+        "nome": "b"
+      },
+      "offerta": {
+        "nome": "a"
+      },
+      "durataRichiesta": 20,
+      "durataOfferta": 10,
+      "stato": "CHIUSA",
+      "username": "antonio"
+    },
+    {
+      "richiesta": {
+        "nome": "a"
+      },
+      "offerta": {
+        "nome": "b"
+      },
+      "durataRichiesta": 100,
+      "durataOfferta": 200,
+      "stato": "APERTA",
+      "username": "nicola"
+    },
+    {
+      "richiesta": {
+        "nome": "b"
+      },
+      "offerta": {
+        "nome": "a"
+      },
+      "durataRichiesta": 500,
+      "durataOfferta": 250,
+      "stato": "APERTA",
+      "username": "antonio"
     }
   ]
 }

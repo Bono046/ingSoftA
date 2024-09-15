@@ -10,7 +10,7 @@ public class Proposta {
 	private StatoProposta stato;
 	private String username;
 	
-	private enum StatoProposta {CREATA, APERTA}; 
+	private enum StatoProposta {CREATA, APERTA, CHIUSA}; 
 	
 	 private static ArrayList<Proposta> listaProposte= new ArrayList<>(); 
 	
@@ -65,8 +65,10 @@ public class Proposta {
 	}
 
 
-	public StatoProposta isAperto() {
-		return stato;
+	public Boolean isAperto() {
+		if(this.stato == stato.APERTA)
+			return true;
+		return false;
 	}
 
 
@@ -77,10 +79,10 @@ public class Proposta {
 	public StatoProposta getStato() {
 		return stato;
 	}
-
-
-	public void setStato(StatoProposta stato) {
-		this.stato = stato;
+	
+	public void chiudiProposta() {
+		this.stato=StatoProposta.CHIUSA;
+		
 	}
 
 
@@ -125,8 +127,54 @@ public class Proposta {
 		return lista;
 	}
 
+	public static ArrayList<Proposta> getProposteAperteFromUsers(ArrayList<String> listaUser) {
+		ArrayList<Proposta> proposteFromComprensorio=new ArrayList<>();
+		for(String user:listaUser) {
+			for(Proposta p:listaProposte) {
+				if(user.equals(p.getUsername()) && (p.isAperto())) {
+					proposteFromComprensorio.add(p);
+				}
+			}
+		}
+
+		return proposteFromComprensorio;
+	}
+
 	
+	public void verificaProposta() {
+		ComprensorioGeografico comprensorio = Fruitore.getComprensorioFromUser(this.getUsername());
+		ArrayList<String> userFruitoriFromComprensorio = Fruitore.getUserFruitoriFromComprensorio(comprensorio);
+		ArrayList<Proposta> proposteAperteFromComprensorio=Proposta.getProposteAperteFromUsers(userFruitoriFromComprensorio);
+		for(Proposta proposta:proposteAperteFromComprensorio) {
+			if(this.getOfferta().getNome().equals(proposta.getRichiesta().getNome())) { 
+				if(this.getRichiesta().getNome().equals(proposta.getOfferta().getNome())) {  
+					if(this.getDurataOfferta() == proposta.getDurataRichiesta()) {
+						if(this.getDurataRichiesta() == proposta.getDurataOfferta()) {
+							this.chiudiProposta();
+							proposta.chiudiProposta();
+							
+						}
+					}
+				}
+			}
+		}
+	}
 	
+		
+	public boolean soddisfaRichiesta(Proposta propostaAperta) {
+		if(propostaAperta.getRichiesta().getNome().equals(this.getOfferta().getNome()) && propostaAperta.getDurataRichiesta() == this.getDurataOfferta()) {  
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean soddisfaOfferta(Proposta propostaAperta) {
+		if(propostaAperta.getOfferta().getNome().equals(this.getRichiesta().getNome()) && propostaAperta.getDurataOfferta() == this.getDurataRichiesta()) {  
+			return true;		} else {
+			return false;
+		}
+	}
 	
 	
 	

@@ -106,11 +106,11 @@ public class Fruitore {
 		return null;
 	}
 	
-	public static ArrayList<Fruitore> getListaFruitoreFromComprensorio(ComprensorioGeografico c){
-		ArrayList<Fruitore> lista = new ArrayList<>();
+	public static ArrayList<String> getUserFruitoriFromComprensorio(ComprensorioGeografico c){
+		ArrayList<String> lista = new ArrayList<>();
 		for(Fruitore f : listaFruitori) {
 			if(f.getComprensiorio().equals(c))
-				lista.add(f);				
+				lista.add(f.getUsername());				
 		}
 		return lista;
 	}

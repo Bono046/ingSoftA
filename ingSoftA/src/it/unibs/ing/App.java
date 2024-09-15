@@ -144,7 +144,6 @@ public class App {
                     break;
                 case 2: 
                 	creaProposta(user);
-                	verificaProposteAperte(user);
                 	break;
                 case 3:
                 	ArrayList<Proposta> list = Proposta.getListaProposteUser(user);
@@ -643,7 +642,8 @@ public class App {
 			if (conferma.equals("s")) {
 				proposta.accettaProposta();
 				Proposta.addProposta(proposta);
-				System.out.println("Proposta confermata\n");;
+				System.out.println("Proposta confermata\n");
+				proposta.verificaProposta();
 			} else if(conferma.equals("n"))
 				System.out.println("Proposta non confermata\n");
 			else System.out.println("Input non valido. Riprovare");
@@ -661,14 +661,6 @@ public class App {
 		};
 	}
 	
-	
-	
-	private void verificaProposteAperte(String user) {
-		ComprensorioGeografico comprensorio = Fruitore.getComprensorioFromUser(user);
-		  
-		  
-		  
-	}	
 	
 	
 	
