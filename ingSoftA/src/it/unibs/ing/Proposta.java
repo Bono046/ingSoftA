@@ -9,10 +9,8 @@ public class Proposta {
 	private int durataOfferta;
 	private StatoProposta stato;
 	private String username;
-	
-	private enum StatoProposta {CREATA, APERTA, CHIUSA}; 
-	
-	 private static ArrayList<Proposta> listaProposte= new ArrayList<>(); 
+	private enum StatoProposta {CREATA, APERTA, CHIUSA, RITIRATA}; 
+	private static ArrayList<Proposta> listaProposte= new ArrayList<>(); 
 	
 	
 	public Proposta(CategoriaFoglia richiesta, CategoriaFoglia offerta, int durataRichiesta, String username) {
@@ -91,10 +89,6 @@ public class Proposta {
 	}
 
 
-	private void setUsername(String username) {
-		this.username = username;
-	}
-
 
 	@Override
 	public String toString() {
@@ -141,40 +135,71 @@ public class Proposta {
 	}
 
 	
+	
+	
 	public void verificaProposta() {
-		ComprensorioGeografico comprensorio = Fruitore.getComprensorioFromUser(this.getUsername());
-		ArrayList<String> userFruitoriFromComprensorio = Fruitore.getUserFruitoriFromComprensorio(comprensorio);
-		ArrayList<Proposta> proposteAperteFromComprensorio=Proposta.getProposteAperteFromUsers(userFruitoriFromComprensorio);
-		for(Proposta proposta:proposteAperteFromComprensorio) {
-			if(this.getOfferta().getNome().equals(proposta.getRichiesta().getNome())) { 
-				if(this.getRichiesta().getNome().equals(proposta.getOfferta().getNome())) {  
-					if(this.getDurataOfferta() == proposta.getDurataRichiesta()) {
-						if(this.getDurataRichiesta() == proposta.getDurataOfferta()) {
-							this.chiudiProposta();
-							proposta.chiudiProposta();
-							
-						}
-					}
-				}
-			}
-		}
+	    ComprensorioGeografico comprensorio = Fruitore.getComprensorioFromUser(this.getUsername());
+	    ArrayList<String> userFruitoriFromComprensorio = Fruitore.getUserFruitoriFromComprensorio(comprensorio);
+	    ArrayList<Proposta> proposteAperteFromComprensorio = Proposta.getProposteAperteFromUsers(userFruitoriFromComprensorio);
+
+	    for (Proposta proposta : proposteAperteFromComprensorio) {
+	        if (this.soddisfaRichiestaDi(proposta)) {
+	            if (this.richiestaSoddisfattaDa(proposta)) {
+	                this.chiudiProposta();
+	                proposta.chiudiProposta();
+	                break; 
+	            } else {	              
+	                ArrayList<Proposta> percorso = new ArrayList<>();
+	                percorso.add(this);
+
+	                if (verificaTransitivaCiclo(proposta, percorso, proposteAperteFromComprensorio)) {
+	                    chiudiProposte(percorso);
+	                    this.chiudiProposta();
+	                    break; 
+	                }
+	            }
+	        }
+	    }
+	}
+
+	
+	private boolean verificaTransitivaCiclo(Proposta propostaAperta, ArrayList<Proposta> catenaProposte, ArrayList<Proposta> elencoProposte) {
+	    catenaProposte.add(propostaAperta);
+
+	    if (catenaProposte.size() > 2 && propostaAperta.soddisfaRichiestaDi(this)) {
+	        return true;
+	        }
+
+	    for (Proposta prossimaProposta : elencoProposte) {
+	        if (!catenaProposte.contains(prossimaProposta) && propostaAperta.soddisfaRichiestaDi(prossimaProposta)) {
+	            if (verificaTransitivaCiclo(prossimaProposta, catenaProposte, elencoProposte)) {
+	                return true;
+	            }
+	        }
+	    }
+	    catenaProposte.remove(catenaProposte.size() - 1);
+	    return false;
+	}
+
+
+	public boolean soddisfaRichiestaDi(Proposta altraProposta) {
+	    return this.getOfferta().getNome().equals(altraProposta.getRichiesta().getNome())
+	        && this.getDurataOfferta() == altraProposta.getDurataRichiesta();
+	}
+
+	public boolean richiestaSoddisfattaDa(Proposta altraProposta) {
+	    return this.getRichiesta().getNome().equals(altraProposta.getOfferta().getNome())
+	        && this.getDurataRichiesta() == altraProposta.getDurataOfferta();
+	}
+
+	
+	private void chiudiProposte(ArrayList<Proposta> percorso) {
+	    for (Proposta proposta : percorso) {
+	        proposta.chiudiProposta();
+	    }
 	}
 	
-		
-	public boolean soddisfaRichiesta(Proposta propostaAperta) {
-		if(propostaAperta.getRichiesta().getNome().equals(this.getOfferta().getNome()) && propostaAperta.getDurataRichiesta() == this.getDurataOfferta()) {  
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	public boolean soddisfaOfferta(Proposta propostaAperta) {
-		if(propostaAperta.getOfferta().getNome().equals(this.getRichiesta().getNome()) && propostaAperta.getDurataOfferta() == this.getDurataRichiesta()) {  
-			return true;		} else {
-			return false;
-		}
-	}
+
 	
 	
 	

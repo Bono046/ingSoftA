@@ -906,7 +906,20 @@
         }
       },
       "categoriaCorrente": {
-        "nome": "lezioni piu"
+        "nome": "lezioni medie",
+        "campo": "operazioni",
+        "dominio": {
+          "meno": "",
+          "piu": ""
+        },
+        "sottocategorie": {
+          "meno": {
+            "nome": "lezioni piu"
+          },
+          "piu": {
+            "nome": "lezioni meno"
+          }
+        }
       },
       "listaFoglie": [
         {
@@ -978,6 +991,48 @@
             },
             "piu": {
               "nome": "lezioni meno"
+            }
+          }
+        },
+        {
+          "nome": "matematica",
+          "campo": "scuola",
+          "dominio": {
+            "medie": "",
+            "superiori": ""
+          },
+          "sottocategorie": {
+            "medie": {
+              "nome": "lezioni medie",
+              "campo": "operazioni",
+              "dominio": {
+                "meno": "",
+                "piu": ""
+              },
+              "sottocategorie": {
+                "meno": {
+                  "nome": "lezioni piu"
+                },
+                "piu": {
+                  "nome": "lezioni meno"
+                }
+              }
+            },
+            "superiori": {
+              "nome": "lezioni superiori",
+              "campo": "operazioni",
+              "dominio": {
+                "lezioni per": "",
+                "lezioni diviso": ""
+              },
+              "sottocategorie": {
+                "lezioni per": {
+                  "nome": "lezioni per"
+                },
+                "lezioni diviso": {
+                  "nome": "lezioni diviso"
+                }
+              }
             }
           }
         }
@@ -1146,11 +1201,56 @@
               "nome": "lezioni chitarra"
             }
           }
+        },
+        {
+          "nome": "musica",
+          "campo": "l",
+          "dominio": {
+            "piano": "",
+            "chitarra": ""
+          },
+          "sottocategorie": {
+            "piano": {
+              "nome": "livello",
+              "campo": "livello",
+              "dominio": {
+                "esp": "",
+                "princi": ""
+              },
+              "sottocategorie": {
+                "esp": {
+                  "nome": "piano esperto"
+                },
+                "princi": {
+                  "nome": "piano princp"
+                }
+              }
+            },
+            "chitarra": {
+              "nome": "lezioni chitarra"
+            }
+          }
         }
       ]
     },
     {
       "radice": {
+        "nome": "lettere",
+        "campo": "lettera",
+        "dominio": {
+          "a": "a",
+          "b": "b"
+        },
+        "sottocategorie": {
+          "a": {
+            "nome": "a"
+          },
+          "b": {
+            "nome": "b"
+          }
+        }
+      },
+      "categoriaCorrente": {
         "nome": "lettere",
         "campo": "lettera",
         "dominio": {
@@ -1216,6 +1316,45 @@
         ]
       },
       "mail": "antonio"
+    },
+    {
+      "username": "np",
+      "password": "np",
+      "comprensiorio": {
+        "nome": "Orzinuovi",
+        "comuni": [
+          "Soncino",
+          "Orzinuovi",
+          "Orzivecchi"
+        ]
+      },
+      "mail": "np"
+    },
+    {
+      "username": "test",
+      "password": "test",
+      "comprensiorio": {
+        "nome": "Brescia",
+        "comuni": [
+          "Rezzato",
+          "Nave",
+          "San polo"
+        ]
+      },
+      "mail": "test"
+    },
+    {
+      "username": "n",
+      "password": "n",
+      "comprensiorio": {
+        "nome": "Mazzano",
+        "comuni": [
+          "Ciliverghe",
+          "Mazzano",
+          "Molinetto"
+        ]
+      },
+      "mail": "n"
     }
   ],
   "proposte": [
@@ -1278,6 +1417,174 @@
       "durataOfferta": 250,
       "stato": "APERTA",
       "username": "antonio"
+    },
+    {
+      "richiesta": {
+        "nome": "piano esperto"
+      },
+      "offerta": {
+        "nome": "lezioni piu"
+      },
+      "durataRichiesta": 10,
+      "durataOfferta": 12,
+      "stato": "CHIUSA",
+      "username": "np"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni piu"
+      },
+      "offerta": {
+        "nome": "piano esperto"
+      },
+      "durataRichiesta": 12,
+      "durataOfferta": 9,
+      "stato": "CHIUSA",
+      "username": "np"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni piu"
+      },
+      "offerta": {
+        "nome": "quadrato"
+      },
+      "durataRichiesta": 5,
+      "durataOfferta": 4,
+      "stato": "CHIUSA",
+      "username": "np"
+    },
+    {
+      "richiesta": {
+        "nome": "quadrato"
+      },
+      "offerta": {
+        "nome": "lezioni chitarra"
+      },
+      "durataRichiesta": 4,
+      "durataOfferta": 3,
+      "stato": "CHIUSA",
+      "username": "np"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni diviso"
+      },
+      "offerta": {
+        "nome": "quadrato"
+      },
+      "durataRichiesta": 5,
+      "durataOfferta": 3,
+      "stato": "APERTA",
+      "username": "np"
+    },
+    {
+      "richiesta": {
+        "nome": "quadrato"
+      },
+      "offerta": {
+        "nome": "lezioni chitarra"
+      },
+      "durataRichiesta": 3,
+      "durataOfferta": 2,
+      "stato": "APERTA",
+      "username": "np"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni chitarra"
+      },
+      "offerta": {
+        "nome": "lezioni diviso"
+      },
+      "durataRichiesta": 2,
+      "durataOfferta": 2,
+      "stato": "APERTA",
+      "username": "np"
+    },
+    {
+      "richiesta": {
+        "nome": "piano esperto"
+      },
+      "offerta": {
+        "nome": "quadrato"
+      },
+      "durataRichiesta": 10,
+      "durataOfferta": 10,
+      "stato": "CHIUSA",
+      "username": "test"
+    },
+    {
+      "richiesta": {
+        "nome": "quadrato"
+      },
+      "offerta": {
+        "nome": "lezioni meno"
+      },
+      "durataRichiesta": 10,
+      "durataOfferta": 10,
+      "stato": "APERTA",
+      "username": "test"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni meno"
+      },
+      "offerta": {
+        "nome": "piano esperto"
+      },
+      "durataRichiesta": 10,
+      "durataOfferta": 10,
+      "stato": "APERTA",
+      "username": "test"
+    },
+    {
+      "richiesta": {
+        "nome": "quadrato"
+      },
+      "offerta": {
+        "nome": "piano esperto"
+      },
+      "durataRichiesta": 10,
+      "durataOfferta": 10,
+      "stato": "CHIUSA",
+      "username": "test"
+    },
+    {
+      "richiesta": {
+        "nome": "piano esperto"
+      },
+      "offerta": {
+        "nome": "quadrato"
+      },
+      "durataRichiesta": 10,
+      "durataOfferta": 10,
+      "stato": "CHIUSA",
+      "username": "n"
+    },
+    {
+      "richiesta": {
+        "nome": "quadrato"
+      },
+      "offerta": {
+        "nome": "lezioni meno"
+      },
+      "durataRichiesta": 10,
+      "durataOfferta": 10,
+      "stato": "CHIUSA",
+      "username": "n"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni meno"
+      },
+      "offerta": {
+        "nome": "piano esperto"
+      },
+      "durataRichiesta": 10,
+      "durataOfferta": 10,
+      "stato": "CHIUSA",
+      "username": "n"
     }
   ]
 }

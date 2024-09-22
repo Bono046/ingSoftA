@@ -77,42 +77,37 @@ public class App {
             System.out.println("4. Visualizza Comprensori");
             System.out.println("5. Visualizza Gerarchie");
             System.out.println("6. Visualizza Fattori di Conversione");
+            System.out.println("7. Visualizza proposte relative ad una categoria");
             System.out.println("0. Esci");
             System.out.print("Seleziona un'opzione: ");
 
             int scelta = getInt();
 
             switch (scelta) {
-            // Crea Comprensorio Geografico
                 case 1:
                     creaComprensorio();
                     break;
-            // Crea Gerarchia di Categorie
                 case 2:
                 	Categoria root = creaCategoria(true, null);
                 	GerarchiaCategorie g = new GerarchiaCategorie(root);
                 	
                     creaGerarchia(g, g.getCategoriaRadice());
                     GerarchiaCategorie.addGerarchia(g);
-
-                    break;  
-           // Stabilisci Fattore di Conversione	
+                    break;  	
                 case 3:               	
                     setFattoriConversioneGerarchia(sceltaRadice());
-                    break;
-           // Visualizza Comprensori         
+                    break;        
                 case 4:
                     visualizzaComprensori();
-                    break;
-           // Visualizza Gerarchie         
+                    break;        
                 case 5:
                     visualizzaGerarchie();
-                    break;
-           //Visualizza Fattori di Conversione         
+                    break;        
                 case 6:
                 	VisualizzaFattoriConversione(sceltaRadice());
                     break;
-           // Esci
+                case 7:
+                	visualizzaProposteByFoglia();
                 case 0:
                     salvaDati();
                     loggedAsConfig=false;
@@ -125,18 +120,20 @@ public class App {
     }
 
     
-    private void mostraMenuPrincipaleFruitore(String user) {
+  
+
+	private void mostraMenuPrincipaleFruitore(String user) {
     	while (loggedAsFruitore) {
             System.out.println("1. Esplora gerarchie");
             System.out.println("2. Formula proposta scambio");
-            System.out.println("3. Visualizza proposte scambio aperte");
+            System.out.println("3. Visualizza proposte di scambio");
+            System.out.println("4. Ritira proposta di scambio");
             System.out.println("0. Esci");
             System.out.print("Seleziona un'opzione: ");
 
             int scelta = getInt();
 
             switch (scelta) {
-            // Esplora gerarchie
                 case 1:
                 	GerarchiaCategorie g = sceltaRadice();
                 	g.setCategoriaCorrente();
@@ -146,11 +143,10 @@ public class App {
                 	creaProposta(user);
                 	break;
                 case 3:
-                	ArrayList<Proposta> list = Proposta.getListaProposteUser(user);
-                	if (list.isEmpty())
-                		System.out.println("Non sono presenti proposte da visualizzare");
-                	else
-                		System.out.println(list.toString());
+                	visualizzaProposteByUser(user);
+                	break;
+                case 4:
+                	ritiraProposta(user);
                 	break;
                 case 0:
                     salvaDati();
@@ -162,7 +158,10 @@ public class App {
             }
         }
     }
-    
+
+	
+	
+
     
 	private int getInt() {
     	int input = -1;
@@ -182,7 +181,7 @@ public class App {
         return Math.round(input * 100.0) / 100.0;
     }
     
-    private String getConsistentString(String output) {		//verifica che la stringe inserita abbia almeno un carattere valido
+    private String getConsistentString(String output) {		
     	System.out.println(output);
     	
     	Boolean valido = false;
@@ -197,7 +196,7 @@ public class App {
     	return input;
     }
     
-    private String getNomeCategoriaValido(Categoria radice) {		//metodo di controllo per l'unicità del nome nella stessa gerarchia
+    private String getNomeCategoriaValido(Categoria radice) {		
     	String nome = "";
     	Boolean nomeValido=false;
     
@@ -339,7 +338,7 @@ public class App {
     	Boolean nomeValido=true;
     	String nome = "";
     	
-    	if(isRadice) {	// controllo unicità nomi radici
+    	if(isRadice) {	
     		do {
     			
     			nome= getConsistentString("Inserisci nome categoria");
@@ -362,7 +361,7 @@ public class App {
         	if(numValori <= 0)
         		System.out.println("scelta non valida. Riprovare");
         }	
-        // ciclo per inserire i valori del dominio - la descrizione è resa facoltativa lasciando la stringa vuota - ciclo do-while per evitare duplicati
+  
         for (int i = 0; i < numValori; i++) {
         	String valore;
         	String descrizione;
@@ -383,14 +382,14 @@ public class App {
     }
     
     private CategoriaFoglia creaCategoriaFoglia(Categoria radice) {
-    	String nome = getNomeCategoriaValido(radice); 		//metodo che verifica unicità del nome nella gerarchia
+    	String nome = getNomeCategoriaValido(radice); 		
 
         CategoriaFoglia categoria = new CategoriaFoglia(nome);
         System.out.println("Categoria foglia creata con successo." + "\n");
         return categoria;
     }
 
-    private void creaGerarchia(GerarchiaCategorie g, Categoria padre) {			// metodo ricorsivo per la creazioni di tutte le sottocategorie in una gerarchia
+    private void creaGerarchia(GerarchiaCategorie g, Categoria padre) {			
     	System.out.println("categoria selezionata: " + padre.getNome());
     	
     	ArrayList<String> listaDominio = new ArrayList<>(padre.getDominio().keySet());
@@ -530,7 +529,7 @@ public class App {
 	    	
 	    	String nome = scanner.nextLine();
 	    	
-	    	Boolean fogliaOk = false;		// variabile per stampare l'errore giusto tra foglia mancante e fattore mancante
+	    	Boolean fogliaOk = false;		
 	    	
 	    	for(int i=0; i < g.getListaFoglie().size(); i++) {
 	    		if(nome.equals(g.getListaFoglie().get(i).getNome())) {
@@ -607,6 +606,12 @@ public class App {
 		}while(!check);
      return null;	
 	}
+ 
+ 
+ private void visualizzaProposteByFoglia() {
+		// 
+		
+	}
 	
 	
  private void creaProposta(String user) {
@@ -661,6 +666,22 @@ public class App {
 		};
 	}
 	
+	
+	
+	
+	private void ritiraProposta(String user) {
+		//
+
+	}
+
+	private void visualizzaProposteByUser(String user) {
+		ArrayList<Proposta> list = Proposta.getListaProposteUser(user);
+		if (list.isEmpty())
+			System.out.println("Non sono presenti proposte da visualizzare");
+		else
+			System.out.println(list.toString());
+	}
+  
 	
 	
 	
