@@ -73,6 +73,10 @@ public class Proposta {
 	public void accettaProposta() {
 		this.stato = StatoProposta.APERTA;
 	}
+	
+	public void ritiraProposta() {
+		this.stato = StatoProposta.RITIRATA;
+	}
 
 	public StatoProposta getStato() {
 		return stato;

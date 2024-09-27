@@ -1475,7 +1475,7 @@
       },
       "durataRichiesta": 5,
       "durataOfferta": 3,
-      "stato": "APERTA",
+      "stato": "RITIRATA",
       "username": "np"
     },
     {
@@ -1499,7 +1499,7 @@
       },
       "durataRichiesta": 2,
       "durataOfferta": 2,
-      "stato": "APERTA",
+      "stato": "RITIRATA",
       "username": "np"
     },
     {

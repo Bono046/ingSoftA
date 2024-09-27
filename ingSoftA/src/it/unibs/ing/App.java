@@ -4,6 +4,8 @@ package it.unibs.ing;
 import java.io.IOException;
 import java.util.*;
 
+import jdk.nashorn.internal.runtime.ListAdapter;
+
 
 public class App {
     private Dati dati;
@@ -609,10 +611,18 @@ public class App {
  
  
  private void visualizzaProposteByFoglia() {
-		// 
+		String foglia = getFogliaDaGerarchia(sceltaRadice()).getNome();
+		ArrayList<Proposta> lista = Proposta.getListaProposte();
+		for(Proposta proposta:lista) {
+			if(proposta.getOfferta().getNome().equals(foglia) || proposta.getRichiesta().getNome().equals(foglia)) {
+				System.out.println(proposta.toString());
+			}
+		}		
 		
 	}
 	
+ 
+ 
 	
  private void creaProposta(String user) {
  	CategoriaFoglia richiesta = null;
@@ -670,18 +680,61 @@ public class App {
 	
 	
 	private void ritiraProposta(String user) {
-		//
+	    int scelta;
+	    ArrayList<Proposta> list = Proposta.getListaProposteUser(user);
 
+	    if (list.isEmpty()) {
+	        System.out.println("Non sono presenti proposte da ritirare.");
+	        return;
+	    }
+
+	    visualizzaProposteAperteByUser(user);
+	    System.out.println("Seleziona il numero della proposta da ritirare:");
+
+	    try {
+	        scelta = scanner.nextInt();
+	        scanner.nextLine();
+	        
+	        if (scelta >= 0 && scelta < list.size()) {
+	            Proposta propostaDaRitirare = list.get(scelta);
+	            propostaDaRitirare.ritiraProposta();
+	            System.out.println("La proposta è stata ritirata con successo.");
+	        } else {
+	            System.out.println("Scelta non valida. Riprova.");
+	        }
+	    } catch (InputMismatchException e) {
+	        System.out.println("Input non valido. Inserisci un numero.");
+	        scanner.next(); 
+	    }
 	}
+	
 
 	private void visualizzaProposteByUser(String user) {
-		ArrayList<Proposta> list = Proposta.getListaProposteUser(user);
-		if (list.isEmpty())
-			System.out.println("Non sono presenti proposte da visualizzare");
-		else
-			System.out.println(list.toString());
+	    ArrayList<Proposta> list = Proposta.getListaProposteUser(user);
+	    if (list.isEmpty()) {
+	        System.out.println("Non sono presenti proposte da visualizzare.");
+	    } else {
+	        for (int i = 0; i < list.size(); i++) {
+	            System.out.println(i + ": " + list.get(i));
+	        }
+	    }
+	    System.out.println("---------------------------------- \n");
 	}
-  
+	
+	private void visualizzaProposteAperteByUser(String user) {
+	    ArrayList<Proposta> list = Proposta.getListaProposteUser(user);
+	    if (list.isEmpty()) {
+	        System.out.println("Non sono presenti proposte da visualizzare.");
+	    } else {
+	        for (int i = 0; i < list.size(); i++) {
+	        	if(list.get(i).isAperto()) {
+	        		System.out.println(i + ": " + list.get(i));
+	        	}
+	        }
+	        	
+	    }
+	    System.out.println("---------------------------------------------------------------------------------------------------- \n");
+	}  
 	
 	
 	
