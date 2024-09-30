@@ -9,8 +9,10 @@ public class Proposta {
 	private int durataOfferta;
 	private StatoProposta stato;
 	private String username;
-	private enum StatoProposta {CREATA, APERTA, CHIUSA, RITIRATA}; 
+	private enum StatoProposta {APERTA, CHIUSA, RITIRATA}; 
 	private static ArrayList<Proposta> listaProposte= new ArrayList<>(); 
+	private static  ArrayList<StatoProposta> statiProposta= new ArrayList<>(); 
+	
 	
 	
 	public Proposta(CategoriaFoglia richiesta, CategoriaFoglia offerta, int durataRichiesta, String username) {
@@ -18,7 +20,6 @@ public class Proposta {
 		this.richiesta = richiesta;
 		this.offerta = offerta;
 		this.durataRichiesta = durataRichiesta;
-		this.stato = StatoProposta.CREATA;
 		this.username = username;
 	}
 
@@ -64,28 +65,17 @@ public class Proposta {
 
 
 	public Boolean isAperto() {
-		if(this.stato == stato.APERTA)
+		if(this.stato == StatoProposta.APERTA)
 			return true;
 		return false;
 	}
 
 
-	public void accettaProposta() {
-		this.stato = StatoProposta.APERTA;
-	}
-	
-	public void ritiraProposta() {
-		this.stato = StatoProposta.RITIRATA;
-	}
 
 	public StatoProposta getStato() {
 		return stato;
 	}
 	
-	public void chiudiProposta() {
-		this.stato=StatoProposta.CHIUSA;
-		
-	}
 
 
 	public String getUsername() {
@@ -139,6 +129,27 @@ public class Proposta {
 	}
 
 	
+	private void chiudiProposte(ArrayList<Proposta> percorso) {
+	    for (Proposta proposta : percorso) {
+	        proposta.chiudiProposta();
+	    }
+	}
+	
+	
+	public void chiudiProposta() {
+		this.stato=StatoProposta.CHIUSA;
+		statiProposta.add(StatoProposta.CHIUSA);
+	}
+	
+	public void accettaProposta() {
+		this.stato = StatoProposta.APERTA;
+		statiProposta.add(StatoProposta.APERTA);
+	}
+	
+	public void ritiraProposta() {
+		this.stato = StatoProposta.RITIRATA;
+		statiProposta.add(StatoProposta.RITIRATA);
+	}
 	
 	
 	public void verificaProposta() {
@@ -197,11 +208,7 @@ public class Proposta {
 	}
 
 	
-	private void chiudiProposte(ArrayList<Proposta> percorso) {
-	    for (Proposta proposta : percorso) {
-	        proposta.chiudiProposta();
-	    }
-	}
+	
 	
 
 	

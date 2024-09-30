@@ -60,7 +60,7 @@ public class App {
                 	if(userLogged != null){
                 		loggedAsFruitore = true;
                 	 	mostraMenuPrincipaleFruitore(userLogged.getUsername());
-			}	
+                	}	
                 	break;
                 case 0: 
                 	System.out.println("Arrivederci!\n");
@@ -110,6 +110,7 @@ public class App {
                     break;
                 case 7:
                 	visualizzaProposteByFoglia();
+                	break;
                 case 0:
                     salvaDati();
                     loggedAsConfig=false;
