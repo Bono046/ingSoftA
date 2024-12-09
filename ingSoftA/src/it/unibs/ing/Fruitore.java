@@ -108,8 +108,10 @@ public class Fruitore {
 	
 	public static ArrayList<String> getUserFruitoriFromComprensorio(ComprensorioGeografico c){
 		ArrayList<String> lista = new ArrayList<>();
+		
 		for(Fruitore f : listaFruitori) {
-			if(f.getComprensiorio().equals(c))
+			if(f.getUsername().equals(c))
+			if(f.getComprensiorio().getNome().equals(c.getNome()))
 				lista.add(f.getUsername());				
 		}
 		return lista;

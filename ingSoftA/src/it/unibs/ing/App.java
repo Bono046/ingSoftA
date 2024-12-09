@@ -4,7 +4,6 @@ package it.unibs.ing;
 import java.io.IOException;
 import java.util.*;
 
-import jdk.nashorn.internal.runtime.ListAdapter;
 
 
 public class App {
@@ -63,6 +62,7 @@ public class App {
                 	}	
                 	break;
                 case 0: 
+                	salvaDati();
                 	System.out.println("Arrivederci!\n");
                 	return;
                 default:
@@ -92,9 +92,9 @@ public class App {
                 case 2:
                 	Categoria root = creaCategoria(true, null);
                 	GerarchiaCategorie g = new GerarchiaCategorie(root);
-                	
                     creaGerarchia(g, g.getCategoriaRadice());
                     GerarchiaCategorie.addGerarchia(g);
+                    salvaDati();
                     break;  	
                 case 3:               	
                     setFattoriConversioneGerarchia(sceltaRadice());
@@ -114,7 +114,7 @@ public class App {
                 case 0:
                     salvaDati();
                     loggedAsConfig=false;
-                    System.out.println("Arrivederci!");
+                    System.out.println("Arrivederci! \n");
                     return;
                 default:
                     System.out.println("Opzione non valida. Riprova" + "\n");
@@ -237,9 +237,9 @@ public class App {
             } else {
                 Configuratore configuratore = new Configuratore(username, password);
                 Configuratore.addToListaConfiguratori(configuratore);
-                System.out.println("Configuratore registrato con successo." + "\n");
             }
         }
+        salvaDati();
     }
 
     private Boolean autenticaConfiguratore() {
@@ -259,13 +259,19 @@ public class App {
     
     private void registraFruitore() {
     	//scelta comprensorio
+    	
     	try {
     		ArrayList<ComprensorioGeografico> listaComprensori = ComprensorioGeografico.getListaComprensori();
+    		
+    		if(listaComprensori.isEmpty()) 
+	        	throw new IllegalArgumentException();
+    		
     		System.out.println("Seleziona il comprensorio di appartenenza: ");
 	        for (int i = 0; i < listaComprensori.size(); i++) {
 	            System.out.println((i + 1) + ". " + listaComprensori.get(i).getNome());
 	        }
 	        int scelta = -1;
+	        
 	        do {
 	            System.out.print("\nInserisci il numero della scelta: ");
 	            scelta = getInt();
@@ -288,11 +294,15 @@ public class App {
 		        } else {
 		            Fruitore fruitore = new Fruitore(username, password, comprensorio, mail);
 		            Fruitore.addToListaConfiguratori(fruitore);
-		            System.out.println("Fruitore registrato con successo." + "\n");
+		            salvaDati();
+		            
 		         }
 		     }
-    	}catch (NullPointerException e) { System.out.println("Nessun comprensorio disponibile."); }
+    	} catch (Exception e) { 
+    		System.out.println("Nessun comprensorio disponibile.\n"); 
+    		}
     }
+    
     
     private Fruitore autenticaFruitore() {
         System.out.println("Inserisci username: ");
@@ -319,7 +329,7 @@ public class App {
 				comprensorio.aggiungiComune(comune);
 		} while(!comune.equals("0"));
         ComprensorioGeografico.addComprensorio(comprensorio);
-        System.out.println("Comprensorio creato con successo." + "\n");
+        salvaDati();
         
     }
     
@@ -427,19 +437,37 @@ public class App {
    }
     
     public void stampaAlbero(String indentazione, Categoria c) {
-    	try {
-    	   System.out.println(indentazione + "- " + c.getNome() + "\t(dominio: " + c.getDominio().keySet() + ")");
-       } catch (NullPointerException e) {
-    	   System.out.println(indentazione + "- " + c.getNome() + "\t(foglia)");
-       }
+        try {
+            
+            StringBuilder result = new StringBuilder(indentazione + "- " + c.getNome() + " (");
 
-        // Se ci sono sottocategorie, le visitiamo ricorsivamente
+            List<String> coppie = new ArrayList<>();
+            for (Map.Entry<String, String> dominio : c.getDominio().entrySet()) {
+                String chiave = dominio.getKey();
+                String valore = dominio.getValue();
+
+                if (valore.isEmpty()) {
+                    coppie.add(chiave);
+                } else {
+                    coppie.add(chiave + ": " + valore);
+                }
+            }
+
+            result.append(String.join(", ", coppie));
+            result.append(")");
+            System.out.println(result.toString());
+
+        } catch (NullPointerException e) {
+            System.out.println(indentazione + "- " + c.getNome());
+        }
+
         if (c.getSottocategorie() != null) {
             for (Categoria sottocategoria : c.getSottocategorie().values()) {
                 stampaAlbero(indentazione + "  ", sottocategoria);
             }
         }
     }
+
     
     private void visualizzaGerarchie() {
         if (GerarchiaCategorie.getListaRadici().isEmpty()) {
@@ -521,6 +549,7 @@ public class App {
 	        if(!aggiuntoFattore)
 	        	System.out.println("Tutte le categorie foglia hanno già assegnato un fattore di conversione\n");
 	    }
+    	salvaDati();
     }
     
     private void VisualizzaFattoriConversione(GerarchiaCategorie g) {
@@ -664,13 +693,14 @@ public class App {
 				System.out.println("Proposta non confermata\n");
 			else System.out.println("Input non valido. Riprovare");
 		} while(!(conferma.equals("s") || conferma.equals("n")));
+		salvaDati();
  }
 
 	private void calcolaDurataOfferta(Proposta proposta) {
 		int durataOfferta=0;
 		try {
 			FattoreConversione f = FattoreConversione.trovaFattore(proposta.getRichiesta().getNome(), proposta.getOfferta().getNome());
-			durataOfferta = (int) (proposta.getDurataRichiesta() * f.getFattore());
+			durataOfferta = (int) Math.round(proposta.getDurataRichiesta() * f.getFattore());
 			proposta.setDurataOfferta(durataOfferta);
 		} catch (NullPointerException e) {
 			System.out.println("non esiste questo fattore di conversione");
@@ -707,6 +737,7 @@ public class App {
 	        System.out.println("Input non valido. Inserisci un numero.");
 	        scanner.next(); 
 	    }
+	    salvaDati();
 	}
 	
 
@@ -727,7 +758,7 @@ public class App {
 	    if (list.isEmpty()) {
 	        System.out.println("Non sono presenti proposte da visualizzare.");
 	    } else {
-	        for (int i = 0; i < list.size(); i++) {
+	        for (int i = 1; i < list.size(); i++) {
 	        	if(list.get(i).isAperto()) {
 	        		System.out.println(i + ": " + list.get(i));
 	        	}

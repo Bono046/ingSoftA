@@ -25,6 +25,7 @@ class Categoria  {
         return campo;
     }
 
+    
     public HashMap<String, String> getDominio() {
         return dominio;
     }
@@ -48,7 +49,7 @@ class Categoria  {
 
     @Override
     public String toString() {
-        return nome + "[campo=" + campo + ", dominio=" + dominio + ", sottocategorie="
+        return nome + "[campo: " + campo + ", dominio: " + dominio + ", sottocategorie: "
                 + sottocategorie + "]";
     	}
 	

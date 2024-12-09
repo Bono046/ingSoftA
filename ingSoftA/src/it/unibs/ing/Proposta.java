@@ -9,7 +9,7 @@ public class Proposta {
 	private int durataOfferta;
 	private StatoProposta stato;
 	private String username;
-	private enum StatoProposta {APERTA, CHIUSA, RITIRATA}; 
+	private enum StatoProposta {SOSPESO, APERTA, CHIUSA, RITIRATA}; 
 	private static ArrayList<Proposta> listaProposte= new ArrayList<>(); 
 	private static  ArrayList<StatoProposta> statiProposta= new ArrayList<>(); 
 	
@@ -21,6 +21,7 @@ public class Proposta {
 		this.offerta = offerta;
 		this.durataRichiesta = durataRichiesta;
 		this.username = username;
+		this.stato = StatoProposta.SOSPESO;
 	}
 
 
@@ -153,10 +154,12 @@ public class Proposta {
 	
 	
 	public void verificaProposta() {
-	    ComprensorioGeografico comprensorio = Fruitore.getComprensorioFromUser(this.getUsername());
+		String user = this.getUsername();
+	    ComprensorioGeografico comprensorio = Fruitore.getComprensorioFromUser(user);
 	    ArrayList<String> userFruitoriFromComprensorio = Fruitore.getUserFruitoriFromComprensorio(comprensorio);
-	    ArrayList<Proposta> proposteAperteFromComprensorio = Proposta.getProposteAperteFromUsers(userFruitoriFromComprensorio);
-
+	    userFruitoriFromComprensorio.remove(user);
+	    ArrayList<Proposta> proposteAperteFromComprensorio = Proposta.getProposteAperteFromUsers(userFruitoriFromComprensorio);   
+	    
 	    for (Proposta proposta : proposteAperteFromComprensorio) {
 	        if (this.soddisfaRichiestaDi(proposta)) {
 	            if (this.richiestaSoddisfattaDa(proposta)) {
