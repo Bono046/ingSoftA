@@ -12,7 +12,7 @@ public class App {
     private Scanner scanner = new Scanner(System.in);
     private Boolean loggedAsConfig = false;
     private Boolean loggedAsFruitore = false;
-
+//dfwc
 
     public App() {
         try {
