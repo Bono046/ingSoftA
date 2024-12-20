@@ -1,4 +1,5 @@
 
+
 package it.unibs.ing;
 
 import java.io.IOException;
@@ -233,7 +234,7 @@ public class App {
 
             userValido = Configuratore.userValido(username);
             if (!userValido) {
-                System.out.println("Username gi‡ esistente. Riprova con un altro." + "\n");
+                System.out.println("Username gi√† esistente. Riprova con un altro." + "\n");
             } else {
                 Configuratore configuratore = new Configuratore(username, password);
                 Configuratore.addToListaConfiguratori(configuratore);
@@ -290,7 +291,7 @@ public class App {
 		
 		        userValido = Fruitore.userValido(username);
 		        if (!userValido) {
-		            System.out.println("Username gi‡ esistente. Riprova con un altro." + "\n");
+		            System.out.println("Username gi√† esistente. Riprova con un altro." + "\n");
 		        } else {
 		            Fruitore fruitore = new Fruitore(username, password, comprensorio, mail);
 		            Fruitore.addToListaConfiguratori(fruitore);
@@ -483,7 +484,7 @@ public class App {
 
     
     
-    private GerarchiaCategorie sceltaRadice() {				// modificato -> restiuisce un oggetto gerarchia, da cui Ë possibile ottenere la radice con getCategoriaRadice
+    private GerarchiaCategorie sceltaRadice() {				// modificato -> restiuisce un oggetto gerarchia, da cui √® possibile ottenere la radice con getCategoriaRadice
     	
     	ArrayList<GerarchiaCategorie> listaOggettiGerarchia = GerarchiaCategorie.getListaOggettiGerarchia();
     	
@@ -531,7 +532,7 @@ public class App {
 			
 	        for (CategoriaFoglia c1 : foglie) {
 	            for (CategoriaFoglia c2 : gerarchiaRichiesta.getListaFoglie()) {
-	                if ( (!c1.getNome().equals(c2.getNome())) && (!FattoreConversione.esisteFattore(c1, c2)) ) {		//if(c1 diversa da s2)&(Fattore(c1,c2) non gi‡ esistente)
+	                if ( (!c1.getNome().equals(c2.getNome())) && (!FattoreConversione.esisteFattore(c1, c2)) ) {		//if(c1 diversa da s2)&(Fattore(c1,c2) non gi√† esistente)
 	                	Boolean valido= false;
 	                	while(!valido) {
 	                		System.out.println("Inserire il fattore di conversione da " + c1.getNome().toUpperCase() + " a " + c2.getNome().toUpperCase() + ":");
@@ -547,7 +548,7 @@ public class App {
 	            }
 	        }
 	        if(!aggiuntoFattore)
-	        	System.out.println("Tutte le categorie foglia hanno gi‡ assegnato un fattore di conversione\n");
+	        	System.out.println("Tutte le categorie foglia hanno gi√† assegnato un fattore di conversione\n");
 	    }
     	salvaDati();
     }
@@ -643,11 +644,15 @@ public class App {
  private void visualizzaProposteByFoglia() {
 		String foglia = getFogliaDaGerarchia(sceltaRadice()).getNome();
 		ArrayList<Proposta> lista = Proposta.getListaProposte();
+		int count = 0;
 		for(Proposta proposta:lista) {
 			if(proposta.getOfferta().getNome().equals(foglia) || proposta.getRichiesta().getNome().equals(foglia)) {
 				System.out.println(proposta.toString());
+				count++;
 			}
-		}		
+		}
+		if(count==0) 
+			System.out.println("Non esistono proposte legate alla categoria foglia selezionata");
 		
 	}
 	
@@ -666,7 +671,7 @@ public class App {
 	    	offerta = getFogliaDaGerarchia(sceltaRadice());
 
 			if(richiesta.getNome().equals(offerta.getNome()))
-				System.out.println("Non puÚ essere selezionata la stessa categoria. Riprovare\n");
+				System.out.println("Non pu√≤ essere selezionata la stessa categoria. Riprovare\n");
 			else checkDiverso = true;
 
 		} while (!checkDiverso);
@@ -729,7 +734,7 @@ public class App {
 	        if (scelta >= 0 && scelta < list.size()) {
 	            Proposta propostaDaRitirare = list.get(scelta);
 	            propostaDaRitirare.ritiraProposta();
-	            System.out.println("La proposta Ë stata ritirata con successo.");
+	            System.out.println("La proposta √® stata ritirata con successo.");
 	        } else {
 	            System.out.println("Scelta non valida. Riprova.");
 	        }
