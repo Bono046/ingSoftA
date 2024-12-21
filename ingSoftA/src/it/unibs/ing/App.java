@@ -439,14 +439,13 @@ public class App {
     
     public void stampaAlbero(String indentazione, Categoria c) {
         try {
-            
-            StringBuilder result = new StringBuilder(indentazione + "- " + c.getNome() + " (");
-
+        	
+            StringBuilder result = new StringBuilder(indentazione + "- " + c.getNome() + " (" + c.getCampo() + "= [");
             List<String> coppie = new ArrayList<>();
             for (Map.Entry<String, String> dominio : c.getDominio().entrySet()) {
                 String chiave = dominio.getKey();
                 String valore = dominio.getValue();
-
+                
                 if (valore.isEmpty()) {
                     coppie.add(chiave);
                 } else {
@@ -455,7 +454,7 @@ public class App {
             }
 
             result.append(String.join(", ", coppie));
-            result.append(")");
+            result.append("])");
             System.out.println(result.toString());
 
         } catch (NullPointerException e) {
@@ -468,6 +467,7 @@ public class App {
             }
         }
     }
+
 
     
     private void visualizzaGerarchie() {
