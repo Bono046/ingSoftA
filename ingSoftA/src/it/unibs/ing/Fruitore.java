@@ -110,7 +110,6 @@ public class Fruitore {
 		ArrayList<String> lista = new ArrayList<>();
 		
 		for(Fruitore f : listaFruitori) {
-			if(f.getUsername().equals(c))
 			if(f.getComprensiorio().getNome().equals(c.getNome()))
 				lista.add(f.getUsername());				
 		}
