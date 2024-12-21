@@ -127,7 +127,7 @@ public class FattoreConversione {
 	
 	@Override
 	public String toString() {
-		return "FattoreConversione [c1=" + c1 + ", c2=" + c2 + ", fattore=" + fattore + "]";
+		return "categoria: " + c1 + ", categoria: " + c2 + ", fattore: " + fattore;
 	}
 	
 	
