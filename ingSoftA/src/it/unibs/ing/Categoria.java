@@ -49,8 +49,8 @@ class Categoria  {
 
     @Override
     public String toString() {
-        return nome + "[campo: " + campo + ", dominio: " + dominio + ", sottocategorie: "
-                + sottocategorie + "]";
+        return nome + "campo: " + campo + ", dominio: " + dominio + ", sottocategorie: "
+                + sottocategorie;
     	}
 	
 
