@@ -300,7 +300,7 @@ public class App {
 		         }
 		     }
     	} catch (Exception e) { 
-    		System.out.println("Nessun comprensorio disponibile.\n"); 
+    		System.out.println("Nessun comprensorio disponibile. Attendi le modifiche da parte dei configuratori\n"); 
     		}
     }
     
