@@ -153,7 +153,7 @@ public class Proposta {
 	}
 	
 	
-	public void verificaProposta() {
+	public boolean verificaProposta() {
 		String user = this.getUsername();
 	    ComprensorioGeografico comprensorio = Fruitore.getComprensorioFromUser(user);
 	    ArrayList<String> userFruitoriFromComprensorio = Fruitore.getUserFruitoriFromComprensorio(comprensorio);
@@ -165,7 +165,7 @@ public class Proposta {
 	            if (this.richiestaSoddisfattaDa(proposta)) {
 	                this.chiudiProposta();
 	                proposta.chiudiProposta();
-	                break; 
+	                return true; 
 	            } else {	              
 	                ArrayList<Proposta> percorso = new ArrayList<>();
 	                percorso.add(this);
@@ -173,11 +173,12 @@ public class Proposta {
 	                if (verificaTransitivaCiclo(proposta, percorso, proposteAperteFromComprensorio)) {
 	                    chiudiProposte(percorso);
 	                    this.chiudiProposta();
-	                    break; 
+	                    return true; 
 	                }
 	            }
 	        }
 	    }
+	    return false;
 	}
 
 	

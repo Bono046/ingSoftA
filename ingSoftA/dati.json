@@ -7,6 +7,10 @@
     {
       "username": "andrea",
       "password": "bonomi"
+    },
+    {
+      "username": "a",
+      "password": "a"
     }
   ],
   "comprensori": [
@@ -33,7 +37,7 @@
       "c2": {
         "nome": "lezioni di solfeggio"
       },
-      "fattore": 2.0
+      "fattore": 1.1
     },
     {
       "c1": {
@@ -42,7 +46,7 @@
       "c2": {
         "nome": "lezioni di storia della musica"
       },
-      "fattore": 0.5
+      "fattore": 0.91
     },
     {
       "c1": {
@@ -50,48 +54,12 @@
       },
       "c2": {
         "nome": "lezioni di chitarra"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "lezioni di chitarra"
-      },
-      "c2": {
-        "nome": "lezioni di storia della musica"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "lezioni di solfeggio"
-      },
-      "c2": {
-        "nome": "lezioni di chitarra"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "lezioni di chitarra"
-      },
-      "c2": {
-        "nome": "lezioni di solfeggio"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "lezioni di storia della musica"
-      },
-      "c2": {
-        "nome": "lezioni di pianoforte"
       },
       "fattore": 1.2
     },
     {
       "c1": {
-        "nome": "lezioni di pianoforte"
+        "nome": "lezioni di chitarra"
       },
       "c2": {
         "nome": "lezioni di storia della musica"
@@ -103,9 +71,45 @@
         "nome": "lezioni di solfeggio"
       },
       "c2": {
+        "nome": "lezioni di chitarra"
+      },
+      "fattore": 1.09
+    },
+    {
+      "c1": {
+        "nome": "lezioni di chitarra"
+      },
+      "c2": {
+        "nome": "lezioni di solfeggio"
+      },
+      "fattore": 0.92
+    },
+    {
+      "c1": {
+        "nome": "lezioni di storia della musica"
+      },
+      "c2": {
         "nome": "lezioni di pianoforte"
       },
-      "fattore": 0.6
+      "fattore": 1.3
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte"
+      },
+      "c2": {
+        "nome": "lezioni di storia della musica"
+      },
+      "fattore": 0.77
+    },
+    {
+      "c1": {
+        "nome": "lezioni di solfeggio"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte"
+      },
+      "fattore": 1.18
     },
     {
       "c1": {
@@ -114,7 +118,7 @@
       "c2": {
         "nome": "lezioni di solfeggio"
       },
-      "fattore": 1.67
+      "fattore": 0.85
     },
     {
       "c1": {
@@ -123,7 +127,7 @@
       "c2": {
         "nome": "lezioni di pianoforte"
       },
-      "fattore": 2.0
+      "fattore": 1.08
     },
     {
       "c1": {
@@ -132,7 +136,7 @@
       "c2": {
         "nome": "lezioni di chitarra"
       },
-      "fattore": 0.5
+      "fattore": 0.93
     },
     {
       "c1": {
@@ -141,7 +145,7 @@
       "c2": {
         "nome": "lezioni per cintura verde"
       },
-      "fattore": 0.5
+      "fattore": 0.8
     },
     {
       "c1": {
@@ -150,7 +154,7 @@
       "c2": {
         "nome": "lezioni per cintura bianca"
       },
-      "fattore": 2.0
+      "fattore": 1.25
     },
     {
       "c1": {
@@ -159,7 +163,7 @@
       "c2": {
         "nome": "lezioni per cintura nera"
       },
-      "fattore": 1.2
+      "fattore": 0.5
     },
     {
       "c1": {
@@ -168,7 +172,7 @@
       "c2": {
         "nome": "lezioni per cintura bianca"
       },
-      "fattore": 0.83
+      "fattore": 2.0
     },
     {
       "c1": {
@@ -177,7 +181,7 @@
       "c2": {
         "nome": "lezioni per cintura nera"
       },
-      "fattore": 2.0
+      "fattore": 0.63
     },
     {
       "c1": {
@@ -186,173 +190,11 @@
       "c2": {
         "nome": "lezioni per cintura verde"
       },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "c2": {
-        "nome": "lezioni di portate occidentali"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "lezioni di portate occidentali"
-      },
-      "c2": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "c2": {
-        "nome": "lezioni di dolci orientali"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "lezioni di dolci orientali"
-      },
-      "c2": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "lezioni di portate occidentali"
-      },
-      "c2": {
-        "nome": "lezioni di dolci orientali"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "lezioni di dolci orientali"
-      },
-      "c2": {
-        "nome": "lezioni di portate occidentali"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "c2": {
-        "nome": "lezioni di portate orientali"
-      },
-      "fattore": 1.2
-    },
-    {
-      "c1": {
-        "nome": "lezioni di portate orientali"
-      },
-      "c2": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "fattore": 0.83
-    },
-    {
-      "c1": {
-        "nome": "lezioni di portate occidentali"
-      },
-      "c2": {
-        "nome": "lezioni di portate orientali"
-      },
-      "fattore": 0.6
-    },
-    {
-      "c1": {
-        "nome": "lezioni di portate orientali"
-      },
-      "c2": {
-        "nome": "lezioni di portate occidentali"
-      },
-      "fattore": 1.67
-    },
-    {
-      "c1": {
-        "nome": "lezioni di dolci orientali"
-      },
-      "c2": {
-        "nome": "lezioni di portate orientali"
-      },
-      "fattore": 1.2
-    },
-    {
-      "c1": {
-        "nome": "lezioni di portate orientali"
-      },
-      "c2": {
-        "nome": "lezioni di dolci orientali"
-      },
-      "fattore": 0.83
+      "fattore": 1.59
     },
     {
       "c1": {
         "nome": "lezioni di storia della musica"
-      },
-      "c2": {
-        "nome": "lezioni per cintura bianca"
-      },
-      "fattore": 1.2
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura bianca"
-      },
-      "c2": {
-        "nome": "lezioni di storia della musica"
-      },
-      "fattore": 0.83
-    },
-    {
-      "c1": {
-        "nome": "lezioni di solfeggio"
-      },
-      "c2": {
-        "nome": "lezioni per cintura bianca"
-      },
-      "fattore": 0.6
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura bianca"
-      },
-      "c2": {
-        "nome": "lezioni di solfeggio"
-      },
-      "fattore": 1.67
-    },
-    {
-      "c1": {
-        "nome": "lezioni di chitarra"
-      },
-      "c2": {
-        "nome": "lezioni per cintura bianca"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura bianca"
-      },
-      "c2": {
-        "nome": "lezioni di chitarra"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "lezioni di pianoforte"
       },
       "c2": {
         "nome": "lezioni per cintura bianca"
@@ -364,18 +206,72 @@
         "nome": "lezioni per cintura bianca"
       },
       "c2": {
-        "nome": "lezioni di pianoforte"
+        "nome": "lezioni di storia della musica"
       },
       "fattore": 1.0
     },
     {
       "c1": {
+        "nome": "lezioni di solfeggio"
+      },
+      "c2": {
+        "nome": "lezioni per cintura bianca"
+      },
+      "fattore": 0.91
+    },
+    {
+      "c1": {
+        "nome": "lezioni per cintura bianca"
+      },
+      "c2": {
+        "nome": "lezioni di solfeggio"
+      },
+      "fattore": 1.1
+    },
+    {
+      "c1": {
+        "nome": "lezioni di chitarra"
+      },
+      "c2": {
+        "nome": "lezioni per cintura bianca"
+      },
+      "fattore": 0.83
+    },
+    {
+      "c1": {
+        "nome": "lezioni per cintura bianca"
+      },
+      "c2": {
+        "nome": "lezioni di chitarra"
+      },
+      "fattore": 1.2
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte"
+      },
+      "c2": {
+        "nome": "lezioni per cintura bianca"
+      },
+      "fattore": 0.77
+    },
+    {
+      "c1": {
+        "nome": "lezioni per cintura bianca"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte"
+      },
+      "fattore": 1.3
+    },
+    {
+      "c1": {
         "nome": "lezioni di storia della musica"
       },
       "c2": {
         "nome": "lezioni per cintura verde"
       },
-      "fattore": 2.0
+      "fattore": 0.8
     },
     {
       "c1": {
@@ -384,7 +280,25 @@
       "c2": {
         "nome": "lezioni di storia della musica"
       },
+      "fattore": 1.25
+    },
+    {
+      "c1": {
+        "nome": "lezioni di storia della musica"
+      },
+      "c2": {
+        "nome": "lezioni per cintura nera"
+      },
       "fattore": 0.5
+    },
+    {
+      "c1": {
+        "nome": "lezioni per cintura nera"
+      },
+      "c2": {
+        "nome": "lezioni di storia della musica"
+      },
+      "fattore": 2.0
     },
     {
       "c1": {
@@ -411,7 +325,7 @@
       "c2": {
         "nome": "lezioni per cintura verde"
       },
-      "fattore": 2.0
+      "fattore": 0.92
     },
     {
       "c1": {
@@ -420,7 +334,7 @@
       "c2": {
         "nome": "lezioni di chitarra"
       },
-      "fattore": 0.5
+      "fattore": 1.09
     },
     {
       "c1": {
@@ -429,7 +343,7 @@
       "c2": {
         "nome": "lezioni per cintura verde"
       },
-      "fattore": 1.67
+      "fattore": 0.85
     },
     {
       "c1": {
@@ -438,29 +352,29 @@
       "c2": {
         "nome": "lezioni di pianoforte"
       },
-      "fattore": 0.6
+      "fattore": 1.18
     },
     {
       "c1": {
-        "nome": "lezioni per cintura bianca"
+        "nome": "lezioni di solfeggio"
       },
       "c2": {
-        "nome": "lezioni per cintura verde"
+        "nome": "lezioni per cintura nera"
       },
-      "fattore": 1.67
+      "fattore": 0.63
     },
     {
       "c1": {
-        "nome": "lezioni per cintura verde"
+        "nome": "lezioni per cintura nera"
       },
       "c2": {
-        "nome": "lezioni per cintura bianca"
+        "nome": "lezioni di solfeggio"
       },
-      "fattore": 0.6
+      "fattore": 1.59
     },
     {
       "c1": {
-        "nome": "lezioni di storia della musica"
+        "nome": "lezioni di chitarra"
       },
       "c2": {
         "nome": "lezioni per cintura nera"
@@ -470,6 +384,96 @@
     {
       "c1": {
         "nome": "lezioni per cintura nera"
+      },
+      "c2": {
+        "nome": "lezioni di chitarra"
+      },
+      "fattore": 1.0
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte"
+      },
+      "c2": {
+        "nome": "lezioni per cintura nera"
+      },
+      "fattore": 0.93
+    },
+    {
+      "c1": {
+        "nome": "lezioni per cintura nera"
+      },
+      "c2": {
+        "nome": "lezioni di pianoforte"
+      },
+      "fattore": 1.08
+    },
+    {
+      "c1": {
+        "nome": "lezioni per cintura bianca"
+      },
+      "c2": {
+        "nome": "lezioni di dolci occidentali"
+      },
+      "fattore": 1.0
+    },
+    {
+      "c1": {
+        "nome": "lezioni di dolci occidentali"
+      },
+      "c2": {
+        "nome": "lezioni per cintura bianca"
+      },
+      "fattore": 1.0
+    },
+    {
+      "c1": {
+        "nome": "lezioni per cintura verde"
+      },
+      "c2": {
+        "nome": "lezioni di dolci occidentali"
+      },
+      "fattore": 1.25
+    },
+    {
+      "c1": {
+        "nome": "lezioni di dolci occidentali"
+      },
+      "c2": {
+        "nome": "lezioni per cintura verde"
+      },
+      "fattore": 0.8
+    },
+    {
+      "c1": {
+        "nome": "lezioni per cintura nera"
+      },
+      "c2": {
+        "nome": "lezioni di dolci occidentali"
+      },
+      "fattore": 2.0
+    },
+    {
+      "c1": {
+        "nome": "lezioni di dolci occidentali"
+      },
+      "c2": {
+        "nome": "lezioni per cintura nera"
+      },
+      "fattore": 0.5
+    },
+    {
+      "c1": {
+        "nome": "lezioni di storia della musica"
+      },
+      "c2": {
+        "nome": "lezioni di dolci occidentali"
+      },
+      "fattore": 1.0
+    },
+    {
+      "c1": {
+        "nome": "lezioni di dolci occidentali"
       },
       "c2": {
         "nome": "lezioni di storia della musica"
@@ -481,171 +485,9 @@
         "nome": "lezioni di solfeggio"
       },
       "c2": {
-        "nome": "lezioni per cintura nera"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura nera"
-      },
-      "c2": {
-        "nome": "lezioni di solfeggio"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "lezioni di chitarra"
-      },
-      "c2": {
-        "nome": "lezioni per cintura nera"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura nera"
-      },
-      "c2": {
-        "nome": "lezioni di chitarra"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "lezioni di pianoforte"
-      },
-      "c2": {
-        "nome": "lezioni per cintura nera"
-      },
-      "fattore": 0.83
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura nera"
-      },
-      "c2": {
-        "nome": "lezioni di pianoforte"
-      },
-      "fattore": 1.2
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura bianca"
-      },
-      "c2": {
-        "nome": "lezioni per cintura nera"
-      },
-      "fattore": 0.83
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura nera"
-      },
-      "c2": {
-        "nome": "lezioni per cintura bianca"
-      },
-      "fattore": 1.2
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura verde"
-      },
-      "c2": {
-        "nome": "lezioni per cintura nera"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura nera"
-      },
-      "c2": {
-        "nome": "lezioni per cintura verde"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura bianca"
-      },
-      "c2": {
         "nome": "lezioni di dolci occidentali"
       },
-      "fattore": 1.2
-    },
-    {
-      "c1": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "c2": {
-        "nome": "lezioni per cintura bianca"
-      },
-      "fattore": 0.83
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura verde"
-      },
-      "c2": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "c2": {
-        "nome": "lezioni per cintura verde"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura nera"
-      },
-      "c2": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "c2": {
-        "nome": "lezioni per cintura nera"
-      },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "lezioni di storia della musica"
-      },
-      "c2": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "fattore": 1.45
-    },
-    {
-      "c1": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "c2": {
-        "nome": "lezioni di storia della musica"
-      },
-      "fattore": 0.69
-    },
-    {
-      "c1": {
-        "nome": "lezioni di solfeggio"
-      },
-      "c2": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "fattore": 0.72
+      "fattore": 0.91
     },
     {
       "c1": {
@@ -654,7 +496,7 @@
       "c2": {
         "nome": "lezioni di solfeggio"
       },
-      "fattore": 1.39
+      "fattore": 1.1
     },
     {
       "c1": {
@@ -662,75 +504,75 @@
       },
       "c2": {
         "nome": "lezioni di dolci occidentali"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "c2": {
-        "nome": "lezioni di chitarra"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "lezioni di pianoforte"
-      },
-      "c2": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "fattore": 1.2
-    },
-    {
-      "c1": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "c2": {
-        "nome": "lezioni di pianoforte"
       },
       "fattore": 0.83
     },
     {
       "c1": {
-        "nome": "lezioni per cintura verde"
+        "nome": "lezioni di dolci occidentali"
+      },
+      "c2": {
+        "nome": "lezioni di chitarra"
+      },
+      "fattore": 1.2
+    },
+    {
+      "c1": {
+        "nome": "lezioni di pianoforte"
       },
       "c2": {
         "nome": "lezioni di dolci occidentali"
       },
-      "fattore": 0.72
+      "fattore": 0.77
     },
     {
       "c1": {
         "nome": "lezioni di dolci occidentali"
       },
       "c2": {
-        "nome": "lezioni per cintura verde"
+        "nome": "lezioni di pianoforte"
       },
-      "fattore": 1.39
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura nera"
-      },
-      "c2": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "fattore": 1.45
-    },
-    {
-      "c1": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "c2": {
-        "nome": "lezioni per cintura nera"
-      },
-      "fattore": 0.69
+      "fattore": 1.3
     },
     {
       "c1": {
         "nome": "lezioni per cintura bianca"
+      },
+      "c2": {
+        "nome": "lezioni di portate occidentali"
+      },
+      "fattore": 1.3
+    },
+    {
+      "c1": {
+        "nome": "lezioni di portate occidentali"
+      },
+      "c2": {
+        "nome": "lezioni per cintura bianca"
+      },
+      "fattore": 0.77
+    },
+    {
+      "c1": {
+        "nome": "lezioni per cintura verde"
+      },
+      "c2": {
+        "nome": "lezioni di portate occidentali"
+      },
+      "fattore": 1.63
+    },
+    {
+      "c1": {
+        "nome": "lezioni di portate occidentali"
+      },
+      "c2": {
+        "nome": "lezioni per cintura verde"
+      },
+      "fattore": 0.61
+    },
+    {
+      "c1": {
+        "nome": "lezioni per cintura nera"
       },
       "c2": {
         "nome": "lezioni di portate occidentali"
@@ -742,45 +584,9 @@
         "nome": "lezioni di portate occidentali"
       },
       "c2": {
-        "nome": "lezioni per cintura bianca"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura verde"
-      },
-      "c2": {
-        "nome": "lezioni di portate occidentali"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "lezioni di portate occidentali"
-      },
-      "c2": {
-        "nome": "lezioni per cintura verde"
-      },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
         "nome": "lezioni per cintura nera"
       },
-      "c2": {
-        "nome": "lezioni di portate occidentali"
-      },
-      "fattore": 1.67
-    },
-    {
-      "c1": {
-        "nome": "lezioni di portate occidentali"
-      },
-      "c2": {
-        "nome": "lezioni per cintura nera"
-      },
-      "fattore": 0.6
+      "fattore": 0.5
     },
     {
       "c1": {
@@ -789,7 +595,7 @@
       "c2": {
         "nome": "lezioni di portate occidentali"
       },
-      "fattore": 2.0
+      "fattore": 1.3
     },
     {
       "c1": {
@@ -798,7 +604,7 @@
       "c2": {
         "nome": "lezioni di storia della musica"
       },
-      "fattore": 0.5
+      "fattore": 0.77
     },
     {
       "c1": {
@@ -807,7 +613,7 @@
       "c2": {
         "nome": "lezioni di portate occidentali"
       },
-      "fattore": 1.2
+      "fattore": 1.18
     },
     {
       "c1": {
@@ -816,7 +622,7 @@
       "c2": {
         "nome": "lezioni di solfeggio"
       },
-      "fattore": 0.83
+      "fattore": 0.85
     },
     {
       "c1": {
@@ -825,7 +631,7 @@
       "c2": {
         "nome": "lezioni di portate occidentali"
       },
-      "fattore": 2.0
+      "fattore": 1.08
     },
     {
       "c1": {
@@ -834,7 +640,7 @@
       "c2": {
         "nome": "lezioni di chitarra"
       },
-      "fattore": 0.5
+      "fattore": 0.93
     },
     {
       "c1": {
@@ -843,7 +649,7 @@
       "c2": {
         "nome": "lezioni di portate occidentali"
       },
-      "fattore": 2.0
+      "fattore": 1.0
     },
     {
       "c1": {
@@ -852,43 +658,7 @@
       "c2": {
         "nome": "lezioni di pianoforte"
       },
-      "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura verde"
-      },
-      "c2": {
-        "nome": "lezioni di portate occidentali"
-      },
-      "fattore": 1.2
-    },
-    {
-      "c1": {
-        "nome": "lezioni di portate occidentali"
-      },
-      "c2": {
-        "nome": "lezioni per cintura verde"
-      },
-      "fattore": 0.83
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura nera"
-      },
-      "c2": {
-        "nome": "lezioni di portate occidentali"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
-        "nome": "lezioni di portate occidentali"
-      },
-      "c2": {
-        "nome": "lezioni per cintura nera"
-      },
-      "fattore": 0.5
+      "fattore": 1.0
     },
     {
       "c1": {
@@ -897,7 +667,7 @@
       "c2": {
         "nome": "lezioni di portate occidentali"
       },
-      "fattore": 1.67
+      "fattore": 1.3
     },
     {
       "c1": {
@@ -906,7 +676,7 @@
       "c2": {
         "nome": "lezioni di dolci occidentali"
       },
-      "fattore": 0.6
+      "fattore": 0.77
     },
     {
       "c1": {
@@ -915,7 +685,7 @@
       "c2": {
         "nome": "lezioni di dolci orientali"
       },
-      "fattore": 1.0
+      "fattore": 1.5
     },
     {
       "c1": {
@@ -924,11 +694,29 @@
       "c2": {
         "nome": "lezioni per cintura bianca"
       },
-      "fattore": 1.0
+      "fattore": 0.67
     },
     {
       "c1": {
         "nome": "lezioni per cintura verde"
+      },
+      "c2": {
+        "nome": "lezioni di dolci orientali"
+      },
+      "fattore": 1.88
+    },
+    {
+      "c1": {
+        "nome": "lezioni di dolci orientali"
+      },
+      "c2": {
+        "nome": "lezioni per cintura verde"
+      },
+      "fattore": 0.53
+    },
+    {
+      "c1": {
+        "nome": "lezioni per cintura nera"
       },
       "c2": {
         "nome": "lezioni di dolci orientali"
@@ -940,27 +728,9 @@
         "nome": "lezioni di dolci orientali"
       },
       "c2": {
-        "nome": "lezioni per cintura verde"
+        "nome": "lezioni per cintura nera"
       },
       "fattore": 0.5
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura nera"
-      },
-      "c2": {
-        "nome": "lezioni di dolci orientali"
-      },
-      "fattore": 0.83
-    },
-    {
-      "c1": {
-        "nome": "lezioni di dolci orientali"
-      },
-      "c2": {
-        "nome": "lezioni per cintura nera"
-      },
-      "fattore": 1.2
     },
     {
       "c1": {
@@ -969,7 +739,7 @@
       "c2": {
         "nome": "lezioni di dolci orientali"
       },
-      "fattore": 1.2
+      "fattore": 1.5
     },
     {
       "c1": {
@@ -978,7 +748,7 @@
       "c2": {
         "nome": "lezioni di storia della musica"
       },
-      "fattore": 0.83
+      "fattore": 0.67
     },
     {
       "c1": {
@@ -987,7 +757,7 @@
       "c2": {
         "nome": "lezioni di dolci orientali"
       },
-      "fattore": 0.6
+      "fattore": 1.36
     },
     {
       "c1": {
@@ -996,7 +766,7 @@
       "c2": {
         "nome": "lezioni di solfeggio"
       },
-      "fattore": 1.67
+      "fattore": 0.74
     },
     {
       "c1": {
@@ -1005,7 +775,7 @@
       "c2": {
         "nome": "lezioni di dolci orientali"
       },
-      "fattore": 2.0
+      "fattore": 1.25
     },
     {
       "c1": {
@@ -1014,7 +784,7 @@
       "c2": {
         "nome": "lezioni di chitarra"
       },
-      "fattore": 0.5
+      "fattore": 0.8
     },
     {
       "c1": {
@@ -1023,7 +793,7 @@
       "c2": {
         "nome": "lezioni di dolci orientali"
       },
-      "fattore": 1.0
+      "fattore": 1.15
     },
     {
       "c1": {
@@ -1032,43 +802,7 @@
       "c2": {
         "nome": "lezioni di pianoforte"
       },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura verde"
-      },
-      "c2": {
-        "nome": "lezioni di dolci orientali"
-      },
-      "fattore": 0.6
-    },
-    {
-      "c1": {
-        "nome": "lezioni di dolci orientali"
-      },
-      "c2": {
-        "nome": "lezioni per cintura verde"
-      },
-      "fattore": 1.67
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura nera"
-      },
-      "c2": {
-        "nome": "lezioni di dolci orientali"
-      },
-      "fattore": 1.2
-    },
-    {
-      "c1": {
-        "nome": "lezioni di dolci orientali"
-      },
-      "c2": {
-        "nome": "lezioni per cintura nera"
-      },
-      "fattore": 0.83
+      "fattore": 0.87
     },
     {
       "c1": {
@@ -1077,7 +811,7 @@
       "c2": {
         "nome": "lezioni di dolci orientali"
       },
-      "fattore": 0.83
+      "fattore": 1.5
     },
     {
       "c1": {
@@ -1086,7 +820,7 @@
       "c2": {
         "nome": "lezioni di dolci occidentali"
       },
-      "fattore": 1.2
+      "fattore": 0.67
     },
     {
       "c1": {
@@ -1095,7 +829,7 @@
       "c2": {
         "nome": "lezioni di dolci orientali"
       },
-      "fattore": 0.5
+      "fattore": 1.15
     },
     {
       "c1": {
@@ -1104,7 +838,7 @@
       "c2": {
         "nome": "lezioni di portate occidentali"
       },
-      "fattore": 2.0
+      "fattore": 0.87
     },
     {
       "c1": {
@@ -1113,7 +847,7 @@
       "c2": {
         "nome": "lezioni di portate orientali"
       },
-      "fattore": 1.0
+      "fattore": 0.8
     },
     {
       "c1": {
@@ -1122,25 +856,25 @@
       "c2": {
         "nome": "lezioni per cintura bianca"
       },
+      "fattore": 1.25
+    },
+    {
+      "c1": {
+        "nome": "lezioni per cintura verde"
+      },
+      "c2": {
+        "nome": "lezioni di portate orientali"
+      },
       "fattore": 1.0
     },
     {
       "c1": {
-        "nome": "lezioni per cintura verde"
-      },
-      "c2": {
-        "nome": "lezioni di portate orientali"
-      },
-      "fattore": 2.0
-    },
-    {
-      "c1": {
         "nome": "lezioni di portate orientali"
       },
       "c2": {
         "nome": "lezioni per cintura verde"
       },
-      "fattore": 0.5
+      "fattore": 1.0
     },
     {
       "c1": {
@@ -1149,7 +883,7 @@
       "c2": {
         "nome": "lezioni di portate orientali"
       },
-      "fattore": 0.83
+      "fattore": 1.6
     },
     {
       "c1": {
@@ -1158,7 +892,7 @@
       "c2": {
         "nome": "lezioni per cintura nera"
       },
-      "fattore": 1.2
+      "fattore": 0.63
     },
     {
       "c1": {
@@ -1167,7 +901,7 @@
       "c2": {
         "nome": "lezioni di portate orientali"
       },
-      "fattore": 1.2
+      "fattore": 0.8
     },
     {
       "c1": {
@@ -1176,7 +910,7 @@
       "c2": {
         "nome": "lezioni di storia della musica"
       },
-      "fattore": 0.83
+      "fattore": 1.25
     },
     {
       "c1": {
@@ -1185,7 +919,7 @@
       "c2": {
         "nome": "lezioni di portate orientali"
       },
-      "fattore": 0.6
+      "fattore": 0.73
     },
     {
       "c1": {
@@ -1194,7 +928,7 @@
       "c2": {
         "nome": "lezioni di solfeggio"
       },
-      "fattore": 1.67
+      "fattore": 1.37
     },
     {
       "c1": {
@@ -1203,7 +937,7 @@
       "c2": {
         "nome": "lezioni di portate orientali"
       },
-      "fattore": 2.0
+      "fattore": 0.67
     },
     {
       "c1": {
@@ -1212,7 +946,7 @@
       "c2": {
         "nome": "lezioni di chitarra"
       },
-      "fattore": 0.5
+      "fattore": 1.49
     },
     {
       "c1": {
@@ -1221,7 +955,7 @@
       "c2": {
         "nome": "lezioni di portate orientali"
       },
-      "fattore": 1.0
+      "fattore": 0.62
     },
     {
       "c1": {
@@ -1230,43 +964,7 @@
       "c2": {
         "nome": "lezioni di pianoforte"
       },
-      "fattore": 1.0
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura verde"
-      },
-      "c2": {
-        "nome": "lezioni di portate orientali"
-      },
-      "fattore": 0.6
-    },
-    {
-      "c1": {
-        "nome": "lezioni di portate orientali"
-      },
-      "c2": {
-        "nome": "lezioni per cintura verde"
-      },
-      "fattore": 1.67
-    },
-    {
-      "c1": {
-        "nome": "lezioni per cintura nera"
-      },
-      "c2": {
-        "nome": "lezioni di portate orientali"
-      },
-      "fattore": 1.2
-    },
-    {
-      "c1": {
-        "nome": "lezioni di portate orientali"
-      },
-      "c2": {
-        "nome": "lezioni per cintura nera"
-      },
-      "fattore": 0.83
+      "fattore": 1.61
     },
     {
       "c1": {
@@ -1275,7 +973,7 @@
       "c2": {
         "nome": "lezioni di portate orientali"
       },
-      "fattore": 0.83
+      "fattore": 0.8
     },
     {
       "c1": {
@@ -1284,7 +982,7 @@
       "c2": {
         "nome": "lezioni di dolci occidentali"
       },
-      "fattore": 1.2
+      "fattore": 1.25
     },
     {
       "c1": {
@@ -1293,7 +991,7 @@
       "c2": {
         "nome": "lezioni di portate orientali"
       },
-      "fattore": 0.5
+      "fattore": 0.62
     },
     {
       "c1": {
@@ -1302,7 +1000,7 @@
       "c2": {
         "nome": "lezioni di portate occidentali"
       },
-      "fattore": 2.0
+      "fattore": 1.61
     },
     {
       "c1": {
@@ -1311,7 +1009,7 @@
       "c2": {
         "nome": "lezioni di portate orientali"
       },
-      "fattore": 1.0
+      "fattore": 0.53
     },
     {
       "c1": {
@@ -1320,7 +1018,7 @@
       "c2": {
         "nome": "lezioni di dolci orientali"
       },
-      "fattore": 1.0
+      "fattore": 1.89
     }
   ],
   "gerarchie": [
@@ -1489,7 +1187,7 @@
   "fruitori": [
     {
       "username": "riccardo",
-      "password": "rossi erba",
+      "password": "rossi",
       "comprensiorio": {
         "nome": "brescia",
         "comuni": [
@@ -1527,218 +1225,26 @@
   "proposte": [
     {
       "richiesta": {
-        "nome": "lezioni di dolci orientali"
-      },
-      "offerta": {
-        "nome": "lezioni per cintura bianca"
-      },
-      "durataRichiesta": 5,
-      "durataOfferta": 5,
-      "stato": "APERTA",
-      "username": "giorgio"
-    },
-    {
-      "richiesta": {
         "nome": "lezioni di solfeggio"
       },
       "offerta": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "durataRichiesta": 3,
-      "durataOfferta": 2,
-      "stato": "APERTA",
-      "username": "giorgio"
-    },
-    {
-      "richiesta": {
-        "nome": "lezioni per cintura nera"
-      },
-      "offerta": {
-        "nome": "lezioni di portate orientali"
-      },
-      "durataRichiesta": 5,
-      "durataOfferta": 4,
-      "stato": "APERTA",
-      "username": "riccardo"
-    },
-    {
-      "richiesta": {
         "nome": "lezioni di chitarra"
-      },
-      "offerta": {
-        "nome": "lezioni di portate orientali"
       },
       "durataRichiesta": 10,
-      "durataOfferta": 20,
-      "stato": "APERTA",
-      "username": "riccardo"
-    },
-    {
-      "richiesta": {
-        "nome": "lezioni di chitarra"
-      },
-      "offerta": {
-        "nome": "lezioni di pianoforte"
-      },
-      "durataRichiesta": 5,
-      "durataOfferta": 10,
-      "stato": "RITIRATA",
-      "username": "riccardo"
-    },
-    {
-      "richiesta": {
-        "nome": "lezioni di pianoforte"
-      },
-      "offerta": {
-        "nome": "lezioni di portate orientali"
-      },
-      "durataRichiesta": 5,
       "durataOfferta": 5,
       "stato": "APERTA",
-      "username": "riccardo"
+      "username": "giorgio"
     },
     {
       "richiesta": {
-        "nome": "lezioni di dolci orientali"
-      },
-      "offerta": {
-        "nome": "lezioni di solfeggio"
-      },
-      "durataRichiesta": 2,
-      "durataOfferta": 3,
-      "stato": "APERTA",
-      "username": "riccardo"
-    },
-    {
-      "richiesta": {
-        "nome": "lezioni di solfeggio"
-      },
-      "offerta": {
         "nome": "lezioni per cintura verde"
       },
-      "durataRichiesta": 5,
-      "durataOfferta": 5,
-      "stato": "APERTA",
-      "username": "luca"
-    },
-    {
-      "richiesta": {
-        "nome": "lezioni per cintura nera"
-      },
       "offerta": {
-        "nome": "lezioni per cintura verde"
-      },
-      "durataRichiesta": 2,
-      "durataOfferta": 1,
-      "stato": "RITIRATA",
-      "username": "luca"
-    },
-    {
-      "richiesta": {
-        "nome": "lezioni di portate orientali"
-      },
-      "offerta": {
-        "nome": "lezioni per cintura nera"
+        "nome": "lezioni di portate occidentali"
       },
       "durataRichiesta": 8,
-      "durataOfferta": 9,
-      "stato": "APERTA",
-      "username": "luca"
-    },
-    {
-      "richiesta": {
-        "nome": "lezioni di dolci occidentali"
-      },
-      "offerta": {
-        "nome": "lezioni di pianoforte"
-      },
-      "durataRichiesta": 6,
-      "durataOfferta": 4,
-      "stato": "APERTA",
-      "username": "luca"
-    },
-    {
-      "richiesta": {
-        "nome": "lezioni di storia della musica"
-      },
-      "offerta": {
-        "nome": "lezioni di portate occidentali"
-      },
-      "durataRichiesta": 7,
-      "durataOfferta": 14,
-      "stato": "APERTA",
-      "username": "riccardo"
-    },
-    {
-      "richiesta": {
-        "nome": "lezioni di portate occidentali"
-      },
-      "offerta": {
-        "nome": "lezioni di storia della musica"
-      },
-      "durataRichiesta": 14,
-      "durataOfferta": 7,
-      "stato": "APERTA",
-      "username": "luca"
-    },
-    {
-      "richiesta": {
-        "nome": "lezioni per cintura verde"
-      },
-      "offerta": {
-        "nome": "lezioni di solfeggio"
-      },
-      "durataRichiesta": 5,
-      "durataOfferta": 5,
-      "stato": "APERTA",
-      "username": "giorgio"
-    },
-    {
-      "richiesta": {
-        "nome": "lezioni di storia della musica"
-      },
-      "offerta": {
-        "nome": "lezioni di solfeggio"
-      },
-      "durataRichiesta": 10,
-      "durataOfferta": 20,
-      "stato": "APERTA",
-      "username": "giorgio"
-    },
-    {
-      "richiesta": {
-        "nome": "lezioni di solfeggio"
-      },
-      "offerta": {
-        "nome": "lezioni di storia della musica"
-      },
-      "durataRichiesta": 20,
-      "durataOfferta": 10,
-      "stato": "CHIUSA",
-      "username": "luca"
-    },
-    {
-      "richiesta": {
-        "nome": "lezioni di storia della musica"
-      },
-      "offerta": {
-        "nome": "lezioni di solfeggio"
-      },
-      "durataRichiesta": 10,
-      "durataOfferta": 20,
-      "stato": "CHIUSA",
-      "username": "luca"
-    },
-    {
-      "richiesta": {
-        "nome": "lezioni di chitarra"
-      },
-      "offerta": {
-        "nome": "lezioni di pianoforte"
-      },
-      "durataRichiesta": 10,
-      "durataOfferta": 20,
-      "stato": "APERTA",
+      "durataOfferta": 16,
+      "stato": "RITIRATA",
       "username": "giorgio"
     },
     {
@@ -1746,70 +1252,190 @@
         "nome": "lezioni per cintura bianca"
       },
       "offerta": {
-        "nome": "lezioni per cintura verde"
-      },
-      "durataRichiesta": 10,
-      "durataOfferta": 5,
-      "stato": "CHIUSA",
-      "username": "giorgio"
-    },
-    {
-      "richiesta": {
-        "nome": "lezioni per cintura verde"
-      },
-      "offerta": {
-        "nome": "lezioni per cintura nera"
-      },
-      "durataRichiesta": 10,
-      "durataOfferta": 20,
-      "stato": "APERTA",
-      "username": "giorgio"
-    },
-    {
-      "richiesta": {
         "nome": "lezioni di dolci occidentali"
+      },
+      "durataRichiesta": 10,
+      "durataOfferta": 10,
+      "stato": "CHIUSA",
+      "username": "luca"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni per cintura verde"
       },
       "offerta": {
         "nome": "lezioni di portate occidentali"
       },
-      "durataRichiesta": 10,
+      "durataRichiesta": 12,
       "durataOfferta": 20,
       "stato": "APERTA",
-      "username": "giorgio"
+      "username": "luca"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni per cintura nera"
+      },
+      "offerta": {
+        "nome": "lezioni di portate orientali"
+      },
+      "durataRichiesta": 10,
+      "durataOfferta": 16,
+      "stato": "APERTA",
+      "username": "luca"
     },
     {
       "richiesta": {
         "nome": "lezioni di dolci orientali"
       },
       "offerta": {
-        "nome": "lezioni di portate orientali"
+        "nome": "lezioni di solfeggio"
       },
-      "durataRichiesta": 10,
-      "durataOfferta": 12,
-      "stato": "APERTA",
-      "username": "giorgio"
+      "durataRichiesta": 15,
+      "durataOfferta": 11,
+      "stato": "CHIUSA",
+      "username": "riccardo"
     },
     {
       "richiesta": {
         "nome": "lezioni di dolci occidentali"
       },
       "offerta": {
+        "nome": "lezioni di chitarra"
+      },
+      "durataRichiesta": 14,
+      "durataOfferta": 17,
+      "stato": "APERTA",
+      "username": "riccardo"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni di storia della musica"
+      },
+      "offerta": {
         "nome": "lezioni di solfeggio"
       },
       "durataRichiesta": 10,
-      "durataOfferta": 14,
+      "durataOfferta": 11,
+      "stato": "APERTA",
+      "username": "riccardo"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni di pianoforte"
+      },
+      "offerta": {
+        "nome": "lezioni per cintura nera"
+      },
+      "durataRichiesta": 12,
+      "durataOfferta": 11,
       "stato": "APERTA",
       "username": "giorgio"
     },
     {
       "richiesta": {
+        "nome": "lezioni di chitarra"
+      },
+      "offerta": {
+        "nome": "lezioni di dolci occidentali"
+      },
+      "durataRichiesta": 10,
+      "durataOfferta": 8,
+      "stato": "APERTA",
+      "username": "giorgio"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni di solfeggio"
+      },
+      "offerta": {
+        "nome": "lezioni di dolci orientali"
+      },
+      "durataRichiesta": 5,
+      "durataOfferta": 7,
+      "stato": "APERTA",
+      "username": "giorgio"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni di portate occidentali"
+      },
+      "offerta": {
         "nome": "lezioni per cintura verde"
+      },
+      "durataRichiesta": 14,
+      "durataOfferta": 9,
+      "stato": "APERTA",
+      "username": "riccardo"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni di portate orientali"
       },
       "offerta": {
         "nome": "lezioni per cintura bianca"
       },
-      "durataRichiesta": 5,
+      "durataRichiesta": 20,
+      "durataOfferta": 25,
+      "stato": "APERTA",
+      "username": "riccardo"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni di dolci orientali"
+      },
+      "offerta": {
+        "nome": "lezioni per cintura bianca"
+      },
+      "durataRichiesta": 10,
+      "durataOfferta": 7,
+      "stato": "APERTA",
+      "username": "riccardo"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni di dolci occidentali"
+      },
+      "offerta": {
+        "nome": "lezioni per cintura bianca"
+      },
+      "durataRichiesta": 10,
       "durataOfferta": 10,
+      "stato": "CHIUSA",
+      "username": "riccardo"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni di solfeggio"
+      },
+      "offerta": {
+        "nome": "lezioni di dolci orientali"
+      },
+      "durataRichiesta": 11,
+      "durataOfferta": 15,
+      "stato": "CHIUSA",
+      "username": "giorgio"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni di storia della musica"
+      },
+      "offerta": {
+        "nome": "lezioni per cintura bianca"
+      },
+      "durataRichiesta": 15,
+      "durataOfferta": 15,
+      "stato": "CHIUSA",
+      "username": "giorgio"
+    },
+    {
+      "richiesta": {
+        "nome": "lezioni per cintura bianca"
+      },
+      "offerta": {
+        "nome": "lezioni di storia della musica"
+      },
+      "durataRichiesta": 15,
+      "durataOfferta": 15,
       "stato": "CHIUSA",
       "username": "luca"
     }

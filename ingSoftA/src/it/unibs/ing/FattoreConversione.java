@@ -66,18 +66,41 @@ public class FattoreConversione {
 			for(FattoreConversione fact : listaFattori) {
 				CategoriaFoglia c2 = fact.getC2();
 				if(fact.getC1().getNome().equals(c1.getNome())) {
-					if(c3.getNome().equals(c2.getNome()) == false) {
+					if(!esisteFattore(c3, c2)) {
 						valoreFattore = Math.round((f13 / fact.getFattore()) * 100.0) / 100.0;
 						valoreFattore = Math.max(0.5, Math.min(2.0, valoreFattore));
 						FattoreConversione newFattore = new FattoreConversione(c2, c3, valoreFattore);
+						FattoreConversione newFattoreInverso = creaFattoreInverso(newFattore);
+						//*******************************************************
+						System.out.println(newFattore.toString());
+						System.out.println(newFattoreInverso.toString());
+						//*******************************************************
+						
+						
 						fattoriDaAggiungere.add(newFattore);
 						fattoriDaAggiungere.add(creaFattoreInverso(newFattore));
 					}
 				}
-			}
+				if(fact.getC1().getNome().equals(c3.getNome())) {
+					if(!esisteFattore(c1, c2)) {
+						valoreFattore = Math.round((f13 * fact.getFattore()) * 100.0) / 100.0;
+						valoreFattore = Math.max(0.5, Math.min(2.0, valoreFattore));
+						FattoreConversione newFattore = new FattoreConversione(c1, c2, valoreFattore);
+						FattoreConversione newFattoreInverso = creaFattoreInverso(newFattore);
+						//*******************************************************
+						System.out.println(newFattore.toString());
+						System.out.println(newFattoreInverso.toString());
+						//*******************************************************
+						
+						
+						fattoriDaAggiungere.add(newFattore);
+						fattoriDaAggiungere.add(creaFattoreInverso(newFattore));
+					}
+			}}
 			listaFattori.add(fattore);
 			listaFattori.add(f_inverso);
 			listaFattori.addAll(fattoriDaAggiungere);
+			
 		}
 	}
 	

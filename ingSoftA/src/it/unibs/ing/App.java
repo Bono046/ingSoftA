@@ -585,7 +585,7 @@ public class App {
     }
 
     
- private Boolean esploraGerarchia(GerarchiaCategorie g) {
+    private Boolean esploraGerarchia(GerarchiaCategorie g) {
     	
     	Boolean ricerca = true;
     	do{ 
@@ -659,23 +659,23 @@ public class App {
  
  
 	
- private void creaProposta(String user) {
- 	CategoriaFoglia richiesta = null;
- 	CategoriaFoglia offerta = null;
- 	boolean checkDiverso = false;
-		do {
-	    	System.out.println("Seleziona la categoria foglia richiesta\n"); 
-	    	richiesta = getFogliaDaGerarchia(sceltaRadice());
-	    	
-	    	System.out.println("Seleziona la categoria foglia offerta\n"); 
-	    	offerta = getFogliaDaGerarchia(sceltaRadice());
-
-			if(richiesta.getNome().equals(offerta.getNome()))
-				System.out.println("Non può essere selezionata la stessa categoria. Riprovare\n");
-			else checkDiverso = true;
-
-		} while (!checkDiverso);
-		
+ 	private void creaProposta(String user) {
+	 	CategoriaFoglia richiesta = null;
+	 	CategoriaFoglia offerta = null;
+	 	boolean checkDiverso = false;
+			do {
+		    	System.out.println("Seleziona la categoria foglia richiesta\n"); 
+		    	richiesta = getFogliaDaGerarchia(sceltaRadice());
+		    	
+		    	System.out.println("Seleziona la categoria foglia offerta\n"); 
+		    	offerta = getFogliaDaGerarchia(sceltaRadice());
+	
+				if(richiesta.getNome().equals(offerta.getNome()))
+					System.out.println("Non può essere selezionata la stessa categoria. Riprovare\n");
+				else checkDiverso = true;
+	
+			} while (!checkDiverso);
+			
 		System.out.println("quante ore per la richiesta?");
 		int durataRichiesta;
 		do{
@@ -684,22 +684,30 @@ public class App {
 		
 		Proposta proposta = new Proposta(richiesta, offerta, durataRichiesta, user);
 		calcolaDurataOfferta(proposta);
+		if(proposta.getDurataOfferta() == 0) {
+			System.out.println("Un configuratore deve ancora definire il fattore di conversione corrispondente\n");
+			return ;
+		}
 		System.out.println(proposta.toString());
 		System.out.println("vuoi confermare la proposta? s/n");
 		String conferma = "";
+		boolean chiusura = false;
 		do {
 			conferma = scanner.nextLine();
 			if (conferma.equals("s")) {
 				proposta.accettaProposta();
 				Proposta.addProposta(proposta);
 				System.out.println("Proposta confermata\n");
-				proposta.verificaProposta();
+				chiusura = proposta.verificaProposta();
+				if(chiusura) {
+					System.out.println("La proposta � stata chiusa! Riceverai una mail per i dettagli");
+				}
 			} else if(conferma.equals("n"))
 				System.out.println("Proposta non confermata\n");
 			else System.out.println("Input non valido. Riprovare");
 		} while(!(conferma.equals("s") || conferma.equals("n")));
 		salvaDati();
- }
+ 	}
 
 	private void calcolaDurataOfferta(Proposta proposta) {
 		int durataOfferta=0;
@@ -752,7 +760,7 @@ public class App {
 	        System.out.println("Non sono presenti proposte da visualizzare.");
 	    } else {
 	        for (int i = 0; i < list.size(); i++) {
-	            System.out.println(i + ": " + list.get(i));
+	            System.out.println(list.get(i));
 	        }
 	    }
 	    System.out.println("---------------------------------- \n");
@@ -763,7 +771,7 @@ public class App {
 	    if (list.isEmpty()) {
 	        System.out.println("Non sono presenti proposte da visualizzare.");
 	    } else {
-	        for (int i = 1; i < list.size(); i++) {
+	        for (int i = 0; i < list.size(); i++) {
 	        	if(list.get(i).isAperto()) {
 	        		System.out.println(i + ": " + list.get(i));
 	        	}
